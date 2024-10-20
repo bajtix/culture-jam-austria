@@ -7,3 +7,6 @@
 
 ## tech details
 - Unity 6.0.0.0 LTS
+asdas das
+dasd as
+das
