@@ -7,4 +7,3 @@
 
 ## tech details
 - Unity 6.0.0.0 LTS
-asdasdadasdsadasdsa
