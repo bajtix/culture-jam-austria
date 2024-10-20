@@ -1,3 +1,5 @@
+Jakieś zmainy
+
 ## repo structure
 - main unity project - [culture-jam-austria](culture-jam-austria/)
 - game design doc - [design-stuff/doc.md](design-stuff/doc.md)
