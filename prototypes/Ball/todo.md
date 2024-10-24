@@ -1,0 +1,7 @@
+- wielu przeciwników
+- strzelanie kulką do przeciwników
+- punkty za przeciwników
+- system życia
+- wygląd unikatowy
+- spawnowanie punktow co jakis czas
+- spawnowanie przeciwnikow co jakis czas

@@ -1,68 +1,39 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
-public class PlayerController : MonoBehaviour
-{
 
+public class PlayerController : MonoBehaviour {
     public float speed = 0;
-    public TextMeshProUGUI countText;
-    public GameObject winTextObject;
+    public UIManager uiManager;
     private Rigidbody rb;
-    private int count;
-    private float movementX;
-    private float movementY;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        count = 0;
+    private int points = 0;
+    private Vector2 movementVector;
+
+    void Start() {
         rb = GetComponent<Rigidbody>();
-
-        SetCountText();
-        winTextObject.SetActive(false);
     }
 
-    void OnMove(InputValue movementValue)
-    {
-        Vector2 movementVector = movementValue.Get<Vector2>();
-
-        movementX = movementVector.x;
-        movementY = movementVector.y;
+    void OnMove(InputValue movementValue) {
+        movementVector = movementValue.Get<Vector2>();
     }
 
-    void SetCountText()
-    {
-        countText.text = "Count: " + count.ToString();
-        if(count > 7)
-        {
-            winTextObject.SetActive(true);
-            Destroy(GameObject.FindGameObjectWithTag("Enemy"));
-        }
-    }
-
-    void FixedUpdate()
-    {
-        Vector3 movement = new Vector3(movementX, 0.0f, movementY);
-
+    void FixedUpdate() {
+        Vector3 movement = new Vector3(movementVector.x, 0.0f, movementVector.y);
         rb.AddForce(movement * speed);
-
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            Destroy(gameObject);
-            winTextObject.gameObject.SetActive(true);
-            winTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
+
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.gameObject.CompareTag("Enemy")) {
+            uiManager.ShowStatusText("You lost!");
+            Destroy(gameObject);  
         }
     }
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("PickUp"))
-        {
-            other.gameObject.SetActive(false);
-            count = count + 1;
-            SetCountText();
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject.CompareTag("PickUp")) {
+            Destroy(other.gameObject);
+            points++;
+            uiManager.SetCountText(points);
         }
     }
 }
