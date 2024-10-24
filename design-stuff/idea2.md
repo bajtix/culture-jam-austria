@@ -1,4 +1,4 @@
-# IDEA #2 
+# Idea 2 
 > by @Lerock (Pan Bułka) 
 
 ## Setting

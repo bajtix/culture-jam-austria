@@ -1,6 +1,5 @@
-<h1 align="center">
-GAME DESIGN DOCUMENT
-</h1> 
+# Idea 1
+> based on earlier discussions, summarized by Mikołaj 
 
 ## Concept
 You are detective in the 50s in the Alps/Forest. A half closed world with 2-3 POIs that you run between and collect clues. There is a monster "chasing" you as some sort of time limit.

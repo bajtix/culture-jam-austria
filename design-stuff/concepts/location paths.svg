@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="95.302238mm"
+   height="110.70564mm"
+   viewBox="0 0 95.302238 110.70564"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   sodipodi:docname="location paths.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.375855"
+     inkscape:cx="224.58762"
+     inkscape:cy="223.49739"
+     inkscape:window-width="2516"
+     inkscape:window-height="1366"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <marker
+       style="overflow:visible"
+       id="marker9"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Wide arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:butt"
+         d="M 3,-3 0,0 3,3"
+         transform="rotate(180,0.125,0)"
+         sodipodi:nodetypes="ccc"
+         id="path9" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="ArrowWide"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Wide arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:butt"
+         d="M 3,-3 0,0 3,3"
+         transform="rotate(180,0.125,0)"
+         sodipodi:nodetypes="ccc"
+         id="path1" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect8"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect7"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect6"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect5"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4"
+       is_visible="true"
+       lpeversion="1" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-47.123676,-50.993834)">
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke-width:0.264583"
+       x="80.714401"
+       y="53.406834"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="stroke-width:0.264583"
+         x="80.714401"
+         y="53.406834">The Peak</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke-width:0.264583"
+       x="47.123676"
+       y="82.406021"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         style="stroke-width:0.264583"
+         x="47.123676"
+         y="82.406021">A temporary memorial</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke-width:0.264583"
+       x="120.6105"
+       y="123.7154"
+       id="text3"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         style="stroke-width:0.264583"
+         x="120.6105"
+         y="123.7154">A lonely shrine</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke-width:0.264583"
+       x="60.656628"
+       y="110.19691"
+       id="text4"><tspan
+         sodipodi:role="line"
+         id="tspan4"
+         style="stroke-width:0.264583"
+         x="60.656628"
+         y="110.19691">A strange den</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.964999;stroke-dasharray:none;stroke-opacity:1"
+       d="m 79.989422,54.373472 c -1.716333,1.328277 -3.263262,2.875206 -4.591539,4.59154 -2.388937,3.086866 -4.038085,6.666613 -5.799836,10.149715 -1.142593,2.258985 -2.346799,4.500252 -3.86656,6.524816 -0.309699,0.412568 -0.632116,0.81559 -0.966639,1.208299"
+       id="path5"
+       inkscape:path-effect="#path-effect5"
+       inkscape:original-d="m 79.989422,54.373472 c -1.530514,1.530514 -3.273769,2.874444 -4.591539,4.59154 -0.865952,1.128363 -4.781222,8.367138 -5.799836,10.149715 -1.198772,2.097847 -2.415934,4.590648 -3.86656,6.524816 -0.392607,0.523478 -0.674021,0.623067 -0.966639,1.208299" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.964999;stroke-dasharray:none;stroke-opacity:1"
+       d="m 64.039868,83.85598 c 0.953715,1.819358 1.840598,3.673749 2.658261,5.558176 0.85043,1.959943 1.625976,3.952378 2.324379,5.971497 -1.419461,2.190762 -2.530759,4.580877 -3.291021,7.078137 -0.527143,1.73153 -0.886031,3.51423 -1.069969,5.31485"
+       id="path6"
+       inkscape:path-effect="#path-effect6"
+       inkscape:original-d="m 64.039868,83.85598 c 0.886087,1.852726 1.73981,3.72128 2.658261,5.558176 0.612415,1.224835 1.815794,4.700034 2.324379,5.971497 0.676194,3.118921 -2.167136,4.341607 -3.291021,7.078137 -0.158313,0.3694 -0.690612,5.31485 -1.069969,5.31485"
+       sodipodi:nodetypes="csssc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.964999;stroke-dasharray:none;stroke-opacity:1"
+       d="m 68.389748,95.697314 c 7.897682,0.513961 15.792116,1.077849 23.682669,1.691619 1.85417,0.144227 3.708352,0.29123 5.558176,0.483319 4.883397,0.507101 9.770727,1.338398 14.358627,3.086488 4.58791,1.74808 8.88656,4.46088 11.9823,8.27153 2.45294,3.01941 4.1004,6.68714 4.7282,10.52636"
+       id="path7"
+       inkscape:path-effect="#path-effect7"
+       inkscape:original-d="m 68.389748,95.697314 c 7.017901,-1.159925 16.505295,0.906595 23.682669,1.691619 1.848691,0.2022 3.711196,0.266028 5.558176,0.483319 16.313907,1.919286 25.028957,10.046218 26.340927,11.358018 0.28117,0.28116 5.62446,11.42262 4.7282,10.52636"
+       sodipodi:nodetypes="csssc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.964999;stroke-dasharray:0.964999, 1.93;stroke-dashoffset:0;stroke-opacity:1;marker-mid:url(#ArrowWide);marker-end:url(#marker9)"
+       d="m 94.730675,57.273393 c 2.222184,3.515063 4.397381,7.05983 6.524815,10.633035 3.37903,5.675366 6.63755,11.422479 9.77263,17.23616 l 16.08498,21.429422 0.24166,0.24166"
+       id="path8"
+       inkscape:path-effect="#path-effect8"
+       inkscape:original-d="m 94.730675,57.273393 c 3.025542,4.034054 0.08868,0.04917 6.524815,10.633035 1.67259,2.750476 8.12297,14.471871 9.77263,17.23616 4.78638,12.078313 7.80738,12.104424 16.08498,21.429422 0.27768,0.41652 0.24166,0.72553 0.24166,0.24166"
+       sodipodi:nodetypes="csssc" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.065;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="72.940063"
+       y="160.93747"
+       id="text8"><tspan
+         sodipodi:role="line"
+         id="tspan8"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.065;stroke-dasharray:none"
+         x="72.940063"
+         y="160.93747">The great meadow</tspan></text>
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.0649999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 123.88079,128.57398 -35.492289,24.9326"
+       id="path10" />
+  </g>
+</svg>
