@@ -19,6 +19,7 @@ You are an amateur-ish detective trying to solve the case of several teenagers w
 Not much is revealed about the player, other than:
 - they're an amateurish detective
 - they're into alpinism
+
 That might also serve the immersion, as the actual player will have an easier time identifying themself with a nameless, first-person character.
 
 ### The Monster (Tatzelwurm) 
@@ -46,6 +47,8 @@ The other way leads to a rock wall with a bunch of rocks (all of them suspicious
 
 ### The Great Meadow
 This place is not meant to be explored and flashes briefly at the end. Its a cavern lit by a crystal in the middle, full of little dwarve statues. The cavern is overgrown and crystals can be seen growing from the walls.
+
+![plan](./concepts/location%20paths.svg)
 
 ## Story
 This needs to be filled in, it is just to serve as a frame of reference but will need to get modified as we create the puzzles
