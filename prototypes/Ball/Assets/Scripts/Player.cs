@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    private PlayerController controller;
-    private int points;
-    private int health;
+	private PlayerController m_controller;
+	private int m_points;
+	private int m_health;
 }
