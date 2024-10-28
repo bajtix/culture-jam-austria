@@ -5,6 +5,7 @@ using TMPro;
 public class PlayerController : MonoBehaviour {
 	public float speed = 0;
 	public UIManager uiManager;
+	public CameraController cameraController;
 	private Rigidbody m_rb;
 
 	private int m_points = 0;
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour {
 	private void OnCollisionEnter(Collision collision) {
 		if (collision.gameObject.CompareTag("Enemy")) {
 			uiManager.ShowStatusText("You lost!");
+			cameraController.enabled = false;
 			Destroy(gameObject);
 		}
 	}
@@ -34,6 +36,10 @@ public class PlayerController : MonoBehaviour {
 			Destroy(other.gameObject);
 			m_points++;
 			uiManager.SetCountText(m_points);
+		}
+		if(m_points >= 8){
+			uiManager.statusText.enabled = true;
+			Destroy(GameObject.FindGameObjectWithTag("Enemy"));
 		}
 	}
 }
