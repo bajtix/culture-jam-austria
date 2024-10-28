@@ -1,7 +1,8 @@
-- wielu przeciwników
-- strzelanie kulką do przeciwników
-- punkty za przeciwników
-- system życia
-- wygląd unikatowy
-- spawnowanie punktow co jakis czas
-- spawnowanie przeciwnikow co jakis czas
+- wielu przeciwników                        Michał
+- strzelanie kulką do przeciwników          Gabryś
+- punkty za przeciwników                    Gabryś
+- system życia:                             Mikołaj
+- wygląd unikatowy:                         Bajtix
+- dodać ui                                  Mikołaj
+- spawnowanie punktow co jakis czas         Michał
+- spawnowanie przeciwnikow co jakis czas    Michał
