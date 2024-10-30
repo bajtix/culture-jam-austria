@@ -1,11 +1,11 @@
 using TMPro;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class StatusController : MonoBehaviour {
 	public TextMeshProUGUI coinsText;
 	public TextMeshProUGUI statusText;
+	public GameObject endScreen;
 
 	private void Start() {
 		statusText.enabled = false;
@@ -19,5 +19,11 @@ public class StatusController : MonoBehaviour {
 	public void ShowStatusText(string status) {
 		statusText.enabled = true;
 		statusText.text = status;
+	}
+
+	public void IsDie() {
+		ShowStatusText("You lost!");
+		Time.timeScale = 0f;
+		endScreen.SetActive(true);
 	}
 }

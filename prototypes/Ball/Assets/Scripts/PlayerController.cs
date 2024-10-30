@@ -26,9 +26,7 @@ public class PlayerController : MonoBehaviour {
 
 	private void OnCollisionEnter(Collision collision) {
 		if (collision.gameObject.CompareTag("Enemy")) {
-			statusController.ShowStatusText("You lost!");
-			cameraController.enabled = false;
-			Destroy(gameObject);
+			statusController.IsDie();
 		}
 	}
 	private void OnTriggerEnter(Collider other) {
@@ -36,10 +34,6 @@ public class PlayerController : MonoBehaviour {
 			Destroy(other.gameObject);
 			m_coins++;
 			statusController.SetCountText(m_coins);
-		}
-		if(m_coins >= 8){
-			statusController.statusText.enabled = true;
-			Destroy(GameObject.FindGameObjectWithTag("Enemy"));
 		}
 	}
 }
