@@ -6,4 +6,4 @@
 - concept arts - [design-stuff/concepts](design-stuff/concepts/)
 
 ## tech details
-- Unity 6.0.0.0 LTS
+- Unity 6000.0.23f1 LTS
