@@ -2,16 +2,20 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour {
-	public Transform player;
+	private Transform m_player;
 	private NavMeshAgent m_navMeshAgent;
 
 	private void Start() {
 		m_navMeshAgent = GetComponent<NavMeshAgent>();
+		GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+		m_player = playerObject.transform;
 	}
 
 	private void Update() {
-		if (player != null) {
-			m_navMeshAgent.SetDestination(player.position);
+		if (m_player != null) {
+			m_navMeshAgent.SetDestination(m_player.position);
+		} else {
+			Destroy(GameObject.FindGameObjectWithTag("Enemy"));
 		}
 	}
 }
