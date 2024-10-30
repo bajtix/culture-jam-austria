@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour {
 
 	private void OnCollisionEnter(Collision collision) {
 		if (collision.gameObject.CompareTag("Enemy")) {
-			statusController.IsDie();
+			statusController.IsDamage();
 		}
 	}
 	private void OnTriggerEnter(Collider other) {

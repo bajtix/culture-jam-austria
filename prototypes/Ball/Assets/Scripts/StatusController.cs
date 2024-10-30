@@ -6,6 +6,7 @@ public class StatusController : MonoBehaviour {
 	public TextMeshProUGUI coinsText;
 	public TextMeshProUGUI statusText;
 	public GameObject endScreen;
+	public PlayerHealth playerHealth;
 
 	private void Start() {
 		statusText.enabled = false;
@@ -19,6 +20,12 @@ public class StatusController : MonoBehaviour {
 	public void ShowStatusText(string status) {
 		statusText.enabled = true;
 		statusText.text = status;
+	}
+	public void IsDamage() {
+		playerHealth.SubtractHealth(0.1f);
+		if (playerHealth.health == 0) {
+			IsDie();
+		}
 	}
 
 	public void IsDie() {
