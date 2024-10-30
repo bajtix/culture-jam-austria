@@ -4,7 +4,7 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour {
 	public float speed = 0;
-	public StatusController statusController;
+	public UIManager uiManager;
 	public CameraController cameraController;
 	private Rigidbody m_rb;
 
@@ -26,14 +26,14 @@ public class PlayerController : MonoBehaviour {
 
 	private void OnCollisionEnter(Collision collision) {
 		if (collision.gameObject.CompareTag("Enemy")) {
-			statusController.IsDamage();
+			uiManager.IsDamage();
 		}
 	}
 	private void OnTriggerEnter(Collider other) {
 		if (other.gameObject.CompareTag("PickUp")) {
 			Destroy(other.gameObject);
 			m_coins++;
-			statusController.SetCountText(m_coins);
+			uiManager.SetCountText(m_coins);
 		}
 	}
 }
