@@ -4,11 +4,11 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour {
 	public float speed = 0;
-	public UIManager uiManager;
+	public StatusController statusController;
 	public CameraController cameraController;
 	private Rigidbody m_rb;
 
-	private int m_points = 0;
+	private int m_coins = 0;
 	private Vector2 m_movementVector;
 
 	private void Start() {
@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour {
 
 	private void OnCollisionEnter(Collision collision) {
 		if (collision.gameObject.CompareTag("Enemy")) {
-			uiManager.ShowStatusText("You lost!");
+			statusController.ShowStatusText("You lost!");
 			cameraController.enabled = false;
 			Destroy(gameObject);
 		}
@@ -34,11 +34,11 @@ public class PlayerController : MonoBehaviour {
 	private void OnTriggerEnter(Collider other) {
 		if (other.gameObject.CompareTag("PickUp")) {
 			Destroy(other.gameObject);
-			m_points++;
-			uiManager.SetCountText(m_points);
+			m_coins++;
+			statusController.SetCountText(m_coins);
 		}
-		if(m_points >= 8){
-			uiManager.statusText.enabled = true;
+		if(m_coins >= 8){
+			statusController.statusText.enabled = true;
 			Destroy(GameObject.FindGameObjectWithTag("Enemy"));
 		}
 	}
