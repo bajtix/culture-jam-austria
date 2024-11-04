@@ -18,7 +18,7 @@ You are one of the hikers in the 50s in the Alps. In a heavy snowstorm you were 
 ### Monster:
 - [Wikipedia- Tatzelwurm](https://pl.wikipedia.org/wiki/Tatzelwurm) - cool monster
   - ![Tatzelwurm colorful](https://github.com/Bajtix/culture-jam-austria/blob/main/design-stuff/concepts/IMG_2261.png)
-  - ![Tatzelwurm black and white](![Uploading IMG_2262.png…])
+  - ![Tatzelwurm black and white](https://github.com/Bajtix/culture-jam-austria/blob/main/design-stuff/concepts/IMG_2262.png)
 
 ## Step by step story
 1. During a hike in Alps you and your friends were cought by a heavy snowstrom.
