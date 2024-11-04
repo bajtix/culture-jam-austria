@@ -17,8 +17,8 @@ You are one of the hikers in the 50s in the Alps. In a heavy snowstorm you were 
   - kinda similar to what happened in germany in 1936
 ### Monster:
 - [Wikipedia- Tatzelwurm](https://pl.wikipedia.org/wiki/Tatzelwurm) - cool monster
-  - ![Tatzelwurm colorful](https://upload.wikimedia.org/wikipedia/commons/9/99/Tatzelwurm.JPG)
-  - ![Tatzelwurm black and white](https://upload.wikimedia.org/wikipedia/commons/e/e9/Tatzelwurm1.JPG)
+  - ![Tatzelwurm colorful](![Uploading IMG_2261.png…])
+  - ![Tatzelwurm black and white](![Uploading IMG_2262.png…])
 
 ## Step by step story
 1. During a hike in Alps you and your friends were cought by a heavy snowstrom.
