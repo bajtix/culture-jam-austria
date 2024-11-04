@@ -22,8 +22,8 @@ public class DrawingSurface : MonoBehaviour {
 
         m_drawMaterial.SetTexture("_MainTex", m_back);
         m_drawMaterial.SetVector(m_brushProperty, Vector4.zero);
-        m_targetMaterial.SetTexture("_MainTex", m_front);
-        m_targetMaterial.SetTexture("_BaseMap", m_front);
+        m_targetMaterial.SetTexture("_HeightMap", m_front);
+        //m_targetMaterial.SetTexture("_BaseMap", m_front);
 
         Graphics.Blit(null, m_front, m_drawMaterial);
         Graphics.Blit(null, m_back, m_drawMaterial);

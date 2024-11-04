@@ -15,10 +15,8 @@ public class DrawingBrush : MonoBehaviour {
         if ((m_lastPosition - transform.position).sqrMagnitude < splatThreshold) return;
         m_lastPosition = transform.position;
 
-
-
         if (!Physics.Raycast(transform.position, Vector3.down, out var hit, maxHeight)) return;
-        Debug.Log("Splat " + hit.textureCoord);
+
         if (surface == null) {
             surface = hit.collider.GetComponent<DrawingSurface>();
             return;

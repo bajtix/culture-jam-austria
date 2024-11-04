@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   surface: {fileID: 0}
-  splatThreshold: 0.1
+  splatThreshold: 0.07
   maxHeight: 1
-  radius: 0.01
+  radius: 0.02
   strength: 0.3
