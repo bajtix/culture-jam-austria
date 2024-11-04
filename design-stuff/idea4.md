@@ -31,7 +31,7 @@ NOTE: After writing out the story I realised that there are a few plotholes in o
 
 ## Step by step story (altered)
 0. Now the story is set at the modern age and you have a smartphone with you.
-1. You wanted to follow the steps of 13 hikers that in 1956 mysteriously dissapeared in this area. You get cought in a heavy snowstorm.
+1. You wanted to follow the steps of 13 hikers that in 1954 mysteriously dissapeared in this area. You get cought in a heavy snowstorm.
 2. You call emergency, they tell you that the weather where you are is too heavy to pick you up so, you yourslef need to get to the randevoux point. The operator will instruct you all the way.
 3. Operator tells you to get down a steep slope, the only safe way to do this is to ski down. There are three POIs next to your location, an old shed, a weird stone structure and hunter's box. You can see all of them on your phone's map, together with your location. Instructor says to check those POIs out, they may be some skis lying around in them. (Question: this does not make 100% sense)
 4. From the sfx point of view you constantly hear something from your phone. Despite terrifying forest and clear signs that something may lurk in it, the instructor constantly conforts you and says that there is nothing in the forest to be afraid of. His instructions also serve as gameplay tutorial.
