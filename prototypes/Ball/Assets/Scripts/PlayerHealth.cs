@@ -1,24 +1,16 @@
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour
-{
-	public GameObject healthBar;
-	public float health;
-
-	private void Start() {
-		healthBar.GetComponent<Slider>().value = health;
-	}
+public class PlayerHealth : MonoBehaviour {
+	public UIManager uiManager;
+	public PlayerController playerController;
 
 	public void AddHealth(float howMuch) {
-		health += howMuch;
-		health = Mathf.Clamp(health, 0, 1);
-		healthBar.GetComponent<Slider>().value = health;
+		playerController.health += howMuch;
+		uiManager.ChangedHealth();
 	}
 
 	public void SubtractHealth(float howMuch) {
-		health -= howMuch;
-		health = Mathf.Clamp(health, 0, 1);
-		healthBar.GetComponent<Slider>().value = health;
+		playerController.health -= howMuch;
+		uiManager.ChangedHealth();
 	}
 }

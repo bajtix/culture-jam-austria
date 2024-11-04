@@ -3,16 +3,27 @@ using UnityEngine.InputSystem;
 using TMPro;
 
 public class PlayerController : MonoBehaviour {
-	public float speed = 0;
-	public UIManager uiManager;
-	public CameraController cameraController;
-	private Rigidbody m_rb;
+	[Header("Player Settings")]
+	public float health;
+	public float speed = 10;
 
+	[Header("Scripts")]
+	public UIManager uiManager;
+	public PlayerHealth playerHealth;
+	public CameraController cameraController;
+
+	private Rigidbody m_rb;
 	private int m_coins = 0;
 	private Vector2 m_movementVector;
 
 	private void Start() {
 		m_rb = GetComponent<Rigidbody>();
+	}
+
+	private void Update() {
+		if(health == 0) {
+			GameManager.instance.UpdateGameState(GameState.GameOver);
+		}
 	}
 
 	private void OnMove(InputValue movementValue) {
@@ -26,7 +37,7 @@ public class PlayerController : MonoBehaviour {
 
 	private void OnCollisionEnter(Collision collision) {
 		if (collision.gameObject.CompareTag("Enemy")) {
-			uiManager.IsDamage();
+			playerHealth.SubtractHealth(1f);
 		}
 	}
 	private void OnTriggerEnter(Collider other) {
