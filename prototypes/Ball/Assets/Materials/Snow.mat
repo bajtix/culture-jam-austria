@@ -43,7 +43,7 @@ Material:
     - _NormalStrength: 0.11
     - _PARTITIONING: 3
     - _Smoothness: 1.54
-    - _Tess: 23.47
+    - _Tess: 3.63
     - _Weight: 0.242
     m_Colors:
     - _FactorEdge1: {r: 0.96, g: 1, b: 3.87, a: 0}

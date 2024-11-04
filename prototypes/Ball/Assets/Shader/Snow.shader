@@ -36,6 +36,7 @@ Shader "Custom/Snow"
 			// HLSL files (for example, Common.hlsl, SpaceTransforms.hlsl, etc.).
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"    
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"    
+			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DeclareDepthTexture.hlsl"
 			#include "CustomTessellation.hlsl"
 
 			#pragma multi_compile _ _MAIN_LIGHT_SHADOWS_CASCADE  _SHADOWS_SOFT _SCREEN_SPACE_OCCLUSION  _MAIN_LIGHT_SHADOWS
@@ -113,6 +114,21 @@ Shader "Custom/Snow"
 			// The fragment shader definition.            
 			float3 frag(Varyings IN) : SV_Target
 			{
+				float2 UV = IN.vertex.xy / _ScaledScreenParams.xy;
+
+                // Sample the depth from the Camera depth texture.
+                #if UNITY_REVERSED_Z
+                    real depth = SampleSceneDepth(UV);
+                #else
+                    // Adjust Z to match NDC for OpenGL ([-1, 1])
+                    real depth = lerp(UNITY_NEAR_CLIP_VALUE, 1, SampleSceneDepth(UV));
+                #endif
+
+                // Reconstruct the world space positions.
+                float3 worldPos = ComputeWorldSpacePosition(UV, depth, UNITY_MATRIX_I_VP);
+				float3 objPos = TransformWorldToObject(worldPos);
+				//VertexPositionInputs positions = GetVertexPositionInputs(ApplyShadowBias(IN.vertex.xyz, i.normalWS, l.direction));
+
 				Light l = GetMainLight();
 				float offset = 0.01;
 				
@@ -135,7 +151,7 @@ Shader "Custom/Snow"
 				half shadowAmount4 = MainLightRealtimeShadow(IN.shadowCoords - float4(0,0,0.0002,0));
 				half shadowAmount = (shadowAmount0 + shadowAmount1 + shadowAmount2 + shadowAmount3 + shadowAmount4)/5;
 				float3 tex = LightingLambert(l.color,l.direction,nor) * color * clamp(shadowAmount, 0.2,1);
-				return tex;
+				return worldPos;
 			}
 			
 			ENDHLSL

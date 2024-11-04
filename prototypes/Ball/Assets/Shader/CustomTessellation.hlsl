@@ -128,11 +128,3 @@ TessellationFactors patchConstantFunction(InputPatch<ControlPoint, 3> patch)
 //
 //		return vert(v);
 //}
-
-
-
-
-
-
-
-
