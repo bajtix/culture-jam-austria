@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 1910790242982147092}
   - component: {fileID: 6277176717968857725}
   - component: {fileID: 3148874954210842464}
+  - component: {fileID: 3197284466667576873}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -176,4 +177,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ffd68212b80504fbda0756a1050d43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+--- !u!114 &3197284466667576873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8269052221744668801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8bc9f9ead4c3af6d88e13a472a450fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surface: {fileID: 0}
+  splatThreshold: 0.1
+  maxHeight: 1
+  radius: 0.01
+  strength: 0.3
