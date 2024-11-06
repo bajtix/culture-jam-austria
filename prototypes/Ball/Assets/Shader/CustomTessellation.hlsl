@@ -21,7 +21,6 @@ struct Varyings
 	float3 normal : NORMAL;
 	float4 vertex : SV_POSITION;
 	float2 uv : TEXCOORD0;
-	float4 shadowCoords : TEXCORD3;
 };
 
 

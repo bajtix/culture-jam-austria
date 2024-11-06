@@ -38,6 +38,7 @@ Shader "Custom/Snow"
 			// HLSL files (for example, Common.hlsl, SpaceTransforms.hlsl, etc.).
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"    
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"    
+			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DeclareDepthTexture.hlsl"
 			#include "CustomTessellation.hlsl"
 
 			#pragma multi_compile _ _MAIN_LIGHT_SHADOWS_CASCADE  _SHADOWS_SOFT _SCREEN_SPACE_OCCLUSION  _MAIN_LIGHT_SHADOWS
@@ -72,27 +73,17 @@ Shader "Custom/Snow"
 				return p;
 			}
 
-		
-
+	
 			// after tesselation
 			Varyings vert(Attributes input)
 			{
 				Varyings output;
- 				
-
 				float height = tex2Dlod(_HeightMap, float4(input.uv.x, input.uv.y, 0,0)).r;
 				input.vertex.y += height * _Weight;
-
-				VertexNormalInputs i = GetVertexNormalInputs(input.normal);
-				Light l = GetMainLight();
-
-				VertexPositionInputs positions = GetVertexPositionInputs(ApplyShadowBias(input.vertex.xyz, i.normalWS, l.direction));
-
 				output.vertex = TransformObjectToHClip(input.vertex.xyz);
 				output.color = input.color;
 				output.normal = input.normal;
 				output.uv = input.uv;
-				output.shadowCoords = GetShadowCoord(positions);
 				return output;
 			}
 
@@ -114,29 +105,47 @@ Shader "Custom/Snow"
 				return vert(v);
 			}
 
-			// The fragment shader definition.            
-			half4 frag(Varyings IN) : SV_TARGET
-			{
+			float3 GetObjectPosition(Varyings IN) {
+				float2 UV = IN.vertex.xy / _ScaledScreenParams.xy;
 
-				Light l = GetMainLight();
+                // Sample the depth from the Camera depth texture.
+                #if UNITY_REVERSED_Z
+                    real depth = SampleSceneDepth(UV);
+                #else
+                    // Adjust Z to match NDC for OpenGL ([-1, 1])
+                    real depth = lerp(UNITY_NEAR_CLIP_VALUE, 1, SampleSceneDepth(UV));
+                #endif
+
+                // Reconstruct the world space positions.
+                float3 worldPos = ComputeWorldSpacePosition(UV, depth, UNITY_MATRIX_I_VP);
+				return TransformWorldToObject(worldPos);
+			}
+
+			float3 GetNormalVector(Varyings IN) {
 				float offset = 0.01;
 				
 				float height = tex2D(_HeightMap, IN.uv).r;
-
 				float heightRight = tex2D(_HeightMap, IN.uv + float2(offset,0)).r;
 				float heightUp = tex2D(_HeightMap, IN.uv + float2(0, offset)).r;
 				// Create the normal vector
 				float3 normal = float3((heightRight - height)/offset * _Weight * _NormalStrength, 1.0, (heightUp - height)/offset * _Weight * _NormalStrength); // Invert X and Y for correct orientation
-				normal = normalize(normal); 
+				return normalize(normal); 
+			}
 
-				VertexNormalInputs i = GetVertexNormalInputs(normal);
-				float3 nor  =  i.normalWS;
+			float3 frag(Varyings IN) : SV_Target
+			{
+				Light mainLight = GetMainLight();
+				VertexNormalInputs normalData = GetVertexNormalInputs(GetNormalVector(IN));
+				float3 normal = normalData.normalWS;
 				float3 view = GetViewForwardDir();
 				half4 color = tex2D(_MainTex, IN.uv);
-				half shadowAmount = MainLightRealtimeShadow(IN.shadowCoords);
-				float3 tex = LightingLambert(l.color,l.direction,nor) * color * clamp(shadowAmount, 0.2,1);
-				
-				return half4(tex,1);
+
+				VertexPositionInputs positions = GetVertexPositionInputs(
+					ApplyShadowBias(GetObjectPosition(IN), normal, mainLight.direction)
+				);
+
+				half shadowAmount = MainLightRealtimeShadow(GetShadowCoord(positions));
+				return LightingLambert(mainLight.color,mainLight.direction,normal) * color * clamp(shadowAmount, 0.2,1);
 			}
 			
 			ENDHLSL
@@ -195,27 +204,15 @@ Shader "Custom/Snow"
 				return p;
 			}
 
-		
-
-			// after tesselation
 			Varyings vert(Attributes input)
 			{
 				Varyings output;
- 				
-
 				float height = tex2Dlod(_HeightMap, float4(input.uv.x, input.uv.y, 0,0)).r;
 				input.vertex.y += height * _Weight;
-
-				VertexNormalInputs i = GetVertexNormalInputs(input.normal);
-				Light l = GetMainLight();
-
-				VertexPositionInputs positions = GetVertexPositionInputs(ApplyShadowBias(input.vertex.xyz, i.normalWS, l.direction));
-
 				output.vertex = TransformObjectToHClip(input.vertex.xyz);
 				output.color = input.color;
 				output.normal = input.normal;
 				output.uv = input.uv;
-				output.shadowCoords = GetShadowCoord(positions);
 				return output;
 			}
 
@@ -240,26 +237,7 @@ Shader "Custom/Snow"
 			// The fragment shader definition.            
 			half4 frag(Varyings IN) : SV_TARGET
 			{
-
-				Light l = GetMainLight();
-				float offset = 0.01;
-				
-				float height = tex2D(_HeightMap, IN.uv).r;
-
-				float heightRight = tex2D(_HeightMap, IN.uv + float2(offset,0)).r;
-				float heightUp = tex2D(_HeightMap, IN.uv + float2(0, offset)).r;
-				// Create the normal vector
-				float3 normal = float3((heightRight - height)/offset * _Weight * _NormalStrength, 1.0, (heightUp - height)/offset * _Weight * _NormalStrength); // Invert X and Y for correct orientation
-				normal = normalize(normal); 
-
-				VertexNormalInputs i = GetVertexNormalInputs(normal);
-				float3 nor  =  i.normalWS;
-				float3 view = GetViewForwardDir();
-				half4 color = tex2D(_MainTex, IN.uv);
-				half shadowAmount = MainLightRealtimeShadow(IN.shadowCoords);
-				float3 tex = LightingLambert(l.color,l.direction,nor) * color * clamp(shadowAmount, 0.2,1);
-				
-				return half4(tex,1);
+				return half4(1,1,1,1);
 			}
 			
 			ENDHLSL
