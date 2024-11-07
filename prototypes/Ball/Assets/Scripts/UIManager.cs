@@ -3,8 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
-	[Header("Scripts")]
-	public PlayerController playerController;
 
 	[Header("Coins")]
 	public TextMeshProUGUI coinsText;
@@ -32,15 +30,14 @@ public class UIManager : MonoBehaviour {
 
 	private void Start() {
 		SetCountText(0);
-		ChangedHealth();
+		SetHealth(1f);
 	}
 
 	public void SetCountText(int coins) {
 		coinsText.text = coins.ToString();
 	}
 
-	public void ChangedHealth() {
-		playerController.health = Mathf.Clamp(playerController.health, 0, 1);
-		healthBar.GetComponent<Slider>().value = playerController.health;
+	public void SetHealth(float value) {
+		healthBar.GetComponent<Slider>().value = value;
 	}
 }

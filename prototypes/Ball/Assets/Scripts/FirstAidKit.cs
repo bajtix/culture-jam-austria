@@ -1,12 +1,11 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class FirstAidKit : MonoBehaviour {
-	public PlayerHealth playerHealth;
-
+	public float regen = 0.1f;
 	private void OnTriggerEnter(Collider other) {
 		if (other.CompareTag("Player")) {
-			playerHealth.AddHealth(0.3f);
+			other.GetComponent<PlayerHealth>().Modify(regen, gameObject);
+
 			Destroy(gameObject);
 		}
 	}

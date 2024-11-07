@@ -1,20 +1,14 @@
 using UnityEngine;
 
 public class Shooting : MonoBehaviour {
-    public GameObject Bullet;
-    public Transform ShellCase;
-    private Quaternion initialRotation;
+    public float lifetime = 5f;
+    public float bulletForce = 10f;
+    public GameObject bullet;
 
-    void Start() {
-        initialRotation = ShellCase.rotation;
+    private void OnShoot() {
+        var spawnedBullet = Instantiate(bullet, transform.position, Quaternion.LookRotation(Vector3.forward));
+        spawnedBullet.GetComponent<Rigidbody>().AddForce(Vector3.forward * bulletForce, ForceMode.Impulse);
+        Destroy(spawnedBullet, lifetime);
     }
 
-    void Update() {
-        ShellCase.rotation = initialRotation;
-
-        if (Input.GetMouseButtonDown(0)) {
-            Debug.Log("Shooting!");
-            Instantiate(Bullet, ShellCase.position, ShellCase.rotation);
-        }
-    }
 }

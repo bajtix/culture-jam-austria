@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour {
+public class PlayerHealth : EntityHealth {
 	public UIManager uiManager;
-	public PlayerController playerController;
 
-	public void AddHealth(float howMuch) {
-		playerController.health += howMuch;
-		uiManager.ChangedHealth();
+	// knockback
+
+	public override void Modify(float howMuch, GameObject source = null) {
+		base.Modify(howMuch);
+		uiManager.SetHealth(m_health);
 	}
 
-	public void SubtractHealth(float howMuch) {
-		playerController.health -= howMuch;
-		uiManager.ChangedHealth();
+	protected override void HealthSubtracted(float howMuch, GameObject source = null) {
+		// handle knockback
 	}
 }

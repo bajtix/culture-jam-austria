@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using TMPro;
 
-public class PlayerController : MonoBehaviour {
+public class Player : MonoBehaviour {
 	[Header("Player Settings")]
 	public float health;
 	public float speed = 10;
@@ -21,7 +20,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void Update() {
-		if(health == 0) {
+		if (health == 0) {
 			GameManager.instance.UpdateGameState(GameState.GameOver);
 		}
 	}
@@ -35,11 +34,6 @@ public class PlayerController : MonoBehaviour {
 		m_rb.AddForce(movement * speed);
 	}
 
-	private void OnCollisionEnter(Collision collision) {
-		if (collision.gameObject.CompareTag("Enemy")) {
-			playerHealth.SubtractHealth(1f);
-		}
-	}
 	private void OnTriggerEnter(Collider other) {
 		if (other.gameObject.CompareTag("PickUp")) {
 			Destroy(other.gameObject);
