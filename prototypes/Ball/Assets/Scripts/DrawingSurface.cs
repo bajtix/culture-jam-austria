@@ -1,13 +1,15 @@
 using UnityEngine;
 
-public class DrawingSurface : MonoBehaviour {
+public class DrawingSurface : MonoBehaviour, IDrawingSurface {
     public Shader drawingShader;
+    public Texture initialTexture;
 
     [Range(4, 12)] public int resolution = 4;
 
     private int m_brushProperty;
     private RenderTexture m_front, m_back;
-    private Material m_targetMaterial, m_drawMaterial;
+
+    private Material m_drawMaterial, m_targetMaterial;
 
 
     private void Start() {
@@ -22,11 +24,11 @@ public class DrawingSurface : MonoBehaviour {
 
         m_drawMaterial.SetTexture("_MainTex", m_back);
         m_drawMaterial.SetVector(m_brushProperty, Vector4.zero);
-        m_targetMaterial.SetTexture("_HeightMap", m_front);
-        //m_targetMaterial.SetTexture("_BaseMap", m_front);
 
-        Graphics.Blit(null, m_front, m_drawMaterial);
-        Graphics.Blit(null, m_back, m_drawMaterial);
+        m_targetMaterial.SetTexture("_HeightMap", m_front);
+
+        Graphics.Blit(initialTexture, m_front, m_drawMaterial);
+        Graphics.Blit(initialTexture, m_back, m_drawMaterial);
     }
 
     public void Splat(Vector2 pos, float radius, float strength) {
@@ -35,7 +37,7 @@ public class DrawingSurface : MonoBehaviour {
         Graphics.Blit(m_front, m_back);
     }
 
-    private void OnDestroy() {
+    protected void OnDestroy() {
         m_front.Release();
         m_back.Release();
     }

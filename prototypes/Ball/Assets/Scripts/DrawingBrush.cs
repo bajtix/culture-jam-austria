@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class DrawingBrush : MonoBehaviour {
-    public DrawingSurface surface;
+    public IDrawingSurface surface;
     public float splatThreshold = 0.1f;
     public float maxHeight = 0.5f;
     public float radius = 0.05f;
@@ -16,9 +16,10 @@ public class DrawingBrush : MonoBehaviour {
         m_lastPosition = transform.position;
 
         if (!Physics.Raycast(transform.position, Vector3.down, out var hit, maxHeight)) return;
-
+        surface = hit.collider.GetComponent<IDrawingSurface>();
         if (surface == null) {
-            surface = hit.collider.GetComponent<DrawingSurface>();
+            surface = hit.collider.GetComponent<IDrawingSurface>();
+            Debug.Log("searching for surface...");
             return;
         }
         surface.Splat(hit.textureCoord, radius, strength);
