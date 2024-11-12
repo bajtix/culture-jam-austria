@@ -864,6 +864,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2552293591753615778, guid: fdd2bdf2261e95f20b431b5384ed4cfd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3426562290490886307, guid: fdd2bdf2261e95f20b431b5384ed4cfd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4558049877210333974, guid: fdd2bdf2261e95f20b431b5384ed4cfd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645282713864892421, guid: fdd2bdf2261e95f20b431b5384ed4cfd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5310215078843927626, guid: fdd2bdf2261e95f20b431b5384ed4cfd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6503168757340446471, guid: fdd2bdf2261e95f20b431b5384ed4cfd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -907,6 +927,18 @@ PrefabInstance:
     - target: {fileID: 7395812273832278315, guid: fdd2bdf2261e95f20b431b5384ed4cfd, type: 3}
       propertyPath: m_Name
       value: Snowy Plane
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529306751764033397, guid: fdd2bdf2261e95f20b431b5384ed4cfd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7706106537432206075, guid: fdd2bdf2261e95f20b431b5384ed4cfd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586983291191051041, guid: fdd2bdf2261e95f20b431b5384ed4cfd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
