@@ -3,7 +3,7 @@ using UnityEngine;
 public class DrawingSurface : MonoBehaviour {
     [SerializeField] private Shader m_drawingShader;
     [SerializeField] private Texture m_initialTexture;
-    [SerializeField][Range(4, 12)] private int m_resolution = 4;
+    [SerializeField][Range(4, 13)] private int m_resolution = 4;
     private int m_propA1, m_propA2, m_propBrushTex;
     private int m_passCircle, m_passLine, m_passTexture, m_passClear;
     private RenderTexture m_front, m_back;
@@ -71,7 +71,7 @@ public class DrawingSurface : MonoBehaviour {
             pos.x, pos.y, scale.x, scale.y
         ));
         m_drawMaterial.SetVector(m_propA2, new Vector4(
-           0, 0, strength, 0
+           rot, 0, strength, 0
         ));
         Reblit(m_passTexture);
     }

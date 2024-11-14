@@ -25,6 +25,6 @@ public class PlayerController : MonoBehaviour {
         m_camera.transform.Rotate(Vector3.right, -mouseY * m_mouselook);
 
         var delta = transform.TransformDirection(inputs.normalized);
-        m_controller.Move((Input.GetKey(KeyCode.LeftShift) ? m_runSpeed : m_walkSpeed) * delta * Time.deltaTime + Physics.gravity * 0.5f);
+        m_controller.Move((Input.GetKey(KeyCode.LeftShift) ? m_runSpeed : m_walkSpeed) * delta * Time.deltaTime + Physics.gravity * 0.5f * Time.deltaTime);
     }
 }

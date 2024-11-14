@@ -6,6 +6,7 @@ public class DrawingBrush : MonoBehaviour {
     public float maxHeight = 0.5f;
     public float radius = 0.05f;
     public float strength = 0.9f;
+    public float shape = 0.9f;
 
     private Vector3 m_lastPosition;
     private Vector2 m_lastHit;
@@ -22,7 +23,7 @@ public class DrawingBrush : MonoBehaviour {
             m_lastHit = hit.textureCoord;
             return;
         }
-        surface.AddLineMark(hit.textureCoord, m_lastHit, radius, 0.8f, strength);
+        surface.AddLineMark(hit.textureCoord, m_lastHit, radius, shape, strength);
         m_lastHit = hit.textureCoord;
     }
 }

@@ -127,7 +127,9 @@ Shader "Unlit/DrawingShader"
 
                 float alpha = clamp((radius - dst) / (1-harsh), 0, 1) * strength;
 
-                return clamp(baseColor - alpha, 0, 1);
+                float alpha2 = clamp((radius - distance(i.uv, pos1)) / (1-harsh), 0, 1) * strength;
+
+                return clamp(baseColor - alpha + alpha2, 0, 1);
             }
 
             ENDHLSL
@@ -192,7 +194,8 @@ Shader "Unlit/DrawingShader"
                 rotatedUV += 0.5;
 
                 // Sample the brush texture
-                float alpha = tex2D(_BrushTex, rotatedUV) * strength;
+                float2 fuv = float2(clamp(rotatedUV.x, 0, 1), clamp(rotatedUV.y, 0, 1));
+                float alpha = tex2D(_BrushTex, fuv) * strength;
 
                 return clamp(baseColor - alpha, 0, 1);
             }
