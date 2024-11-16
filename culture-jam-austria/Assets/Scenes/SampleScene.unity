@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 1877416416}
   - component: {fileID: 1877416415}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -552,7 +552,7 @@ Transform:
   m_GameObject: {fileID: 1877416410}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.66, y: 2.51, z: -0.02}
+  m_LocalPosition: {x: -2.96, y: 2.51, z: 0.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -597,6 +597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_speed: 4
+  m_lookPitchLimit: 85
   m_controller: {fileID: 1877416415}
   m_camera: {fileID: 330585545}
 --- !u!1 &2018313178
