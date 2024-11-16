@@ -23,13 +23,11 @@ public class Beartrapmechanic : MonoBehaviour
             }
         }
     }    
-    private void OnTriggerEnter(Collider other)
-    {
+    private void OnTriggerEnter(Collider other){
             Trap_effect();   
     }
 
-    private void Trap_effect()
-    {
+    private void Trap_effect(){
         m_isTrapActivated = true;
         m_timeSinceActivated = 0f; 
         m_playerController.AddModifier("Stop", 0f);
