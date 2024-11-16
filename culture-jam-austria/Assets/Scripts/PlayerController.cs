@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour {
         if (m_yaw < 0) m_yaw = 360 - m_yaw;
 
         if (m_pitch > 85) m_pitch = 85;
-        if (m_pitch < -85) m_pitch = -85;
+        if (m_pitch < -85) m_pitch = -85;	
 
         m_camera.transform.localRotation = Quaternion.Euler(m_pitch, 0, 0);
         transform.rotation = Quaternion.Euler(0, m_yaw, 0);
