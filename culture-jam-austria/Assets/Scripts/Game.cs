@@ -11,9 +11,21 @@ public class Game : MonoBehaviour {
         }
     }
 
+    private static Game m_instance;
+    public static Game Instance {
+        get {
+            if (m_instance == null) {
+                m_instance = FindFirstObjectByType<Game>();
+            }
+            return m_instance;
+        }
+    }
+
+    [SerializeField] private UIManager m_uIManager;
+    public static UIManager UI => Instance.m_uIManager;
+
     private void Awake() {
         Game.Input.Enable();
-
         DontDestroyOnLoad(gameObject);
     }
 
