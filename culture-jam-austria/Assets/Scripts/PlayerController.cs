@@ -1,13 +1,16 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using NaughtyAttributes;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerController : MonoBehaviour {
+public class PlayerController : PlayerComponent {
+    [BoxGroup("Components")][SerializeField] private CharacterController m_controller;
+    [BoxGroup("Components")][SerializeField] private Camera m_camera;
+
+
     [SerializeField] private float m_speed = 4;
     [SerializeField] private float m_lookPitchLimit = 85;
-    [SerializeField] private CharacterController m_controller;
-    [SerializeField] private Camera m_camera;
 
     private Dictionary<string, float> m_speedModifiers = new Dictionary<string, float>();
 
