@@ -100,22 +100,4 @@ public class PlayerController : PlayerComponent {
         }
     }
 
-    public void AddModifier(string name, float value) {
-        if (!IsModifier(name)) {
-            m_speedModifiers.Add(name, value);
-        }
-    }
-
-    public bool IsModifier(string name) {
-        return m_speedModifiers.ContainsKey(name);
-    }
-
-    public void RemoveModifier(string name) {
-        if (IsModifier(name)) {
-            m_speedModifiers.Remove(name);
-        } else {
-            Debug.LogWarning("removing nonexisting speed modifier " + name);
-        }
-    }
-
 }
