@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class stagedPrefabScript : MonoBehaviour
-{
+public class StagedPrefabScript : MonoBehaviour {
 	[SerializeField] private GameObject[] m_variants;
 	[SerializeField] private Vector3 m_childPositionDelta;
 	private int m_stage = 0;
@@ -12,15 +11,12 @@ public class stagedPrefabScript : MonoBehaviour
 
 	private void Start() {
 		SpawnChild();
-		m_player = FindFirstObjectByType<PlayerController>().transform;
+		m_player = Game.Player.transform;
 	}
 
 	private void Update() {
-
-		if (m_targetStage > m_stage) {
-			if (CanSwap()) {
-				SetStage();
-			}
+		if (m_targetStage > m_stage && CanSwap()) {
+			UpdateStage();
 		}
 	}
 
@@ -33,7 +29,7 @@ public class stagedPrefabScript : MonoBehaviour
 		m_targetStage = target;
 	}
 
-	private void SetStage() {
+	private void UpdateStage() {
 		m_stage = m_targetStage;
 		if (m_stage < m_variants.Length) {
 			Destroy(m_child, 0);
@@ -42,6 +38,6 @@ public class stagedPrefabScript : MonoBehaviour
 	}
 
 	private bool CanSwap() {
-		return Vector3.Dot(m_player.forward, (transform.position - m_player.position).normalized)<0;
+		return Vector3.Dot(m_player.forward, (transform.position - m_player.position).normalized) < 0;
 	}
 }
