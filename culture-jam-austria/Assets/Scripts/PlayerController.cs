@@ -13,9 +13,8 @@ public class PlayerController : PlayerComponent {
     [SerializeField] private float m_lookPitchLimit = 85;
 
     private Dictionary<string, float> m_speedModifiers = new Dictionary<string, float>();
+    private KeyValuePair<string, (float, Vector2)>? m_viewModifier;
     private float m_yaw, m_pitch;
-
-    private KeyValuePair<string, (float, Vector2)> m_viewModifier;
 
 
     private void Start() {
@@ -57,6 +56,8 @@ public class PlayerController : PlayerComponent {
     public void AddSpeedModifier(string name, float value) {
         if (!IsSpeedModifier(name)) {
             m_speedModifiers.Add(name, value);
+        } else {
+            m_speedModifiers[name] = value;
         }
     }
 
@@ -69,6 +70,27 @@ public class PlayerController : PlayerComponent {
             m_speedModifiers.Remove(name);
         } else {
             Debug.LogWarning("removing nonexisting speed modifier " + name);
+        }
+    }
+
+    public void AddViewModifier(string name, Vector3 focus, float strength) {
+        if (!IsViewModifier(name) && m_viewModifier != null) {
+            Debug.LogWarning($"overwriting a view modifier (current = {m_viewModifier.Value.Key}, new = {name})");
+            m_viewModifier = new KeyValuePair<string, (float, Vector2)>(name, (strength, focus));
+        } else {
+            m_viewModifier = new KeyValuePair<string, (float, Vector2)>(name, (strength, focus));
+        }
+    }
+
+    public bool IsViewModifier(string name) {
+        return m_viewModifier != null && m_viewModifier.Value.Key == name;
+    }
+
+    public void RemoveViewModifier(string name) {
+        if (IsViewModifier(name)) {
+            m_viewModifier = null;
+        } else {
+            Debug.LogWarning("removing nonexisting view modifier " + name);
         }
     }
 

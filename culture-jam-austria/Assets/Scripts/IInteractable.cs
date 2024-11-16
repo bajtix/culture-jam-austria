@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public interface IInteractable {
-    public string Tooltip { get; protected set; }
+    public string Tooltip { get; }
 
     /// <summary>
     /// Player looks at interactable
@@ -20,7 +20,7 @@ public interface IInteractable {
     /// Player starts interacting
     /// </summary>
     /// <param name="player"></param>
-    /// <returns>Whether we agree to the interaction</returns>
+    /// <returns>Whether the interaction starts a minigame</returns>
     public bool StartInteracting(Player player);
 
 }
