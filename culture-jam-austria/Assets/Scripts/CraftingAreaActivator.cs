@@ -18,6 +18,6 @@ public class CraftingAreaActivator : MonoBehaviour {
 
 	private void OnTriggerEnter(Collider other) {
 		Instantiate(ProgressBar);
-		m_playerController.AddModifier("Stop", 0f);
+		m_playerController.AddSpeedModifier("Stop", 0f);
 	}
 }
