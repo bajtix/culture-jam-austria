@@ -148,9 +148,9 @@ GameObject:
   - component: {fileID: 6809027331582040217}
   - component: {fileID: 4989137536116328561}
   - component: {fileID: 7290935300548582506}
+  - component: {fileID: 6999068270183338304}
   - component: {fileID: 6638721736955259059}
   - component: {fileID: 9206175945323899959}
-  - component: {fileID: 6999068270183338304}
   - component: {fileID: 2636783713170832327}
   - component: {fileID: 28916422524878361}
   m_Layer: 0
@@ -229,6 +229,31 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!143 &6999068270183338304
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4532838585268513909}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6638721736955259059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,31 +288,6 @@ MonoBehaviour:
   m_viewSens: 16
   m_interactionSens: 0.2
   m_zeroingSpeed: 2
---- !u!143 &6999068270183338304
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4532838585268513909}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2636783713170832327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,8 +318,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0420f13f04c1638118e8e9925734b26c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_footstepDistance: 1
+  m_player: {fileID: 6638721736955259059}
   m_print: {fileID: 2800000, guid: 93a2bca2b062ae86dab8ebc81710df77, type: 3}
+  m_footstepDistance: 1
+  m_strength: 0.2
+  m_scale: 0.5
+  m_footstepOffset: 0.2
   m_surface: {fileID: 0}
-  m_strength: 1
-  m_scale: 0.2

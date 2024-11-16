@@ -113,7 +113,7 @@ public class DrawingSurface : MonoBehaviour {
             pos.x, pos.y, scale.x / m_scale, scale.y / m_scale
         ));
         m_drawMaterial.SetVector(m_propA2, new Vector4(
-           rot + m_rotation, 0, strength, 0
+           (rot + m_rotation + 180 /*fuck this*/) * Mathf.Deg2Rad, 0, strength, 0
         ));
         Reblit(m_passTexture);
     }
