@@ -28,7 +28,7 @@ public class Beartrapmechanic : MonoBehaviour
             
     }
 
-    private void Trap_effect(){
+    private void Trap_effect() {
         m_isTrapActivated = true;
         m_timeSinceActivated = 0f; 
         m_playerController.AddSpeedModifier("Stop", 0f);
