@@ -7,14 +7,16 @@ using NaughtyAttributes;
 public class PlayerController : PlayerComponent {
     [BoxGroup("Components")][SerializeField] private CharacterController m_controller;
     [BoxGroup("Components")][SerializeField] private Camera m_camera;
-
+    public Camera Camera => m_camera;
 
     [SerializeField] private float m_speed = 4;
     [SerializeField] private float m_lookPitchLimit = 85;
 
     private Dictionary<string, float> m_speedModifiers = new Dictionary<string, float>();
-
     private float m_yaw, m_pitch;
+
+    private KeyValuePair<string, (float, Vector2)> m_viewModifier;
+
 
     private void Start() {
         if (Game.Input == null) Debug.LogError("No game input found!");
@@ -42,7 +44,7 @@ public class PlayerController : PlayerComponent {
         var mouseMovement = Game.Input.Player.Look.ReadValue<Vector2>();
         m_yaw += mouseMovement.x;
         m_pitch -= mouseMovement.y;
-        if (m_yaw > 360) m_yaw = m_yaw % 360;
+        if (m_yaw > 360) m_yaw %= 360;
         if (m_yaw < 0) m_yaw = 360 - m_yaw;
 
         if (m_pitch > m_lookPitchLimit) m_pitch = m_lookPitchLimit;
@@ -52,18 +54,18 @@ public class PlayerController : PlayerComponent {
         transform.rotation = Quaternion.Euler(0, m_yaw, 0);
     }
 
-    public void AddModifier(string name, float value) {
-        if (!IsModifier(name)) {
+    public void AddSpeedModifier(string name, float value) {
+        if (!IsSpeedModifier(name)) {
             m_speedModifiers.Add(name, value);
         }
     }
 
-    public bool IsModifier(string name) {
+    public bool IsSpeedModifier(string name) {
         return m_speedModifiers.ContainsKey(name);
     }
 
-    public void RemoveModifier(string name) {
-        if (IsModifier(name)) {
+    public void RemoveSpeedModifier(string name) {
+        if (IsSpeedModifier(name)) {
             m_speedModifiers.Remove(name);
         } else {
             Debug.LogWarning("removing nonexisting speed modifier " + name);
