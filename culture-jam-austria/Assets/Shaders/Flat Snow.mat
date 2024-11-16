@@ -43,8 +43,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _Depth: 0
-    - _Normal_DX: 0.6
-    - _Normal_Strength: 20
+    - _Normal_DX: 0.1
+    - _Normal_Strength: 8
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Smoothness: 0.2
