@@ -1,19 +1,14 @@
 using UnityEngine;
 
-public class POIScript : MonoBehaviour
-{
+public class POIScript : MonoBehaviour {
 	[SerializeField] private float m_maxTimer;
 	[SerializeField] private float m_tickUpSpeed;
-
 	private float m_timer;
-
 	private bool m_inTrigger;
 	[Header("IMPORTANT: time stamps have to be sorted in descending order")]
 	[SerializeField] private float[] m_timeStamps;
-
-	[SerializeField] private stagedPrefabScript[] m_stagedPrefabs;
-
-	private int stage = 0;
+	[SerializeField] private StagedPrefabScript[] m_stagedPrefabs;
+	private int m_stage = 0;
 
 	private void Start() {
 		m_timer = m_maxTimer;
@@ -23,14 +18,14 @@ public class POIScript : MonoBehaviour
 		if (m_inTrigger) {
 			m_timer -= Time.deltaTime;
 
-			if (stage < m_timeStamps.Length) {
-				if (m_timer < m_timeStamps[stage]) {
-					stage++;
-					Debug.Log("stage = " + stage);
+			if (m_stage < m_timeStamps.Length) {
+				if (m_timer < m_timeStamps[m_stage]) {
+					m_stage++;
+					Debug.Log("stage = " + m_stage);
 				}
 			}
 
-			if(m_timer <= 0) {
+			if (m_timer <= 0) {
 				TimerFinished();
 			}
 
@@ -49,22 +44,24 @@ public class POIScript : MonoBehaviour
 
 
 	private void OnTriggerEnter(Collider other) {
-		if (other.tag == "Player") {
-			Debug.Log("Player entered " + gameObject.name + " POI");
-			m_inTrigger = true;
+		if (other.tag != "Player") {
+			return;
 		}
+		Debug.Log("Player entered " + gameObject.name + " POI");
+		m_inTrigger = true;
 	}
 
 	private void OnTriggerExit(Collider other) {
-		if (other.tag == "Player") {
-			Debug.Log("Player exited " + gameObject.name + " POI");
-			m_inTrigger = false;
+		if (other.tag != "Player") {
+			return;
 		}
+		Debug.Log("Player exited " + gameObject.name + " POI");
+		m_inTrigger = false;
 	}
 
 	private void UpdateStagedPrefabs() {
 		foreach (var stagedPrefab in m_stagedPrefabs) {
-			stagedPrefab.SetTargetStage(stage);
+			stagedPrefab.SetTargetStage(m_stage);
 		}
 	}
 }

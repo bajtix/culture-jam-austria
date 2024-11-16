@@ -1,7 +1,11 @@
 using UnityEngine;
 
 public class Game : MonoBehaviour {
+    // Statics
+
     private static GameInput m_input;
+    private static Game m_instance;
+
     public static GameInput Input {
         get {
             if (m_input == null) {
@@ -11,7 +15,6 @@ public class Game : MonoBehaviour {
         }
     }
 
-    private static Game m_instance;
     public static Game Instance {
         get {
             if (m_instance == null) {
@@ -21,8 +24,23 @@ public class Game : MonoBehaviour {
         }
     }
 
+    // Assignables
+
     [SerializeField] private UIManager m_uIManager;
-    public static UIManager UI => Instance.m_uIManager;
+    [SerializeField] private Player m_player;
+    public static UIManager UI {
+        get {
+            if (Instance.m_uIManager == null) Instance.m_uIManager = FindFirstObjectByType<UIManager>();
+            return Instance.m_uIManager;
+        }
+    }
+
+    public static Player Player {
+        get {
+            if (Instance.m_player == null) Instance.m_player = FindFirstObjectByType<Player>();
+            return Instance.m_player;
+        }
+    }
 
     private void Awake() {
         Game.Input.Enable();
