@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 245937942}
   - component: {fileID: 245937941}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: Snow2
   m_TagString: Snow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 462438225}
   - component: {fileID: 462438224}
   m_Layer: 5
-  m_Name: CanvasDiggingSystem
+  m_Name: Canvas Digging System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 521287292}
   - component: {fileID: 521287291}
   m_Layer: 0
-  m_Name: Plane (1)
+  m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -574,7 +574,7 @@ GameObject:
   - component: {fileID: 873652806}
   - component: {fileID: 873652805}
   m_Layer: 0
-  m_Name: Cube (4)
+  m_Name: Snow1
   m_TagString: Snow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -849,7 +849,7 @@ GameObject:
   - component: {fileID: 1252872541}
   - component: {fileID: 1252872540}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Digging Progres Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -925,7 +925,7 @@ GameObject:
   - component: {fileID: 1277777710}
   - component: {fileID: 1277777709}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Digging Progress Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1001,7 +1001,7 @@ GameObject:
   - component: {fileID: 1409798288}
   - component: {fileID: 1409798287}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Snow3
   m_TagString: Snow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1459,7 +1459,7 @@ GameObject:
   - component: {fileID: 2024020019}
   - component: {fileID: 2024020018}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: Snow
   m_TagString: Snow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
