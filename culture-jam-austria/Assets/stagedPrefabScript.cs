@@ -26,6 +26,7 @@ public class stagedPrefabScript : MonoBehaviour
 
 	private void SpawnChild() {
 		m_child = Instantiate(m_variants[m_stage], transform.position + m_childPositionDelta, transform.rotation);
+		m_child.transform.localScale = transform.localScale;
 		m_child.transform.parent = transform;
 	}
 
