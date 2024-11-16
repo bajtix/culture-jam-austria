@@ -122,4 +122,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_bearTrap: {fileID: 3732858025841542796}
-  m_playerController: {fileID: 9206175945323899959, guid: 15765197baad0ed499bc2863cd324704, type: 3}
+  m_game: {fileID: 9206175945323899959, guid: 15765197baad0ed499bc2863cd324704, type: 3}
