@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class DiggingSystem : MonoBehaviour{
+public class DiggingSystem : IInteractable{
     [SerializeField] private GameObject m_panelClickF;
 	public SnapController snapController;
     GameObject[] m_snowList;
@@ -11,7 +11,9 @@ public class DiggingSystem : MonoBehaviour{
 	private int howMuchSnow = 4;
 	private bool m_inArea = false;
 
-    void Start() {
+	public string Tooltip => "Digging belt";
+
+	void Start() {
         m_snowList = GameObject.FindGameObjectsWithTag("Snow");
 	}
 
@@ -49,5 +51,33 @@ public class DiggingSystem : MonoBehaviour{
 		if(m_countSnowDestroy == howMuchSnow){
 			//bierze pasek
 		}
+	}
+
+	public void HighlightBegin(Player player) {
+
+	}
+	public void HighlightEnd(Player player) {
+
+	}
+	public bool CanInteract(Player player) {
+
+	}
+	public bool CanStopInteraction(Player player) {
+
+	}
+	public bool InteractionOver(Player player) {
+
+	}
+	public void InteractionStart(Player player) {
+
+	}
+	public void InteractionUpdate(Player player) {
+
+	}
+	public void InteractionFixedUpdate(Player player) {
+
+	}
+	public void InteractionEnd(Player player) {
+
 	}
 }
