@@ -7,13 +7,13 @@ public interface IInteractable {
     /// Player looks at interactable
     /// </summary>
     /// <param name="player"></param>
-    public void BeginHighlight(Player player);
+    public void HighlightBegin(Player player);
 
     /// <summary>
     /// Player stops looking at interactable
     /// </summary>
     /// <param name="player"></param>
-    public void EndHighlight(Player player);
+    public void HighlightEnd(Player player);
 
     /// <summary>
     /// Can the player start the interaction
@@ -40,7 +40,7 @@ public interface IInteractable {
     /// Player starts interacting
     /// </summary>
     /// <param name="player"></param>
-    public void StartInteracting(Player player);
+    public void InteractionStart(Player player);
 
     /// <summary>
     /// Called every frame of the interaction
