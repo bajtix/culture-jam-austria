@@ -9,6 +9,9 @@ public class DrawingSurface : MonoBehaviour {
     private RenderTexture m_front, m_back;
     private Material m_drawMaterial, m_targetMaterial;
 
+    [SerializeField] private float m_scale = 1;
+    [SerializeField] private float m_rotation = 1;
+
 
     private void Start() {
         m_targetMaterial = GetComponent<MeshRenderer>().sharedMaterial;
@@ -36,6 +39,42 @@ public class DrawingSurface : MonoBehaviour {
         Graphics.Blit(m_initialTexture, m_back, m_drawMaterial);
     }
 
+    public void CalculateScale() {
+        var mesh = GetComponent<MeshFilter>().sharedMesh;
+        (int, int) FindFurthestVertices() {
+            Vector3[] vertices = mesh.vertices;
+            int f = -1, s = -1;
+            float maxDistance = 0f;
+
+            for (int i = 0; i < vertices.Length; i++) {
+                for (int j = i + 1; j < vertices.Length; j++) {
+                    float distance = Vector3.Distance(vertices[i], vertices[j]);
+                    if (distance > maxDistance) {
+                        maxDistance = distance;
+                        f = i;
+                        s = j;
+                    }
+                }
+            }
+
+            return (f, s);
+        }
+
+        var verts = FindFurthestVertices();
+        var vertA = mesh.vertices[verts.Item1];
+        vertA.y = 0;
+        var vertB = mesh.vertices[verts.Item2];
+        vertB.y = 0;
+
+        var vertDst = Vector3.Distance(vertA, vertB);
+        var uvDst = Vector2.Distance(mesh.uv[verts.Item1], mesh.uv[verts.Item2]);
+
+        m_scale = vertDst / uvDst;
+        Debug.Log("Suggested scale = " + uvDst);
+        Debug.Log("Suggested rot = " + transform.rotation.eulerAngles.y);
+
+    }
+
 
     protected void OnDestroy() {
         m_front.Release();
@@ -52,7 +91,7 @@ public class DrawingSurface : MonoBehaviour {
             pos.x, pos.y, 0, 0
         ));
         m_drawMaterial.SetVector(m_propA2, new Vector4(
-            radius, harshness, strength, 0
+            radius * m_scale, harshness, strength, 0
         ));
         Reblit(m_passCircle);
     }
@@ -61,17 +100,17 @@ public class DrawingSurface : MonoBehaviour {
             from.x, from.y, to.x, to.y
         ));
         m_drawMaterial.SetVector(m_propA2, new Vector4(
-           radius, harshness, strength, 0
+           radius * m_scale, harshness, strength, 0
         ));
         Reblit(m_passLine);
     }
     public virtual void AddTextureMark(Texture tex, Vector2 pos, float rot, Vector2 scale, float strength = 1) {
         m_drawMaterial.SetTexture(m_propBrushTex, tex);
         m_drawMaterial.SetVector(m_propA1, new Vector4(
-            pos.x, pos.y, scale.x, scale.y
+            pos.x, pos.y, scale.x * m_scale, scale.y * m_scale
         ));
         m_drawMaterial.SetVector(m_propA2, new Vector4(
-           rot, 0, strength, 0
+           rot + m_rotation, 0, strength, 0
         ));
         Reblit(m_passTexture);
     }
