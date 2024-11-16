@@ -40,9 +40,9 @@ public class PointerController : MonoBehaviour {
 			CheckSuccess();
 		}
 
-		if (score > 4) {
+		if (score > 15) {
 			CraftingSuccess = true;
-			Destroy(ProgressBar);
+			ProgressBar.SetActive(false);
 		}
 	}
 
@@ -51,8 +51,7 @@ public class PointerController : MonoBehaviour {
 		if (RectTransformUtility.RectangleContainsScreenPoint(safeZone, pointerTransform.position, null)) {
 			score++;
 		} else {
-			Destroy(ProgressBar);
-			Instantiate(ProgressBar);
+			score = 0;
 		}
 	}
 }
