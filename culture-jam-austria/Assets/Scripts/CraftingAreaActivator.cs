@@ -28,7 +28,7 @@ public class CraftingAreaActivator : MonoBehaviour, IInteractable {
 
 
 	void IInteractable.HighlightBegin(Player player) {
-
+		
 	}
 	void IInteractable.HighlightEnd(Player player) {
 
@@ -70,7 +70,9 @@ public class CraftingAreaActivator : MonoBehaviour, IInteractable {
 
 	}
 	void IInteractable.InteractionEnd(Player player) {
-
+		if (CraftingSuccess) {
+		Game.Player.Controller.RemoveSpeedModifier("Stop");
+		}
 	}
 	void CheckSuccess() {
 		if (RectTransformUtility.RectangleContainsScreenPoint(safeZone, pointerTransform.position, null)) {

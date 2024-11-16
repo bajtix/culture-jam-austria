@@ -555,6 +555,6 @@ MonoBehaviour:
   pointB: {fileID: 2373009720259348831}
   safeZone: {fileID: 3119593568670849912}
   moveSpeed: 100
-  ProgressBar: {fileID: 6259512488155555199}
-  ScoreText: {fileID: 6573280167855466560}
+  m_progressBar: {fileID: 0}
+  m_scoreBar: {fileID: 0}
   CraftingSuccess: 0
