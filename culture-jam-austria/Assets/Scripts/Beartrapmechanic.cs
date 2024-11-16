@@ -1,7 +1,6 @@
 using UnityEngine;
 
 public class Beartrapmechanic : MonoBehaviour, IInteractable {
-    [SerializeField] private PlayerController m_playerController;
     private float m_trapworktime = 5f;
     private bool m_isTrapActivated = false;
     private float m_timeSinceActivated = 0f;
@@ -16,7 +15,7 @@ public class Beartrapmechanic : MonoBehaviour, IInteractable {
         if (m_isTrapActivated) {
             m_timeSinceActivated += Time.deltaTime;
             if (m_timeSinceActivated >= m_trapworktime) {
-                m_playerController.RemoveSpeedModifier("Stop");
+                Game.Player.Controller.RemoveSpeedModifier("Stop");
                 m_isTrapActivated = false;
                 m_timeSinceActivated = 0f;
             }
@@ -30,7 +29,7 @@ public class Beartrapmechanic : MonoBehaviour, IInteractable {
     private void Trap_effect() {
         m_isTrapActivated = true;
         m_timeSinceActivated = 0f;
-        m_playerController.AddSpeedModifier("Stop", 0f);
+        Game.Player.Controller.AddSpeedModifier("Stop", 0f);
     }
 
     void IInteractable.HighlightBegin(Player player) {
@@ -50,6 +49,7 @@ public class Beartrapmechanic : MonoBehaviour, IInteractable {
     }
     void IInteractable.InteractionStart(Player player) {
         print("Interakcja start");
+        player.Controller.AddSpeedModifier("defusing", 0);
     }
     void IInteractable.InteractionUpdate(Player player) {
 
@@ -59,6 +59,6 @@ public class Beartrapmechanic : MonoBehaviour, IInteractable {
     }
     void IInteractable.InteractionEnd(Player player) {
         print("Interakcja koniec");
-
+        player.Controller.RemoveSpeedModifier("defusing");
     }
 }
