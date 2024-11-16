@@ -12,11 +12,11 @@ public class PlayerInteractor : PlayerComponent {
     private IInteractable m_interacting;
 
     private void OnEnable() {
-        Game.Input.Player.Interact.started += Interact;
+        Game.Input.Player.Interact.performed += Interact;
     }
 
     private void OnDisable() {
-        Game.Input.Player.Interact.started -= Interact;
+        Game.Input.Player.Interact.performed -= Interact;
     }
 
     private IInteractable GetLookedOn() {
@@ -32,13 +32,18 @@ public class PlayerInteractor : PlayerComponent {
         if (it != m_highlighted) {
             if (m_highlighted != null) {
                 try {
+                    Game.UI.HideInteractionTooltip();
                     m_highlighted.HighlightEnd(Player);
                 } catch {
                     Debug.LogError("End highlight threw errors");
                 }
             }
             m_highlighted = it;
-            m_highlighted.HighlightBegin(Player);
+
+            if (m_highlighted != null) {
+                m_highlighted.HighlightBegin(Player);
+                Game.UI.SetInteractionTooltip(Game.Input.Player.Interact.GetBindingDisplayString(InputBinding.DisplayStringOptions.DontOmitDevice) + " to " + m_highlighted.Tooltip);
+            }
         }
     }
 
@@ -63,6 +68,7 @@ public class PlayerInteractor : PlayerComponent {
             if (!m_highlighted.CanInteract(Player)) return;
             m_interacting = m_highlighted;
             m_interacting.InteractionStart(Player);
+            Game.UI.HideInteractionTooltip();
         } else {
             try {
                 if (m_interacting.CanStopInteraction(Player)) {
