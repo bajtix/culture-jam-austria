@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4137973416169332066}
   - component: {fileID: 6764479530047218943}
   - component: {fileID: 2857165494248524346}
-  - component: {fileID: 8102246384869807948}
+  - component: {fileID: 4511685476483777480}
   m_Layer: 0
   m_Name: BearTrap
   m_TagString: Untagged
@@ -109,7 +109,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8102246384869807948
+--- !u!114 &4511685476483777480
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,4 +122,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_bearTrap: {fileID: 3732858025841542796}
-  m_playerController: {fileID: 0}
+  m_playerController: {fileID: 9206175945323899959, guid: 15765197baad0ed499bc2863cd324704, type: 3}

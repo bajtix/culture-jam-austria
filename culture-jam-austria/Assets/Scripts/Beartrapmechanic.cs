@@ -17,7 +17,7 @@ public class Beartrapmechanic : MonoBehaviour
             m_timeSinceActivated += Time.deltaTime;
             if (m_timeSinceActivated >= m_trapworktime)
             {
-                m_playerController.RemoveModifier("Stop");
+                m_playerController.RemoveSpeedModifier("Stop");
                 m_isTrapActivated = false;
                 m_timeSinceActivated = 0f; 
             }
@@ -25,11 +25,12 @@ public class Beartrapmechanic : MonoBehaviour
     }    
     private void OnTriggerEnter(Collider other){
             Trap_effect();   
+            
     }
 
     private void Trap_effect(){
         m_isTrapActivated = true;
         m_timeSinceActivated = 0f; 
-        m_playerController.AddModifier("Stop", 0f);
+        m_playerController.AddSpeedModifier("Stop", 0f);
     }
 }
