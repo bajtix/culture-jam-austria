@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PointerController : MonoBehaviour {
@@ -8,6 +9,7 @@ public class PointerController : MonoBehaviour {
 	public float moveSpeed = 100f; // Speed of the pointer movement
 	[SerializeField] private GameObject ProgressBar;
 	[SerializeField] private TextMeshProUGUI ScoreText;
+	public bool CraftingSuccess = false;
 
 	private float direction = 1f; // 1 for moving towards B, -1 for moving towards A
 	private RectTransform pointerTransform;
@@ -37,6 +39,11 @@ public class PointerController : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			CheckSuccess();
 		}
+
+		if (score > 4) {
+			CraftingSuccess = true;
+			Destroy(ProgressBar);
+		}
 	}
 
 	void CheckSuccess() {
@@ -45,6 +52,7 @@ public class PointerController : MonoBehaviour {
 			score++;
 		} else {
 			Destroy(ProgressBar);
+			Instantiate(ProgressBar);
 		}
 	}
 }

@@ -557,3 +557,4 @@ MonoBehaviour:
   moveSpeed: 100
   ProgressBar: {fileID: 6259512488155555199}
   ScoreText: {fileID: 6573280167855466560}
+  CraftingSuccess: 0
