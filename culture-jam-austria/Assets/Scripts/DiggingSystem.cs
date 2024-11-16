@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class DiggingSystem : IInteractable{
+public class DiggingSystem : MonoBehaviour, IInteractable{
     [SerializeField] private GameObject m_panelClickF;
 	public SnapController snapController;
     GameObject[] m_snowList;
 	private int m_countSnowDestroy = 0;
 	private int howMuchSnow = 4;
 	private bool m_inArea = false;
-
+	private bool m_diggingActivate = false;
 	public string Tooltip => "Digging belt";
 
 	void Start() {
@@ -18,22 +18,18 @@ public class DiggingSystem : IInteractable{
 	}
 
 	private void Update() {
-		if(m_inArea && m_countSnowDestroy < howMuchSnow) {
-			Interact();
-			ShowInfo(false);
-		}else {
-			ShowInfo(false);
+		if(m_diggingActivate) {
+			print("xd");
 		}
+		Input.GetAxis("Mouse Y");
 	}
 
 	void OnTriggerEnter(Collider other) {
-		m_inArea = true;
-
+		m_diggingActivate = true;
 	}
 
 	void OnTriggerExit(Collider other) {
-		m_inArea = false;
-		ShowInfo(false);
+		m_diggingActivate = false;
 	}
 
     void ShowInfo(bool status) {
@@ -41,16 +37,10 @@ public class DiggingSystem : IInteractable{
     }
 
 	void Interact() {
-			if(snapController.index[m_countSnowDestroy] == 1 && m_countSnowDestroy < howMuchSnow){
+			if(Input.GetKeyDown(KeyCode.Space) && m_countSnowDestroy < howMuchSnow){
 				m_snowList[m_countSnowDestroy].SetActive(false);
 				m_countSnowDestroy++;
 			}
-	}
-
-	void getBelt() {
-		if(m_countSnowDestroy == howMuchSnow){
-			//bierze pasek
-		}
 	}
 
 	public void HighlightBegin(Player player) {
@@ -60,13 +50,13 @@ public class DiggingSystem : IInteractable{
 
 	}
 	public bool CanInteract(Player player) {
-
+		return true;
 	}
 	public bool CanStopInteraction(Player player) {
-
-	}
-	public bool InteractionOver(Player player) {
-
+	    return true;
+    }
+    bool IInteractable.InteractionOver(Player player) {
+        return false;
 	}
 	public void InteractionStart(Player player) {
 

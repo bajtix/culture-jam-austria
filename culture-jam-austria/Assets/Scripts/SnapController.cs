@@ -5,7 +5,7 @@ public class SnapController : MonoBehaviour
 {
     public List<Transform> snapPoints;
 	public List<Draggable> draggableObjects;
-	public int[] index;
+	// public int[] index;
 
 	public float snapRange = 0.5f;
     void Start()
@@ -13,15 +13,15 @@ public class SnapController : MonoBehaviour
         foreach(Draggable draggable in draggableObjects){
 			draggable.dragEndedCallback = OnDragEnded;
 		}
-    }I
+    }
 	//
 	void Update()
-	{Input.GetAxis("Mouse Y");
+	{
 
-		for(int i = 0; i < 3; i++)
-		if(draggableObjects[i].transform.position == snapPoints[i].transform.position){
-			index[i] = 1;
-		}
+		// for(int i = 0; i < 3; i++)
+		// if(draggableObjects[i].transform.position == snapPoints[i].transform.position){
+		// 	index[i] = 1;
+		// }
 	}
     private void OnDragEnded(Draggable draggable){
 		float closestDistance = -1;
