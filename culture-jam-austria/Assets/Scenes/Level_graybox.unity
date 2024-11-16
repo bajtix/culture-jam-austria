@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: ef9054df6cdc23143adced165a730aee, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: ce32d732ebb89139e9d62263b86963a5, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -251,6 +251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f65e2f6781fb6534c8e40d333edb3aa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_maxTimer: 4
+  m_tickUpSpeed: 0.5
 --- !u!65 &610705613
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -761,8 +763,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec70ed3a39d781312a75d964fa79da18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 4
-  m_rotSpeed: 0.1
+  m_speed: 20
+  m_lookPitchLimit: 85
   m_controller: {fileID: 1624103318}
   m_camera: {fileID: 1093092392}
 --- !u!23 &1624103320
@@ -5356,6 +5358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1781147435}
   - component: {fileID: 1781147434}
+  - component: {fileID: 1781147436}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5390,6 +5393,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1781147436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781147433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e25d8c86b38cab4fb55c4a96d0e6d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxTimer: 6
+  canTickDown: 1
 --- !u!1 &1942315438
 GameObject:
   m_ObjectHideFlags: 0
