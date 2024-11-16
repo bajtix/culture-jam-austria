@@ -7,8 +7,8 @@ public class PointerController : MonoBehaviour {
 	public Transform pointB; // Reference to the ending point
 	public RectTransform safeZone; // Reference to the safe zone RectTransform
 	public float moveSpeed = 100f; // Speed of the pointer movement
-	[SerializeField] private GameObject ProgressBar;
-	[SerializeField] private TextMeshProUGUI ScoreText;
+	[SerializeField] private GameObject m_progressBar;
+	[SerializeField] private TextMeshProUGUI m_scoreText;
 	public bool CraftingSuccess = false;
 
 	private float direction = 1f; // 1 for moving towards B, -1 for moving towards A
@@ -22,7 +22,7 @@ public class PointerController : MonoBehaviour {
 	}
 
 	void Update() {
-		ScoreText.text = score.ToString();
+		m_scoreText.text = score.ToString();
 		// Move the pointer towards the target position
 		pointerTransform.position = Vector3.MoveTowards(pointerTransform.position, targetPosition, moveSpeed * Time.deltaTime);
 
@@ -42,7 +42,7 @@ public class PointerController : MonoBehaviour {
 
 		if (score > 15) {
 			CraftingSuccess = true;
-			ProgressBar.SetActive(false);
+			m_progressBar.SetActive(false);
 		}
 	}
 

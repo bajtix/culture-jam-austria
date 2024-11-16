@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CraftingAreaActivator : MonoBehaviour {
 
-	[SerializeField] private GameObject ProgressBar;
+	[SerializeField] private GameObject m_progressBar;
 	[SerializeField] private PlayerController m_playerController;
 	[SerializeField] private PointerController m_pointerController;
 
@@ -20,7 +20,7 @@ public class CraftingAreaActivator : MonoBehaviour {
     }
 
 	private void OnTriggerEnter(Collider other) {
-		ProgressBar.SetActive(true);
+		m_progressBar.SetActive(true);
 		m_playerController.AddSpeedModifier("Stop", 0f);
 	}
 }
