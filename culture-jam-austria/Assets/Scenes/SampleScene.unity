@@ -491,6 +491,24 @@ MonoBehaviour:
   m_interactionMask:
     serializedVersion: 2
     m_Bits: 2147483647
+--- !u!114 &1877416419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877416410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c206e8e737ba06bbf9b7de4dd7c4096e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surface: {fileID: 0}
+  splatThreshold: 0.1
+  maxHeight: 0.5
+  radius: 0.05
+  strength: 0.9
+  shape: 0.9
 --- !u!1 &2018313178
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,6 +521,7 @@ GameObject:
   - component: {fileID: 2018313181}
   - component: {fileID: 2018313180}
   - component: {fileID: 2018313179}
+  - component: {fileID: 2018313183}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -555,7 +574,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 36a104f3de4a70affaca4a4a5a0ffe54, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -600,6 +619,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2018313183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018313178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38fd21be1aac7955f807b1ae5da3c8e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_drawingShader: {fileID: 4800000, guid: 8c1d67face5fdb32bb266652a7ec501c, type: 3}
+  m_initialTexture: {fileID: 2800000, guid: 5efbfbb9c4788d4fc96fc6b6614159e6, type: 3}
+  m_resolution: 9
 --- !u!1001 &7141522251224854192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -671,6 +705,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4532838585268513909, guid: 15765197baad0ed499bc2863cd324704, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1877416418}
+    - targetCorrespondingSourceObject: {fileID: 4532838585268513909, guid: 15765197baad0ed499bc2863cd324704, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1877416419}
   m_SourcePrefab: {fileID: 100100000, guid: 15765197baad0ed499bc2863cd324704, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
