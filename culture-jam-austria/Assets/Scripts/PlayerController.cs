@@ -56,8 +56,8 @@ public class PlayerController : MonoBehaviour {
 
     private void Update() {
         var mouseMovement = Game.Input.Player.Look.ReadValue<Vector2>();
-        m_yaw -= mouseMovement.x;
-        m_pitch += mouseMovement.y;
+        m_yaw += mouseMovement.x;
+        m_pitch -= mouseMovement.y;
         if (m_yaw > 360) m_yaw = m_yaw % 360;
         if (m_yaw < 0) m_yaw = 360 - m_yaw;
 
