@@ -6,6 +6,16 @@ public class Game : MonoBehaviour {
     private static GameInput m_input;
     private static Game m_instance;
 
+	private static bool m_hasBelt;
+
+	public static bool CanCraft() {
+		return m_hasBelt;
+	}
+
+	public static void GiveBelt() {
+		m_hasBelt = true;
+	}
+
     public static GameInput Input {
         get {
             if (m_input == null) {

@@ -55,6 +55,7 @@ public class DiggingSystem : MonoBehaviour, IInteractable {
 			ShowDiggingProgressBar(false);
 			player.Controller.RemoveViewModifier("digging");
 			m_dugUp = true;
+			Game.GiveBelt();
 		}
 	}
 	public void InteractionFixedUpdate(Player player) {

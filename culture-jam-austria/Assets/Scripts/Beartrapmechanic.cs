@@ -69,7 +69,7 @@ public class Beartrapmechanic : MonoBehaviour, IInteractable {
         return false;
     }
     bool IInteractable.InteractionOver(Player player) {
-        return false;
+        return m_isTrapDefused;
     }
     void IInteractable.InteractionStart(Player player) {
         print("Interakcja start");

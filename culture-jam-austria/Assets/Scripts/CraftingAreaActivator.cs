@@ -15,26 +15,26 @@ public class CraftingAreaActivator : MonoBehaviour, IInteractable {
 	public bool CraftingSuccess = false;
 
 	private float m_direction = 1f;
-	private RectTransform pointerTransform;
+	private Transform pointerTransform;
 	private Vector3 targetPosition;
 	private float score = 0;
 
 	string IInteractable.Tooltip => "Craft";
 
 	void IInteractable.HighlightBegin(Player player) {
-		
+
 	}
 	void IInteractable.HighlightEnd(Player player) {
 
 	}
-	bool IInteractable.CanInteract(Player player) => true;
+	bool IInteractable.CanInteract(Player player) => Game.CanCraft();
 	bool IInteractable.CanStopInteraction(Player player) => true;
 	bool IInteractable.InteractionOver(Player player) => false;
-	void IInteractable.InteractionStart(Player player) {
-		pointerTransform = GetComponent<RectTransform>();
+	void IInteractable.InteractionStart(Player player) {	
+		pointerTransform = GetComponent<Transform>();
 		targetPosition = pointB.position;
 		Game.Player.Controller.AddSpeedModifier("Stop", 0f);
-		m_progressBar.SetActive(true);
+		m_progressBar.SetActive(true);		
 	}
 	void IInteractable.InteractionUpdate(Player player) {
 		m_scoreBar.text = score.ToString();
