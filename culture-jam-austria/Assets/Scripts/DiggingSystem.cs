@@ -8,7 +8,7 @@ public class DiggingSystem : MonoBehaviour, IInteractable {
 	[SerializeField] private GameObject m_canvasDiggingBar;
 	[SerializeField] private Image m_diggingProgressFill;
 	[SerializeField] private float m_fillSpeed = 0.1f;
-	private GameObject[] m_snowElementsList;
+	[SerializeField] private GameObject[] m_snowElementsList;
 	private bool m_diggingActivate = false;
 	private bool m_dugUp = false;
 	public string Tooltip => "Digging system";
@@ -61,6 +61,7 @@ public class DiggingSystem : MonoBehaviour, IInteractable {
 
 	}
 	public void InteractionEnd(Player player) {
+		player.Controller.RemoveViewModifier("digging");
 		ShowDiggingProgressBar(false);
 	}
 }

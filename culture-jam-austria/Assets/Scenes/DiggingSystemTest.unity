@@ -955,6 +955,7 @@ MonoBehaviour:
   m_canvasDiggingBar: {fileID: 462438223}
   m_diggingProgressFill: {fileID: 1277777709}
   m_fillSpeed: 0.1
+  m_snowElementsList: []
 --- !u!65 &1141415919
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1424,6 +1425,14 @@ PrefabInstance:
     - target: {fileID: 4987494549943946247, guid: ad8b024d7f311f160b61827718c130f7, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733467765221074006, guid: ad8b024d7f311f160b61827718c130f7, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733467765221074006, guid: ad8b024d7f311f160b61827718c130f7, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
