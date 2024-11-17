@@ -27,7 +27,11 @@ public class PlayerInteractor : PlayerComponent {
     private void FixedUpdate() {
         var it = GetLookedOn();
 
-        m_interacting?.InteractionFixedUpdate(Player);
+
+        if (m_interacting != null) {
+            m_interacting.InteractionFixedUpdate(Player);
+            return;
+        }
 
         if (it != m_highlighted) {
             if (m_highlighted != null) {
