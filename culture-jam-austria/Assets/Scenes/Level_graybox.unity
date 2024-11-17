@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.9137255, g: 0.9137255, b: 0.9137255, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.01
@@ -22798,6 +22798,107 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9ba38823942bd4c4ba6f1582036366a6, type: 3}
   m_PrefabInstance: {fileID: 1457773394}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1474253692
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_target
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_fogColor.ctime1
+      value: 57632
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_fogColor.ctime2
+      value: 64764
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_fogColor.key1.b
+      value: 0.61343217
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_fogColor.key1.g
+      value: 0.61343217
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_fogColor.key1.r
+      value: 0.61343217
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_fogColor.key2.b
+      value: 0.5801887
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_fogColor.key2.g
+      value: 0.5801887
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_fogColor.key2.r
+      value: 0.5801887
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_fogColor.m_NumColorKeys
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525929527761545242, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525929527761545242, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525929527761545242, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.763063
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525929527761545242, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525929527761545242, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525929527761545242, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525929527761545242, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525929527761545242, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525929527761545242, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525929527761545242, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496448834680118468, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_Name
+      value: Blizzard
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496448834680118468, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
 --- !u!1001 &1480202629
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23573,6 +23674,10 @@ PrefabInstance:
     - target: {fileID: 2636783713170832327, guid: 15765197baad0ed499bc2863cd324704, type: 3}
       propertyPath: m_maxDistance
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2707479984104129005, guid: 15765197baad0ed499bc2863cd324704, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4532838585268513909, guid: 15765197baad0ed499bc2863cd324704, type: 3}
       propertyPath: m_Name
@@ -27264,6 +27369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_uIManager: {fileID: 1848572109}
   m_player: {fileID: 1903954516}
+  m_blizzard: {fileID: 2082497364}
 --- !u!4 &1781147435
 Transform:
   m_ObjectHideFlags: 0
@@ -31592,6 +31698,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9ba38823942bd4c4ba6f1582036366a6, type: 3}
   m_PrefabInstance: {fileID: 2079655756}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2082497364 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+  m_PrefabInstance: {fileID: 1474253692}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1732fa95ea283b82cb6ef5083f7aa804, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2089783404
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32943,6 +33060,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4377202435493352816, guid: 6a348814fe32502469284b1d3f8ed675, type: 3}
+      propertyPath: ID
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377202435493352816, guid: 6a348814fe32502469284b1d3f8ed675, type: 3}
+      propertyPath: m_blizzardLevels.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377202435493352816, guid: 6a348814fe32502469284b1d3f8ed675, type: 3}
+      propertyPath: 'm_blizzardLevels.Array.data[0]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377202435493352816, guid: 6a348814fe32502469284b1d3f8ed675, type: 3}
+      propertyPath: 'm_blizzardLevels.Array.data[1]'
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377202435493352816, guid: 6a348814fe32502469284b1d3f8ed675, type: 3}
+      propertyPath: 'm_blizzardLevels.Array.data[2]'
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377202435493352816, guid: 6a348814fe32502469284b1d3f8ed675, type: 3}
+      propertyPath: 'm_blizzardLevels.Array.data[3]'
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7368475812622529857, guid: 6a348814fe32502469284b1d3f8ed675, type: 3}
       propertyPath: m_canvasDiggingBar
       value: 
@@ -33492,6 +33633,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3166137050748119797, guid: 7e9ee7489c968f042be0f2793e649bac, type: 3}
+      propertyPath: ID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166137050748119797, guid: 7e9ee7489c968f042be0f2793e649bac, type: 3}
+      propertyPath: m_blizzardLevels.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166137050748119797, guid: 7e9ee7489c968f042be0f2793e649bac, type: 3}
+      propertyPath: 'm_blizzardLevels.Array.data[0]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166137050748119797, guid: 7e9ee7489c968f042be0f2793e649bac, type: 3}
+      propertyPath: 'm_blizzardLevels.Array.data[1]'
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166137050748119797, guid: 7e9ee7489c968f042be0f2793e649bac, type: 3}
+      propertyPath: 'm_blizzardLevels.Array.data[2]'
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166137050748119797, guid: 7e9ee7489c968f042be0f2793e649bac, type: 3}
+      propertyPath: 'm_blizzardLevels.Array.data[3]'
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4478664897764116365, guid: 7e9ee7489c968f042be0f2793e649bac, type: 3}
       propertyPath: m_LocalPosition.x
       value: -89.1
@@ -34043,6 +34208,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: HunterBoxPOI
       objectReference: {fileID: 0}
+    - target: {fileID: 5787774903262417251, guid: 8f8af94acacfd074c82f0634a529f64b, type: 3}
+      propertyPath: ID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787774903262417251, guid: 8f8af94acacfd074c82f0634a529f64b, type: 3}
+      propertyPath: m_blizzardLevels.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787774903262417251, guid: 8f8af94acacfd074c82f0634a529f64b, type: 3}
+      propertyPath: 'm_blizzardLevels.Array.data[0]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787774903262417251, guid: 8f8af94acacfd074c82f0634a529f64b, type: 3}
+      propertyPath: 'm_blizzardLevels.Array.data[1]'
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787774903262417251, guid: 8f8af94acacfd074c82f0634a529f64b, type: 3}
+      propertyPath: 'm_blizzardLevels.Array.data[2]'
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787774903262417251, guid: 8f8af94acacfd074c82f0634a529f64b, type: 3}
+      propertyPath: 'm_blizzardLevels.Array.data[3]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5816543216206950284, guid: 8f8af94acacfd074c82f0634a529f64b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34286,3 +34479,4 @@ SceneRoots:
   - {fileID: 6383548482382716481}
   - {fileID: 8569112845671191670}
   - {fileID: 1026515276}
+  - {fileID: 1474253692}
