@@ -39,7 +39,7 @@ Material:
     m_Floats:
     - _Distance: 0.1
     - _Dither_St: 0.48
-    - _Noise_Intensity: 0.3222416
+    - _Noise_Intensity: 0.32224748
     - _Noise_Scale: 600
     - _Noise_Scroll: 20
     - _Pixelate: 256

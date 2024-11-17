@@ -45,6 +45,7 @@ public class POIScript : MonoBehaviour {
 	}
 
 	private void TimerFinished() {
+		FindAnyObjectByType<DeathUIScript>().Die();
 		Debug.Log("Timer finished");
 	}
 
