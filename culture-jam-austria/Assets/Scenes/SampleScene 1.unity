@@ -682,6 +682,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1424267095}
     - target: {fileID: 2457558493328428577, guid: d406664d08c8a5243813538f4aeb07c2, type: 3}
+      propertyPath: m_progressBar
+      value: 
+      objectReference: {fileID: 1424267095}
+    - target: {fileID: 2457558493328428577, guid: d406664d08c8a5243813538f4aeb07c2, type: 3}
       propertyPath: m_playerController
       value: 
       objectReference: {fileID: 1877416416}
