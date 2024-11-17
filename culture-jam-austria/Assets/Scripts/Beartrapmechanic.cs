@@ -66,7 +66,7 @@ public class Beartrapmechanic : MonoBehaviour, IInteractable {
         return !m_isTrapDefused && !m_isTrapActivated;
     }
     bool IInteractable.CanStopInteraction(Player player) {
-        return true;
+        return false;
     }
     bool IInteractable.InteractionOver(Player player) {
         return false;
