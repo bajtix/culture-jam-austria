@@ -1,26 +1,26 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
 using UnityEngine.UI;
 
-public class DiggingSystem : MonoBehaviour, IInteractable{
-    [SerializeField] private GameObject m_panelClickF;
-    private GameObject[] m_snowList;
+public class DiggingSystem : MonoBehaviour, IInteractable {
+	[SerializeField] private GameObject m_canvasDiggingBar;
+	[SerializeField] private Image m_diggingProgressFill;
+	[SerializeField] private float m_fillSpeed = 0.1f;
+	private GameObject[] m_snowElementsList;
 	private bool m_diggingActivate = false;
-	[SerializeField] Image progressBar;
-	public string Tooltip => "Digging belt";
+	private bool m_dugUp = false;
+	public string Tooltip => "Digging system";
 
-	void Start() {
-        m_snowList = GameObject.FindGameObjectsWithTag("Snow");
+	private void Start() {
+		m_snowElementsList = GameObject.FindGameObjectsWithTag("Snow");
 	}
-    void ShowInfo(bool status) {
-        m_panelClickF.SetActive(status);
-    }
-	void CheckFillAmount(int numberTab){
-		if(progressBar.fillAmount >= 1.0f/m_snowList.LongLength*(numberTab+1)){
-			m_snowList[numberTab].SetActive(false);
+	private void ShowDiggingProgressBar(bool status) {
+		m_canvasDiggingBar.SetActive(status);
+	}
+	private void CheckFillAmount(int numberTab) {
+		if (m_diggingProgressFill.fillAmount >= 1.0f / m_snowElementsList.LongLength * (numberTab + 1)) {
+			m_snowElementsList[numberTab].SetActive(false);
 		}
 	}
 	public void HighlightBegin(Player player) {
@@ -33,28 +33,35 @@ public class DiggingSystem : MonoBehaviour, IInteractable{
 		return !m_diggingActivate;
 	}
 	public bool CanStopInteraction(Player player) {
-	    return true;
-    }
-    bool IInteractable.InteractionOver(Player player) {
-        return false;
+		return true;
+	}
+	bool IInteractable.InteractionOver(Player player) {
+		return false;
 	}
 	public void InteractionStart(Player player) {
-        print("Interaction start");
-        ShowInfo(true);
+		print("Interaction start");
+		ShowDiggingProgressBar(true);
+		Game.Player.Controller.AddViewModifier("digging focus", transform.position, 0.6f);
 	}
 	public void InteractionUpdate(Player player) {
-		if(Input.GetMouseButton(0)) {
-			progressBar.fillAmount += Math.Abs(Input.GetAxis("Mouse Y") * Time.deltaTime);
-			for(int i = 0; i <= m_snowList.Length; i++){
+		var mouseMovement = Game.Input.Player.Look.ReadValue<Vector2>().normalized;
+		var leftMouseClick = Game.Input.Player.Drag.IsPressed();
+		if (leftMouseClick) {
+			Debug.Log(mouseMovement.y);
+			m_diggingProgressFill.fillAmount += Math.Abs(mouseMovement.y * m_fillSpeed * Time.deltaTime);
+			for (int i = 0; i <= m_snowElementsList.Length; i++) {
 				CheckFillAmount(i);
 			}
 		}
-
+		if(m_diggingProgressFill.fillAmount == 1){
+			ShowDiggingProgressBar(false);
+			m_dugUp = true;
+		}
 	}
 	public void InteractionFixedUpdate(Player player) {
 
 	}
 	public void InteractionEnd(Player player) {
-        ShowInfo(false);
+		ShowDiggingProgressBar(false);
 	}
 }
