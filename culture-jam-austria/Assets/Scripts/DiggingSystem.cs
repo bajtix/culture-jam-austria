@@ -36,9 +36,7 @@ public class DiggingSystem : MonoBehaviour, IInteractable {
 	public bool CanStopInteraction(Player player) {
 		return true;
 	}
-	bool IInteractable.InteractionOver(Player player) {
-		return false;
-	}
+	bool IInteractable.InteractionOver(Player player)  => false;
 	public void InteractionStart(Player player) {
 		print("Interaction start");
 		ShowDiggingProgressBar(true);
@@ -55,6 +53,7 @@ public class DiggingSystem : MonoBehaviour, IInteractable {
 		}
 		if (m_diggingProgressFill.fillAmount == 1) {
 			ShowDiggingProgressBar(false);
+			player.Controller.RemoveViewModifier("digging");
 			m_dugUp = true;
 		}
 	}
@@ -62,8 +61,6 @@ public class DiggingSystem : MonoBehaviour, IInteractable {
 
 	}
 	public void InteractionEnd(Player player) {
-		Debug.Log("xd");
 		ShowDiggingProgressBar(false);
-		player.Controller.RemoveViewModifier("digging");
 	}
 }
