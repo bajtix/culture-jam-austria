@@ -7,20 +7,22 @@ using UnityEngine.UI;
 
 public class DiggingSystem : MonoBehaviour, IInteractable{
     [SerializeField] private GameObject m_panelClickF;
-    GameObject[] m_snowList;
+    private GameObject[] m_snowList;
 	private bool m_diggingActivate = false;
-
 	[SerializeField] Image progressBar;
 	public string Tooltip => "Digging belt";
 
 	void Start() {
         m_snowList = GameObject.FindGameObjectsWithTag("Snow");
 	}
-
     void ShowInfo(bool status) {
         m_panelClickF.SetActive(status);
     }
-
+	void CheckFillAmount(int numberTab){
+		if(progressBar.fillAmount >= 1.0f/m_snowList.LongLength*(numberTab+1)){
+			m_snowList[numberTab].SetActive(false);
+		}
+	}
 	public void HighlightBegin(Player player) {
 
 	}
@@ -43,17 +45,8 @@ public class DiggingSystem : MonoBehaviour, IInteractable{
 	public void InteractionUpdate(Player player) {
 		if(Input.GetMouseButton(0)) {
 			progressBar.fillAmount += Math.Abs(Input.GetAxis("Mouse Y") * Time.deltaTime);
-			if(progressBar.fillAmount > 0.25){
-				m_snowList[0].SetActive(false);
-			}
-			if(progressBar.fillAmount > 0.5){
-				m_snowList[1].SetActive(false);
-			}
-			if(progressBar.fillAmount > 0.75){
-				m_snowList[2].SetActive(false);
-			}
-			if(progressBar.fillAmount >= 1){
-				m_snowList[3].SetActive(false);
+			for(int i = 0; i <= m_snowList.Length; i++){
+				CheckFillAmount(i);
 			}
 		}
 
