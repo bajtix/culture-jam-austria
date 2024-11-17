@@ -8,6 +8,7 @@ public class POIScript : MonoBehaviour {
 	[Header("IMPORTANT: time stamps have to be sorted in descending order")]
 	[SerializeField] private float[] m_timeStamps;
 	[SerializeField] private StagedPrefabScript[] m_stagedPrefabs;
+	[SerializeField] private float[] m_blizzardLevels;
 	private int m_stage = 0;
 
 	private void Start() {
@@ -21,6 +22,9 @@ public class POIScript : MonoBehaviour {
 			if (m_stage < m_timeStamps.Length) {
 				if (m_timer < m_timeStamps[m_stage]) {
 					m_stage++;
+					if (m_stage < m_blizzardLevels.Length) {
+						Game.Blizzard.SetIntensity(m_blizzardLevels[m_stage]);
+					}
 					Debug.Log("stage = " + m_stage);
 				}
 			}

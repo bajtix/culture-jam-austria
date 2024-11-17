@@ -4,6 +4,7 @@ using UnityEngine;
 public class Blizzard : MonoBehaviour {
     [SerializeField] private float m_target = 0.1f;
     [SerializeField] private float m_changeSpeed = 0.1f;
+    [SerializeField] private float m_cameraBackgroundBrightness = 0.98f;
 
     [SerializeField] private Gradient m_fogColor;
     [SerializeField][NaughtyAttributes.MinMaxSlider(0, 100)] private Vector2 m_minimumFog;
@@ -33,7 +34,7 @@ public class Blizzard : MonoBehaviour {
         RenderSettings.fogStartDistance = Mathf.Lerp(m_minimumFog.x, m_maximumFog.x, m_intensity);
         RenderSettings.fogEndDistance = Mathf.Lerp(m_minimumFog.y, m_maximumFog.y, m_intensity);
         RenderSettings.fogColor = m_fogColor.Evaluate(m_intensity);
-        Camera.main.backgroundColor = m_fogColor.Evaluate(m_intensity);
+        Camera.main.backgroundColor = m_fogColor.Evaluate(m_intensity) * m_cameraBackgroundBrightness;
 
         var em = m_snow.emission;
         em.rateOverTime = m_snowStrength.Evaluate(m_intensity);

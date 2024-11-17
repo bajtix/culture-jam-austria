@@ -112,5 +112,4 @@ public class PlayerController : PlayerComponent {
             Debug.LogWarning("removing nonexisting view modifier " + name);
         }
     }
-
 }
