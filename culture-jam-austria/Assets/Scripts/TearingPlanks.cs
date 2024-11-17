@@ -25,7 +25,7 @@ public class TearingPlanks : MonoBehaviour, IInteractable {
 
 	}
 	public void InteractionEnd(Player player) {
-
+		Game.GivePlank();
 	}
 	public void InteractionStart(Player player) {
 		m_canvasInfoTearing.SetActive(true);

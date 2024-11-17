@@ -7,16 +7,20 @@ public class Game : MonoBehaviour {
     private static Game m_instance;
 
 	private static bool m_hasBelt;
+	private static bool m_hasPlank;
 
 	public static bool CanCraft() {
-		return m_hasBelt;
+		return m_hasBelt&&m_hasPlank;
 	}
 
 	public static void GiveBelt() {
 		m_hasBelt = true;
 	}
+	public static void GivePlank() {
+		m_hasPlank = true;
+	}
 
-    public static GameInput Input {
+	public static GameInput Input {
         get {
             if (m_input == null) {
                 m_input = new GameInput();
