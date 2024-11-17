@@ -1,6 +1,8 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 public class POIScript : MonoBehaviour {
+	[SerializeField] private int m_soundId;
 	[SerializeField] private float m_maxTimer;
 	[SerializeField] private float m_tickUpSpeed;
 	private float m_timer;
@@ -9,7 +11,7 @@ public class POIScript : MonoBehaviour {
 	[SerializeField] private float[] m_timeStamps;
 	[SerializeField] private StagedPrefabScript[] m_stagedPrefabs;
 	[SerializeField] private float[] m_blizzardLevels;
-	private int m_stage = 0;
+	[SerializeField][ReadOnly] private int m_stage = 0;
 
 	private void Start() {
 		m_timer = m_maxTimer;
@@ -52,6 +54,7 @@ public class POIScript : MonoBehaviour {
 			return;
 		}
 		Debug.Log("Player entered " + gameObject.name + " POI");
+		Game.WindSound.SetLocation(m_soundId);
 		m_inTrigger = true;
 	}
 
