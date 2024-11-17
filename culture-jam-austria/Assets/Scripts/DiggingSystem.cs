@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -41,19 +42,18 @@ public class DiggingSystem : MonoBehaviour, IInteractable {
 	public void InteractionStart(Player player) {
 		print("Interaction start");
 		ShowDiggingProgressBar(true);
-		Game.Player.Controller.AddViewModifier("digging focus", transform.position, 0.6f);
+		Game.Player.Controller.AddViewModifier("digging", transform.position, 0.6f);
 	}
 	public void InteractionUpdate(Player player) {
 		var mouseMovement = Game.Input.Player.Look.ReadValue<Vector2>().normalized;
 		var leftMouseClick = Game.Input.UI.Click.IsPressed();
 		if (leftMouseClick) {
-			Debug.Log(mouseMovement.y);
 			m_diggingProgressFill.fillAmount += Math.Abs(mouseMovement.y * m_fillSpeed * Time.deltaTime);
 			for (int i = 0; i <= m_snowElementsList.Length; i++) {
 				CheckFillAmount(i);
 			}
 		}
-		if(m_diggingProgressFill.fillAmount == 1){
+		if (m_diggingProgressFill.fillAmount == 1) {
 			ShowDiggingProgressBar(false);
 			m_dugUp = true;
 		}
@@ -63,5 +63,6 @@ public class DiggingSystem : MonoBehaviour, IInteractable {
 	}
 	public void InteractionEnd(Player player) {
 		ShowDiggingProgressBar(false);
+		player.Controller.RemoveViewModifier("digging");
 	}
 }
