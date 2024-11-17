@@ -14,12 +14,12 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_FogMode: 3
+  m_FogMode: 1
   m_FogDensity: 0.01
   m_LinearFogStart: 0
-  m_LinearFogEnd: 300
+  m_LinearFogEnd: 20
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -664,6 +664,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_uIManager: {fileID: 467692939}
   m_player: {fileID: 0}
+  m_blizzard: {fileID: 0}
 --- !u!4 &1087677216
 Transform:
   m_ObjectHideFlags: 0
@@ -869,6 +870,63 @@ MonoBehaviour:
   m_useSharedMaterial: 0
   m_scale: 20
   m_rotation: 180
+--- !u!1001 &6970726207126979543
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5525929527761545242, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525929527761545242, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525929527761545242, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.763063
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525929527761545242, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525929527761545242, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525929527761545242, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525929527761545242, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525929527761545242, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525929527761545242, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525929527761545242, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496448834680118468, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_Name
+      value: Blizzard
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
 --- !u!1001 &7141522251224854192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -877,6 +935,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2707479984104129005, guid: 15765197baad0ed499bc2863cd324704, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2707479984104129005, guid: 15765197baad0ed499bc2863cd324704, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.48584908
+      objectReference: {fileID: 0}
+    - target: {fileID: 2707479984104129005, guid: 15765197baad0ed499bc2863cd324704, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.48584908
+      objectReference: {fileID: 0}
+    - target: {fileID: 2707479984104129005, guid: 15765197baad0ed499bc2863cd324704, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.48584908
+      objectReference: {fileID: 0}
     - target: {fileID: 4532838585268513909, guid: 15765197baad0ed499bc2863cd324704, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1062,3 +1136,4 @@ SceneRoots:
   - {fileID: 613218841}
   - {fileID: 7886981108368631113}
   - {fileID: 817255829}
+  - {fileID: 6970726207126979543}
