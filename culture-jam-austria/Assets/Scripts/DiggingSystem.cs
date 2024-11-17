@@ -62,6 +62,7 @@ public class DiggingSystem : MonoBehaviour, IInteractable {
 
 	}
 	public void InteractionEnd(Player player) {
+		Debug.Log("xd");
 		ShowDiggingProgressBar(false);
 		player.Controller.RemoveViewModifier("digging");
 	}

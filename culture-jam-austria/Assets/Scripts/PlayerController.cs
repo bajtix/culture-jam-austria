@@ -114,7 +114,7 @@ public class PlayerController : PlayerComponent {
         if (IsModifier(name)) {
             m_speedModifiers.Remove(name);
         } else {
-            Debug.LogWarning("removing nonexisting speed modifier " + name);
+            Debug.LogWarning("rxdemoving nonexisting speed modifier " + name);
         }
     }
 
