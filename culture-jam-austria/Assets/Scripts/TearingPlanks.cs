@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class TearingPlanks : MonoBehaviour, IInteractable {
 	[SerializeField] private GameObject plank;
+	private int moveCount = 0;
+
 	void DestroyPlanks(){
-		Destroy(plank);
+		plank.SetActive(false);
 	}
 	public string Tooltip => "Tearing Planks";
 
 	public bool CanInteract(Player player) => true;
-	public bool CanStopInteraction(Player player) => false;
+	public bool CanStopInteraction(Player player) => true;
 	public void HighlightBegin(Player player) {
 
 	}
@@ -22,21 +24,20 @@ public class TearingPlanks : MonoBehaviour, IInteractable {
 		var mouseMovement = Game.Input.Player.Look.ReadValue<Vector2>();
 		var leftMouseClick = Game.Input.UI.Click.IsPressed();
 		if (leftMouseClick) {
-			int i = 0;
-			do
-			if(mouseMovement.x > 15 || mouseMovement.y > 15) {
-				DestroyPlanks();
-				Debug.Log("position x: " + mouseMovement.x + " || position y: " + mouseMovement.y);
-				i++;
+			if(mouseMovement.x > 40 || mouseMovement.y > 20) {
+				moveCount++;
+				if(moveCount >= 10){
+					DestroyPlanks();
+				}
 			}
-			while(i < 5);
 		}
 
 	}
 	public void InteractionFixedUpdate(Player player) {
-
 	}
-	public bool InteractionOver(Player player) => false;
+	public bool InteractionOver(Player player) {
+		return plank.activeSelf==false;
+	}
 	public void InteractionStart(Player player) {
 
 	}
