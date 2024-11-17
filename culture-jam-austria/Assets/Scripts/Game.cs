@@ -28,6 +28,7 @@ public class Game : MonoBehaviour {
 
     [SerializeField] private UIManager m_uIManager;
     [SerializeField] private Player m_player;
+    [SerializeField] private Blizzard m_blizzard;
     public static UIManager UI {
         get {
             if (Instance.m_uIManager == null) Instance.m_uIManager = FindFirstObjectByType<UIManager>();
@@ -39,6 +40,13 @@ public class Game : MonoBehaviour {
         get {
             if (Instance.m_player == null) Instance.m_player = FindFirstObjectByType<Player>();
             return Instance.m_player;
+        }
+    }
+
+    public static Blizzard Blizzard {
+        get {
+            if (Instance.m_blizzard == null) Instance.m_blizzard = FindFirstObjectByType<Blizzard>();
+            return Instance.m_blizzard;
         }
     }
 
