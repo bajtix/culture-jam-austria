@@ -41,7 +41,7 @@ public class Beartrapmechanic : MonoBehaviour, IInteractable {
         }
     }
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Player") || m_isTrapDefused) return;
+        if (!other.CompareTag("Player") || m_isTrapDefused) return;
         Trap_effect();
         Defusingcircle.SetActive(true);
         if (defusingSlider != null) {
@@ -66,7 +66,7 @@ public class Beartrapmechanic : MonoBehaviour, IInteractable {
         return !m_isTrapDefused && !m_isTrapActivated;
     }
     bool IInteractable.CanStopInteraction(Player player) {
-        return true;
+        return false;
     }
     bool IInteractable.InteractionOver(Player player) {
         return false;
