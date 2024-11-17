@@ -45,7 +45,7 @@ public class DiggingSystem : MonoBehaviour, IInteractable {
 	}
 	public void InteractionUpdate(Player player) {
 		var mouseMovement = Game.Input.Player.Look.ReadValue<Vector2>().normalized;
-		var leftMouseClick = Game.Input.Player.Drag.IsPressed();
+		var leftMouseClick = Game.Input.UI.Click.IsPressed();
 		if (leftMouseClick) {
 			Debug.Log(mouseMovement.y);
 			m_diggingProgressFill.fillAmount += Math.Abs(mouseMovement.y * m_fillSpeed * Time.deltaTime);
