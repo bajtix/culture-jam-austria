@@ -21,12 +21,19 @@ public class StagedPrefabScript : MonoBehaviour {
 	}
 
 	private void SpawnChild() {
-		m_child = Instantiate(m_variants[m_stage], transform.position + m_childPositionDelta, transform.rotation);
-		m_child.transform.parent = transform;
+		//m_child = Instantiate(m_variants[m_stage], transform.position + m_childPositionDelta, transform.rotation);
+		//m_child.transform.parent = transform;
+		foreach(var variant in m_variants) {
+			variant.SetActive(false);
+		}
+		m_variants[m_stage].SetActive(true);
 	}
 
 	public void SetTargetStage(int target) {
 		m_targetStage = target;
+		if (m_targetStage > m_variants.Length - 1) {
+			m_targetStage = m_variants.Length - 1;
+		}
 	}
 
 	private void UpdateStage() {
