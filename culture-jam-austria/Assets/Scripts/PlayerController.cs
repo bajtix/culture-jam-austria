@@ -23,7 +23,7 @@ public class PlayerController : PlayerComponent {
 
     private Dictionary<string, float> m_speedModifiers = new Dictionary<string, float>();
     private KeyValuePair<string, (float, Vector3)>? m_viewModifier = null;
-    private float m_yaw, m_pitch;
+    [SerializeField][ReadOnly] private float m_yaw, m_pitch;
     private Vector2 m_mouseOffset;
 
     [ShowNativeProperty] public float Stamina => m_currentStamina / m_stamina;
@@ -35,6 +35,8 @@ public class PlayerController : PlayerComponent {
 
     private void Start() {
         if (Game.Input == null) Debug.LogError("No game input found!");
+
+        SetLook(transform.rotation.eulerAngles.y, m_camera.transform.localEulerAngles.x > 180 ? m_camera.transform.localEulerAngles.x - 360 : m_camera.transform.localEulerAngles.x);
 
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -161,4 +163,16 @@ public class PlayerController : PlayerComponent {
             Debug.LogWarning("removing nonexisting view modifier " + name);
         }
     }
+
+    public void SetLook(float yaw, float pitch) {
+        m_yaw = yaw;
+        m_pitch = pitch;
+    }
+
+    public void SetPosition(Vector3 position) {
+        m_controller.enabled = false;
+        transform.position = position;
+        m_controller.enabled = true;
+    }
+
 }
