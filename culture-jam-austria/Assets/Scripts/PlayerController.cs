@@ -29,7 +29,7 @@ public class PlayerController : PlayerComponent {
     [ShowNativeProperty] public float Stamina => m_currentStamina / m_stamina;
     [ShowNativeProperty] public bool IsTired => m_tired;
     [ShowNativeProperty] public bool IsSprinting => Game.Input.Player.Sprint.IsPressed() && !m_tired;
-    [ShowNativeProperty] public float MaxSpeed => EvaluateSpeedModifier() * m_speed * EvaluateSprintModifier();
+    [ShowNativeProperty] public float MaxSpeed => m_speed * EvaluateSpeedModifier() * EvaluateSprintModifier();
     [ShowNativeProperty] public float Velocity => new Vector2(m_controller.velocity.x, m_controller.velocity.z).magnitude;
 
 
@@ -58,9 +58,8 @@ public class PlayerController : PlayerComponent {
     }
 
     private void FixedUpdate() {
-        StaminaCalculations();
-
         var input = Game.Input.Player.Move.ReadValue<Vector2>();
+        StaminaCalculations(input);
 
         float speed = m_speed * EvaluateSpeedModifier() * EvaluateSprintModifier();
 
@@ -75,10 +74,11 @@ public class PlayerController : PlayerComponent {
         m_controller.Move(movement);
     }
 
-    private void StaminaCalculations() {
+    private void StaminaCalculations(Vector2 inputs) {
+        float inputMagnitude = Mathf.Clamp01(inputs.magnitude);
         if (IsSprinting) {
             if (m_currentStamina > 0) {
-                m_currentStamina -= Time.fixedDeltaTime;
+                m_currentStamina -= Time.fixedDeltaTime * inputMagnitude;
             } else {
                 m_tired = true;
             }
