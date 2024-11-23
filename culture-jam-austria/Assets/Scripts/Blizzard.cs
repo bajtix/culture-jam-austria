@@ -5,6 +5,7 @@ public class Blizzard : MonoBehaviour {
     [SerializeField] private float m_target = 0.1f;
     [SerializeField] private float m_changeSpeed = 0.1f;
     [SerializeField] private AnimationCurve m_cameraBackgroundBrightness = AnimationCurve.Constant(0, 1, 1.05f);
+    [SerializeField] private AnimationCurve m_fogTransition = AnimationCurve.Linear(0, 1, 0, 1);
 
     [SerializeField] private Gradient m_fogColor;
     [SerializeField][MinMaxSlider(0, 100)] private Vector2 m_minimumFog;
@@ -32,8 +33,8 @@ public class Blizzard : MonoBehaviour {
     }
 
     private void UpdateEffect() {
-        RenderSettings.fogStartDistance = Mathf.Lerp(m_minimumFog.x, m_maximumFog.x, m_intensity);
-        RenderSettings.fogEndDistance = Mathf.Lerp(m_minimumFog.y, m_maximumFog.y, m_intensity);
+        RenderSettings.fogStartDistance = Mathf.Lerp(m_minimumFog.x, m_maximumFog.x, m_fogTransition.Evaluate(m_intensity));
+        RenderSettings.fogEndDistance = Mathf.Lerp(m_minimumFog.y, m_maximumFog.y, m_fogTransition.Evaluate(m_intensity));
         RenderSettings.fogColor = m_fogColor.Evaluate(m_intensity);
         Camera.main.backgroundColor = m_fogColor.Evaluate(m_intensity) * m_cameraBackgroundBrightness.Evaluate(m_intensity);
 
