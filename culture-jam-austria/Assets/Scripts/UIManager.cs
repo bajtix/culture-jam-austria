@@ -1,8 +1,12 @@
+using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI m_interactionTooltip;
+    [SerializeField] private TextMeshProUGUI m_statusText;
+    [SerializeField] private Slider m_snowstormStrengthSlider;
 
     private void Start() {
         HideInteractionTooltip();
@@ -15,5 +19,13 @@ public class UIManager : MonoBehaviour {
 
     public void HideInteractionTooltip() {
         m_interactionTooltip.gameObject.SetActive(false);
+    }
+
+    public void SetSnowstormStrength(float t) {
+        m_snowstormStrengthSlider.value = t;
+    }
+
+    internal void SetStatusText(string v) {
+        m_statusText.text = v;
     }
 }

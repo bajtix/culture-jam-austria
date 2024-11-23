@@ -45,22 +45,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1732fa95ea283b82cb6ef5083f7aa804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_target: 0.1
+  m_target: 0
   m_changeSpeed: 0.5
+  m_cameraBackgroundBrightness:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1.05
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0.99999994
+      inSlope: -0.15849018
+      outSlope: -0.15849018
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.0625
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   m_fogColor:
     serializedVersion: 2
     key0: {r: 0.8820755, g: 0.8820755, b: 0.8820755, a: 0.8980392}
-    key1: {r: 0.5801887, g: 0.5801887, b: 0.5801887, a: 1}
-    key2: {r: 1, g: 1, b: 1, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
+    key1: {r: 0.6415094, g: 0.6384834, b: 0.6384834, a: 1}
+    key2: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 0}
+    key3: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 64764
+    ctime1: 41827
     ctime2: 65535
-    ctime3: 0
+    ctime3: 65535
     ctime4: 0
     ctime5: 0
     ctime6: 0
@@ -75,10 +99,10 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_ColorSpace: 0
-    m_NumColorKeys: 2
+    m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  m_minimumFog: {x: 0, y: 69.938576}
-  m_maximumFog: {x: 0, y: 23.926378}
+  m_minimumFog: {x: 11.904762, y: 64.581436}
+  m_maximumFog: {x: 0, y: 20.354948}
   m_snowStrength:
     serializedVersion: 2
     m_Curve:
@@ -92,7 +116,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1.003128
+      time: 0.9079493
       value: 350.562
       inSlope: 39.875267
       outSlope: 39.875267
@@ -116,8 +140,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 35
+      time: 0.8588257
+      value: 50.098145
       inSlope: 1
       outSlope: 1
       tangentMode: 0
@@ -145,17 +169,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.96875
       value: 0.34062576
-      inSlope: 1
-      outSlope: 1
+      inSlope: 0.76484
+      outSlope: 0.76484
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.032459456
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   m_fogScreenspace: {fileID: 2100000, guid: 08c91e9b75db447a6a0ece7b6323fd8e, type: 2}
-  m_intensity: 0
+  m_intensity: 0.4118672
 --- !u!1 &7555357395161588220
 GameObject:
   m_ObjectHideFlags: 0
@@ -3775,9 +3799,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -3788,7 +3812,7 @@ ParticleSystem:
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -3841,7 +3865,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3894,7 +3918,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -3951,7 +3975,7 @@ ParticleSystem:
       serializedVersion: 2
       m_Bits: 4294967295
     maxCollisionShapes: 256
-    quality: 0
+    quality: 2
     voxelSize: 0.5
     collisionMessages: 0
     collidesWithDynamic: 1
