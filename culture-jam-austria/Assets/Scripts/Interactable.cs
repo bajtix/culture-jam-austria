@@ -1,63 +1,77 @@
 using UnityEngine;
 
-public interface IInteractable {
-    public string Tooltip { get; }
+public abstract class Interactable : MonoBehaviour {
+    public virtual string Tooltip => "Interact";
 
     /// <summary>
     /// Player looks at interactable
     /// </summary>
     /// <param name="player"></param>
-    public void HighlightBegin(Player player);
+    public virtual void HighlightBegin(Player player) {
+
+    }
 
     /// <summary>
     /// Player stops looking at interactable
     /// </summary>
     /// <param name="player"></param>
-    public void HighlightEnd(Player player);
+    public virtual void HighlightEnd(Player player) {
+
+    }
 
     /// <summary>
     /// Can the player start the interaction
     /// </summary>
     /// <param name="player"></param>
     /// <returns></returns>
-    public bool CanInteract(Player player);
+    public virtual bool CanInteract(Player player) {
+        return true;
+    }
 
     /// <summary>
     /// Can the player manually exit the interaction
     /// </summary>
     /// <param name="player"></param>
     /// <returns></returns>
-    public bool CanStopInteraction(Player player);
+    public virtual bool CanStopInteraction(Player player) {
+        return true;
+    }
 
     /// <summary>
     /// Is the interaction over
     /// </summary>
     /// <param name="player"></param>
     /// <returns></returns>
-    public bool InteractionOver(Player player);
+    public virtual bool InteractionOver(Player player) {
+        return false;
+    }
 
     /// <summary>
     /// Player starts interacting
     /// </summary>
     /// <param name="player"></param>
-    public void InteractionStart(Player player);
+    public abstract void InteractionStart(Player player);
 
     /// <summary>
     /// Called every frame of the interaction
     /// </summary>
     /// <param name="player"></param>
-    public void InteractionUpdate(Player player);
+    public virtual void InteractionUpdate(Player player) {
+
+    }
 
     /// <summary>
     /// Called every fixed timestep of the interaction
     /// </summary>
     /// <param name="player"></param>
-    public void InteractionFixedUpdate(Player player);
+    public virtual void InteractionFixedUpdate(Player player) {
+
+    }
 
     /// <summary>
     /// Called when the interaction ends
     /// </summary>
     /// <param name="player"></param>
-    public void InteractionEnd(Player player);
+    public abstract void InteractionEnd(Player player);
 
 }
