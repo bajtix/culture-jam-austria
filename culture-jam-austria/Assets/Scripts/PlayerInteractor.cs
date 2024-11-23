@@ -8,8 +8,8 @@ public class PlayerInteractor : PlayerComponent {
     [SerializeField] private float m_maxDistance = 1;
     [SerializeField] private LayerMask m_interactionMask = int.MaxValue;
 
-    private IInteractable m_highlighted;
-    private IInteractable m_interacting;
+    private Interactable m_highlighted;
+    private Interactable m_interacting;
 
     private void OnEnable() {
         Game.Input.Player.Interact.performed += Interact;
@@ -19,9 +19,9 @@ public class PlayerInteractor : PlayerComponent {
         Game.Input.Player.Interact.performed -= Interact;
     }
 
-    private IInteractable GetLookedOn() {
+    private Interactable GetLookedOn() {
         if (!Physics.Raycast(m_camera.transform.position, m_camera.transform.forward, out var hit, m_maxDistance, m_interactionMask)) return null;
-        return hit.collider.GetComponent<IInteractable>();
+        return hit.collider.GetComponent<Interactable>();
     }
 
     private void FixedUpdate() {
