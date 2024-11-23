@@ -1621,12 +1621,16 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_snowStrength.m_Curve.Array.data[1].time
+      value: 0.7793232
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: m_fogTransition.m_Curve.Array.data[1].time
       value: 0.5291083
       objectReference: {fileID: 0}
     - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: m_fogTransition.m_Curve.Array.data[2].time
-      value: 1
+      value: 0.9041748
       objectReference: {fileID: 0}
     - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: m_fogTransition.m_Curve.Array.data[0].value
@@ -1634,27 +1638,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: m_fogTransition.m_Curve.Array.data[1].value
-      value: 0.66377807
+      value: 0.78641295
       objectReference: {fileID: 0}
     - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: m_fogTransition.m_Curve.Array.data[2].value
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_snowStrength.m_Curve.Array.data[1].inSlope
+      value: 17.182812
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: m_fogTransition.m_Curve.Array.data[0].inSlope
-      value: 1.2545222
+      value: 1.4862987
       objectReference: {fileID: 0}
     - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: m_fogTransition.m_Curve.Array.data[1].inSlope
-      value: 0.98426664
+      value: 1.2670174
       objectReference: {fileID: 0}
     - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: m_fogTransition.m_Curve.Array.data[2].inSlope
-      value: 0.71401113
+      value: 0.08216414
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_snowStrength.m_Curve.Array.data[1].inWeight
+      value: 0.34166667
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
+      propertyPath: m_snowStrength.m_Curve.Array.data[1].outSlope
+      value: 17.182812
       objectReference: {fileID: 0}
     - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: m_fogTransition.m_Curve.Array.data[0].outSlope
-      value: 1.2545222
+      value: 1.4862987
       objectReference: {fileID: 0}
     - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: m_fogTransition.m_Curve.Array.data[1].inWeight
@@ -1662,15 +1678,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: m_fogTransition.m_Curve.Array.data[1].outSlope
-      value: 0.98426664
+      value: 1.2670174
       objectReference: {fileID: 0}
     - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: m_fogTransition.m_Curve.Array.data[2].inWeight
-      value: 0.33333334
+      value: 0.6887885
       objectReference: {fileID: 0}
     - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: m_fogTransition.m_Curve.Array.data[2].outSlope
-      value: 0.71401113
+      value: 0.08216414
       objectReference: {fileID: 0}
     - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: m_fogTransition.m_Curve.Array.data[0].outWeight
@@ -1678,7 +1694,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: m_fogTransition.m_Curve.Array.data[1].outWeight
-      value: 0.33333334
+      value: 0.21122937
       objectReference: {fileID: 0}
     - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: m_fogTransition.m_Curve.Array.data[0].tangentMode
@@ -1686,11 +1702,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: m_fogTransition.m_Curve.Array.data[1].tangentMode
-      value: 34
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1249485716652292017, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: m_fogTransition.m_Curve.Array.data[2].tangentMode
-      value: 34
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3725072147384594218, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
@@ -6598,8 +6614,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_bend: {x: -1, y: -1.04, z: 0.98}
-  m_branchBend: {x: 0, y: 0.1, z: 0}
-  m_speed: 0.2
+  m_branchBend: {x: 0, y: 0.29, z: 0}
+  m_speed: 0.4
   m_branchSpeed: 2
 --- !u!1 &1041353115
 GameObject:
