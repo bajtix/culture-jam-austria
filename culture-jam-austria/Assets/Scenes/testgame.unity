@@ -6597,10 +6597,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d2ef3c6737addce97446911f524205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bend: {x: -1, y: 0.98, z: -1.04}
-  m_branchBend: {x: 0, y: 0, z: 0.1}
+  m_bend: {x: -1, y: -1.04, z: 0.98}
+  m_branchBend: {x: 0, y: 0.1, z: 0}
   m_speed: 0.2
-  m_branchSpeed: 1
+  m_branchSpeed: 2
 --- !u!1 &1041353115
 GameObject:
   m_ObjectHideFlags: 0
