@@ -10,6 +10,7 @@ public class PlayerController : PlayerComponent {
     public Camera Camera => m_camera;
 
     [SerializeField] private float m_speed = 4;
+    [SerializeField] private float m_sprintSpeed = 7;
     [SerializeField] private float m_lookPitchLimit = 85;
     [SerializeField] private float m_viewSens = 16, m_interactionSens = .2f;
     [SerializeField] private float m_zeroingSpeed = 2f;
@@ -19,17 +20,28 @@ public class PlayerController : PlayerComponent {
     private float m_yaw, m_pitch;
     private Vector2 m_mouseOffset;
 
-
+	private float m_acc = 0;
+	private float m_cameraYpos;
+	[SerializeField] private float m_stepSpeed;
+	[SerializeField] private float m_stepIntensity;
     private void Start() {
         if (Game.Input == null) Debug.LogError("No game input found!");
 
         Cursor.lockState = CursorLockMode.Locked;
-    }
+		m_cameraYpos = m_camera.transform.localPosition.y;
+
+	}
 
     private void FixedUpdate() {
         var input = Game.Input.Player.Move.ReadValue<Vector2>();
         float speedModifier = m_speedModifiers.Count == 0 ? 1 : m_speedModifiers.Aggregate((a, b) => new("", a.Value * b.Value)).Value;
-        float speed = m_speed * speedModifier;
+        float speed = speedModifier;
+
+		if (Game.Input.Player.Sprint.ReadValue<float>()>0) {
+			speed *= m_sprintSpeed;
+		} else {
+			speed *= m_speed;
+		}
 
         var movement = transform.TransformDirection(new Vector3(
             input.x, 0, input.y
@@ -40,6 +52,7 @@ public class PlayerController : PlayerComponent {
         else movement.y = 0;
 
         m_controller.Move(movement);
+		m_acc += new Vector3(m_controller.velocity.x,0, m_controller.velocity.z).magnitude * m_stepSpeed;
     }
 
     private void Update() {
@@ -53,7 +66,7 @@ public class PlayerController : PlayerComponent {
             if (m_pitch > m_lookPitchLimit) m_pitch = m_lookPitchLimit;
             if (m_pitch < -m_lookPitchLimit) m_pitch = -m_lookPitchLimit; // TODO: fix that
         }
-
+		m_camera.transform.localPosition = new Vector3(m_camera.transform.localPosition.x, m_cameraYpos+Mathf.Sin(m_acc)*m_stepIntensity, m_camera.transform.localPosition.z);
         m_camera.transform.localRotation = Quaternion.AngleAxis(m_pitch, Vector3.right);
         transform.rotation = Quaternion.AngleAxis(m_yaw, Vector3.up);
 

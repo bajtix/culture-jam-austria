@@ -9,6 +9,16 @@ public class Game : MonoBehaviour {
 	private static bool m_hasBelt;
 	private static bool m_hasPlank;
 
+	private static bool m_isSafe;
+
+	public static void SetSafe(bool value) {
+		m_isSafe = value;
+	}
+
+	public static bool IsSafe() {
+		return m_isSafe;
+	}
+
 	public static bool CanCraft() {
 		return m_hasBelt&&m_hasPlank;
 	}
