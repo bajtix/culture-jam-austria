@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using NaughtyAttributes;
+using System;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : PlayerComponent {
@@ -9,27 +10,58 @@ public class PlayerController : PlayerComponent {
     [BoxGroup("Components")][SerializeField] private Camera m_camera;
     public Camera Camera => m_camera;
 
-    [SerializeField] private float m_speed = 4;
-    [SerializeField] private float m_lookPitchLimit = 85;
-    [SerializeField] private float m_viewSens = 16, m_interactionSens = .2f;
-    [SerializeField] private float m_zeroingSpeed = 2f;
+    [BoxGroup("Speed")][SerializeField] private float m_speed = 4;
+    [BoxGroup("Speed")][SerializeField] private float m_sprintSpeedMultiplier = 1.4f, m_tiredSpeedMultiplier = 0.9f;
+    [BoxGroup("Speed")][SerializeField][Tooltip("Max sprint time in seconds")] private float m_stamina = 4;
+    [BoxGroup("Speed")][SerializeField] private float m_staminaRegenMultiplier = 0.5f;
+    [BoxGroup("Mouse Look")][SerializeField] private float m_lookPitchLimit = 85;
+    [BoxGroup("Mouse Look")][SerializeField] private float m_viewSens = 16, m_interactionSens = .2f;
+    [BoxGroup("Mouse Look")][SerializeField] private float m_zeroingSpeed = 2f;
+
+    private float m_currentStamina;
+    private bool m_tired = false;
 
     private Dictionary<string, float> m_speedModifiers = new Dictionary<string, float>();
     private KeyValuePair<string, (float, Vector3)>? m_viewModifier = null;
-    private float m_yaw, m_pitch;
+    [SerializeField][ReadOnly] private float m_yaw, m_pitch;
     private Vector2 m_mouseOffset;
+
+    [ShowNativeProperty] public float Stamina => m_currentStamina / m_stamina;
+    [ShowNativeProperty] public bool IsTired => m_tired;
+    [ShowNativeProperty] public bool IsSprinting => Game.Input.Player.Sprint.IsPressed() && !m_tired;
+    [ShowNativeProperty] public float MaxSpeed => m_speed * EvaluateSpeedModifier() * EvaluateSprintModifier();
+    [ShowNativeProperty] public float Velocity => new Vector2(m_controller.velocity.x, m_controller.velocity.z).magnitude;
 
 
     private void Start() {
         if (Game.Input == null) Debug.LogError("No game input found!");
 
+        SetLook(transform.rotation.eulerAngles.y, m_camera.transform.localEulerAngles.x > 180 ? m_camera.transform.localEulerAngles.x - 360 : m_camera.transform.localEulerAngles.x);
+
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private float EvaluateSpeedModifier() {
+        return m_speedModifiers.Count == 0 ? 1 : m_speedModifiers.Aggregate((a, b) => new("", a.Value * b.Value)).Value;
+    }
+
+    private float EvaluateSprintModifier() {
+        float sprintModifier = 1;
+
+        if (IsSprinting) {
+            sprintModifier = m_sprintSpeedMultiplier;
+        } else if (m_tired) {
+            sprintModifier = m_tiredSpeedMultiplier;
+        }
+
+        return sprintModifier;
     }
 
     private void FixedUpdate() {
         var input = Game.Input.Player.Move.ReadValue<Vector2>();
-        float speedModifier = m_speedModifiers.Count == 0 ? 1 : m_speedModifiers.Aggregate((a, b) => new("", a.Value * b.Value)).Value;
-        float speed = m_speed * speedModifier;
+        StaminaCalculations(input);
+
+        float speed = m_speed * EvaluateSpeedModifier() * EvaluateSprintModifier();
 
         var movement = transform.TransformDirection(new Vector3(
             input.x, 0, input.y
@@ -40,6 +72,25 @@ public class PlayerController : PlayerComponent {
         else movement.y = 0;
 
         m_controller.Move(movement);
+    }
+
+    private void StaminaCalculations(Vector2 inputs) {
+        float inputMagnitude = Mathf.Clamp01(inputs.magnitude);
+        if (IsSprinting) {
+            if (m_currentStamina > 0) {
+                m_currentStamina -= Time.fixedDeltaTime * inputMagnitude;
+            } else {
+                m_tired = true;
+            }
+
+        } else {
+            if (m_currentStamina < m_stamina) {
+                m_currentStamina += Time.fixedDeltaTime * m_staminaRegenMultiplier;
+            } else {
+                m_tired = false;
+            }
+        }
+        m_currentStamina = Mathf.Clamp(m_currentStamina, 0, m_stamina);
     }
 
     private void Update() {
@@ -112,4 +163,16 @@ public class PlayerController : PlayerComponent {
             Debug.LogWarning("removing nonexisting view modifier " + name);
         }
     }
+
+    public void SetLook(float yaw, float pitch) {
+        m_yaw = yaw;
+        m_pitch = pitch;
+    }
+
+    public void SetPosition(Vector3 position) {
+        m_controller.enabled = false;
+        transform.position = position;
+        m_controller.enabled = true;
+    }
+
 }
