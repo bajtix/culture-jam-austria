@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class CraftingAreaActivator : MonoBehaviour, IInteractable {
+public class CraftingAreaActivator : Interactable {
 
 	[SerializeField] private GameObject m_progressBar;
 	[SerializeField] private TextMeshProUGUI m_scoreBar;
@@ -19,24 +19,18 @@ public class CraftingAreaActivator : MonoBehaviour, IInteractable {
 	private Vector3 targetPosition;
 	private float score = 0;
 
-	string IInteractable.Tooltip => "Craft";
+	public override string Tooltip => "Craft";
 
-	void IInteractable.HighlightBegin(Player player) {
-
-	}
-	void IInteractable.HighlightEnd(Player player) {
-
-	}
-	bool IInteractable.CanInteract(Player player) => Game.CanCraft();
-	bool IInteractable.CanStopInteraction(Player player) => true;
-	bool IInteractable.InteractionOver(Player player) => false;
-	void IInteractable.InteractionStart(Player player) {	
+	public override bool CanInteract(Player player) => Game.CanCraft();
+	public override bool CanStopInteraction(Player player) => true;
+	public override bool InteractionOver(Player player) => false;
+	public override void InteractionStart(Player player) {
 		pointerTransform = GetComponent<Transform>();
 		targetPosition = pointB.position;
 		Game.Player.Controller.AddSpeedModifier("Stop", 0f);
-		m_progressBar.SetActive(true);		
+		m_progressBar.SetActive(true);
 	}
-	void IInteractable.InteractionUpdate(Player player) {
+	public override void InteractionUpdate(Player player) {
 		m_scoreBar.text = score.ToString();
 
 		pointerTransform.position = Vector3.MoveTowards(pointerTransform.position, targetPosition, moveSpeed * Time.deltaTime);
@@ -58,13 +52,10 @@ public class CraftingAreaActivator : MonoBehaviour, IInteractable {
 			m_progressBar.SetActive(false);
 		}
 	}
-	void IInteractable.InteractionFixedUpdate(Player player) {
-
-	}
-	void IInteractable.InteractionEnd(Player player) {
+	public override void InteractionEnd(Player player) {
 		Game.Player.Controller.RemoveSpeedModifier("Stop");
 	}
-	void CheckSuccess() {
+	private void CheckSuccess() {
 		if (RectTransformUtility.RectangleContainsScreenPoint(safeZone, pointerTransform.position, null)) {
 			score++;
 		} else {

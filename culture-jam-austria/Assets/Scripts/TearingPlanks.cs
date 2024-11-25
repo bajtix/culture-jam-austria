@@ -2,7 +2,7 @@ using UnityEngine;
 
 using DG.Tweening;
 
-public class TearingPlanks : MonoBehaviour, IInteractable {
+public class TearingPlanks : Interactable {
 	[SerializeField] private GameObject plank;
 	[SerializeField] private GameObject m_canvasInfoTearing;
 	private float m_durationShake = 1f;
@@ -16,26 +16,21 @@ public class TearingPlanks : MonoBehaviour, IInteractable {
 	}
 	public string Tooltip => "Tear Planks";
 
-	public bool CanInteract(Player player) => true;
-	public bool CanStopInteraction(Player player) => false;
-	public void HighlightBegin(Player player) {
+	public override bool CanInteract(Player player) => true;
+	public override bool CanStopInteraction(Player player) => false;
 
-	}
-	public void HighlightEnd(Player player) {
-
-	}
-	public void InteractionEnd(Player player) {
+	public override void InteractionEnd(Player player) {
 		Game.GivePlank();
 	}
-	public void InteractionStart(Player player) {
+	public override void InteractionStart(Player player) {
 		m_canvasInfoTearing.SetActive(true);
 	}
-	public void InteractionUpdate(Player player) {
+	public override void InteractionUpdate(Player player) {
 		var mouseMovement = Game.Input.Player.Look.ReadValue<Vector2>();
 		var leftMouseClick = Game.Input.UI.Click.IsPressed();
 		if (leftMouseClick) {
 			m_canvasInfoTearing.SetActive(false);
-			if(mouseMovement.x > 0 || mouseMovement.y > 0) {
+			if (mouseMovement.x > 0 || mouseMovement.y > 0) {
 				transform.DOShakePosition(m_durationShake, m_strengthShake, m_vibratoShake, m_randomnessShake);
 			}
 			if (mouseMovement.x > 30 || mouseMovement.y > 20) {
@@ -47,9 +42,7 @@ public class TearingPlanks : MonoBehaviour, IInteractable {
 		}
 
 	}
-	public void InteractionFixedUpdate(Player player) {
-	}
-	public bool InteractionOver(Player player) {
+	public override bool InteractionOver(Player player) {
 		return plank.activeSelf == false;
 	}
 
