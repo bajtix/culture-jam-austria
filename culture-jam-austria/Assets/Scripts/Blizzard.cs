@@ -4,11 +4,12 @@ using UnityEngine;
 public class Blizzard : MonoBehaviour {
     [SerializeField] private float m_target = 0.1f;
     [SerializeField] private float m_changeSpeed = 0.1f;
-    [SerializeField] private float m_cameraBackgroundBrightness = 0.98f;
+    [SerializeField] private AnimationCurve m_cameraBackgroundBrightness = AnimationCurve.Constant(0, 1, 1.05f);
+    [SerializeField] private AnimationCurve m_fogTransition = AnimationCurve.Linear(0, 1, 0, 1);
 
     [SerializeField] private Gradient m_fogColor;
-    [SerializeField][NaughtyAttributes.MinMaxSlider(0, 100)] private Vector2 m_minimumFog;
-    [SerializeField][NaughtyAttributes.MinMaxSlider(0, 100)] private Vector2 m_maximumFog;
+    [SerializeField][MinMaxSlider(0, 100)] private Vector2 m_minimumFog;
+    [SerializeField][MinMaxSlider(0, 100)] private Vector2 m_maximumFog;
     [SerializeField] private AnimationCurve m_snowStrength = AnimationCurve.Linear(0, 0, 1, 1);
     [SerializeField] private AnimationCurve m_snowSpeed = AnimationCurve.Linear(0, 0, 1, 1);
     [SerializeField] private ParticleSystem m_snow;
@@ -24,17 +25,18 @@ public class Blizzard : MonoBehaviour {
     }
 
     private void Update() {
-        m_snow.transform.position = Game.Player.transform.position + m_snowHeight * Vector3.up + Game.Player.transform.forward * m_snowForward;
+        var tracked = /* Game.Player.transform */ Camera.main.transform;
+        m_snow.transform.position = tracked.position + m_snowHeight * Vector3.up + tracked.forward * m_snowForward;
         m_intensity = Mathf.Lerp(m_intensity, m_target, m_changeSpeed * Time.deltaTime);
-        if (Mathf.Abs(m_intensity - m_target) > 0.05f)
-            UpdateEffect();
+        // if (Mathf.Abs(m_intensity - m_target) > 0.05f)
+        UpdateEffect();
     }
 
     private void UpdateEffect() {
-        RenderSettings.fogStartDistance = Mathf.Lerp(m_minimumFog.x, m_maximumFog.x, m_intensity);
-        RenderSettings.fogEndDistance = Mathf.Lerp(m_minimumFog.y, m_maximumFog.y, m_intensity);
+        RenderSettings.fogStartDistance = Mathf.Lerp(m_minimumFog.x, m_maximumFog.x, m_fogTransition.Evaluate(m_intensity));
+        RenderSettings.fogEndDistance = Mathf.Lerp(m_minimumFog.y, m_maximumFog.y, m_fogTransition.Evaluate(m_intensity));
         RenderSettings.fogColor = m_fogColor.Evaluate(m_intensity);
-        Camera.main.backgroundColor = m_fogColor.Evaluate(m_intensity) * m_cameraBackgroundBrightness;
+        Camera.main.backgroundColor = m_fogColor.Evaluate(m_intensity) * m_cameraBackgroundBrightness.Evaluate(m_intensity);
 
         var em = m_snow.emission;
         em.rateOverTime = m_snowStrength.Evaluate(m_intensity);
