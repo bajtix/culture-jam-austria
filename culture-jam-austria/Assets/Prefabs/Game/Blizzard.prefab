@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5525929527761545242}
   - component: {fileID: 1249485716652292017}
+  - component: {fileID: 7171727003177733227}
   m_Layer: 0
   m_Name: Blizzard
   m_TagString: Untagged
@@ -71,6 +72,39 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  m_fogTransition:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1.4862987
+      outSlope: 1.4862987
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5291083
+      value: 0.78641295
+      inSlope: 1.2670174
+      outSlope: 1.2670174
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.21122937
+    - serializedVersion: 3
+      time: 0.9041748
+      value: 1
+      inSlope: 0.08216414
+      outSlope: 0.08216414
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.6887885
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   m_fogColor:
     serializedVersion: 2
     key0: {r: 0.8820755, g: 0.8820755, b: 0.8820755, a: 0.8980392}
@@ -103,6 +137,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   m_minimumFog: {x: 11.904762, y: 64.581436}
   m_maximumFog: {x: 0, y: 20.354948}
+  m_snow: {fileID: 3725072147384594218}
   m_snowStrength:
     serializedVersion: 2
     m_Curve:
@@ -116,13 +151,13 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.9079493
+      time: 0.7793232
       value: 350.562
-      inSlope: 39.875267
-      outSlope: 39.875267
+      inSlope: 17.182812
+      outSlope: 17.182812
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.25
+      inWeight: 0.34166667
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -151,9 +186,33 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_snow: {fileID: 3725072147384594218}
   m_snowHeight: 15
   m_snowForward: 5
+  m_wind: {fileID: 7171727003177733227}
+  m_windIntensity:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0.6
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1.6
+      inSlope: 0.6
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   m_noiseIntensity:
     serializedVersion: 2
     m_Curve:
@@ -179,7 +238,28 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   m_fogScreenspace: {fileID: 2100000, guid: 08c91e9b75db447a6a0ece7b6323fd8e, type: 2}
-  m_intensity: 0.4118672
+  m_intensity: 0.0000011926612
+--- !u!114 &7171727003177733227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7496448834680118468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41d2ef3c6737addce97446911f524205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_bend: {x: -1, y: -1.04, z: 0.98}
+  m_branchBend: {x: 0, y: 0.29, z: 0}
+  m_speed: 0.4
+  m_branchSpeed: 2
+  m_changeSpeed: 0.5
+  m_bendMultiplier: 1
+  m_speedMultiplier: 1
+  m_actualBendMultiplier: 1.0000002
+  m_actualSpeedMultiplier: 1.0000002
 --- !u!1 &7555357395161588220
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,13 +286,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7555357395161588220}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.70617604, y: 0.036261696, z: 0.036261667, w: 0.70617676}
-  m_LocalPosition: {x: 1.52, y: 14.999999, z: -2.59}
+  m_LocalRotation: {x: 0.6997018, y: 0.10206362, z: 0.10206353, w: 0.69970244}
+  m_LocalPosition: {x: 0.32104492, y: 8.668286, z: -6.5771904}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5525929527761545242}
-  m_LocalEulerAnglesHint: {x: 95.879, y: -90.00101, z: -90.00101}
+  m_LocalEulerAnglesHint: {x: 106.59799, y: -90, z: -90}
 --- !u!198 &3725072147384594218
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -349,7 +429,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 11.275424
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1050,7 +1130,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 102.387344
       minScalar: 10
       maxCurve:
         serializedVersion: 2
