@@ -4,14 +4,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DiggingSystem : MonoBehaviour, IInteractable {
+public class DiggingSystem : Interactable {
 	[SerializeField] private GameObject m_canvasDiggingBar;
 	[SerializeField] private Image m_diggingProgressFill;
 	[SerializeField] private float m_fillSpeed = 0.1f;
-	private GameObject[] m_snowElementsList;
+	[SerializeField] private GameObject[] m_snowElementsList;
 	private bool m_diggingActivate = false;
 	private bool m_dugUp = false;
-	public string Tooltip => "Digging system";
+	public override string Tooltip => "Digging system";
 
 	private void Start() {
 		m_snowElementsList = GameObject.FindGameObjectsWithTag("Snow");
@@ -24,25 +24,20 @@ public class DiggingSystem : MonoBehaviour, IInteractable {
 			m_snowElementsList[numberTab].SetActive(false);
 		}
 	}
-	public void HighlightBegin(Player player) {
 
-	}
-	public void HighlightEnd(Player player) {
-
-	}
-	public bool CanInteract(Player player) {
+	public override bool CanInteract(Player player) {
 		return !m_diggingActivate;
 	}
-	public bool CanStopInteraction(Player player) {
+	public override bool CanStopInteraction(Player player) {
 		return true;
 	}
-	bool IInteractable.InteractionOver(Player player)  => false;
-	public void InteractionStart(Player player) {
+	public override bool InteractionOver(Player player) => false;
+	public override void InteractionStart(Player player) {
 		print("Interaction start");
 		ShowDiggingProgressBar(true);
 		Game.Player.Controller.AddViewModifier("digging", transform.position, 0.6f);
 	}
-	public void InteractionUpdate(Player player) {
+	public override void InteractionUpdate(Player player) {
 		var mouseMovement = Game.Input.Player.Look.ReadValue<Vector2>().normalized;
 		var leftMouseClick = Game.Input.UI.Click.IsPressed();
 		if (leftMouseClick) {
@@ -55,12 +50,12 @@ public class DiggingSystem : MonoBehaviour, IInteractable {
 			ShowDiggingProgressBar(false);
 			player.Controller.RemoveViewModifier("digging");
 			m_dugUp = true;
+			Game.GiveBelt();
 		}
 	}
-	public void InteractionFixedUpdate(Player player) {
 
-	}
-	public void InteractionEnd(Player player) {
+	public override void InteractionEnd(Player player) {
+		player.Controller.RemoveViewModifier("digging");
 		ShowDiggingProgressBar(false);
 	}
 }
