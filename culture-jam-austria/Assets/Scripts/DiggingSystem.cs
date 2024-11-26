@@ -3,52 +3,64 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class DiggingSystem : Interactable {
-	[SerializeField] private GameObject m_canvasDiggingBar;
+	[SerializeField] private GameObject m_diggingCanvas;
 	[SerializeField] private Image m_diggingProgressFill;
-	[SerializeField] private Vector3 m_screenPosition;
-	[SerializeField] private Vector3 m_worldPosition;
-
 	[SerializeField] private float m_fillSpeed = 0.2f;
+	[SerializeField] private float m_howOften = 0.1f;
+
+	private Vector3 m_mouseScreenPosition;
+	private Vector3 m_mouseWorldPosition;
+
+	private float m_indexDig = 1;
 	private bool m_dugUp = false;
 
 	public override string Tooltip => "Dig up the body";
 
-	private void ShowDiggingProgressBar(bool status) {
-		m_canvasDiggingBar.SetActive(status);
+	private void DigUp() {
+		//removing a piece of snow
 	}
 
 	public override bool CanInteract(Player player) => !m_dugUp;
 	public override bool CanStopInteraction(Player player) => true;
 	public override bool InteractionOver(Player player) => m_dugUp;
 	public override void InteractionStart(Player player) {
-		Debug.Log("Interaction start");
-		ShowDiggingProgressBar(true);
-		Game.Player.Controller.AddViewModifier("diggingView", transform.position, 0.6f);
+		Debug.Log("->> Interaction START <<--");
+
+		m_diggingCanvas.SetActive(true);
 		Game.Player.Controller.AddSpeedModifier("diggingSpeed", 0f);
 	}
 
 	public override void InteractionUpdate(Player player) {
-		m_screenPosition = Input.mousePosition;
-		m_screenPosition.z = Camera.main.nearClipPlane +1;
-		m_worldPosition = Camera.main.ScreenToWorldPoint(m_screenPosition);
+		m_mouseScreenPosition = Input.mousePosition;
+		m_mouseScreenPosition.z = Game.Player.Controller.Camera.nearClipPlane + 1;
+		m_mouseWorldPosition = Game.Player.Controller.Camera.ScreenToWorldPoint(m_mouseScreenPosition);
 
 		var mouseMovement = Game.Input.Player.Look.ReadValue<Vector2>().normalized;
-		var leftMouseClick = Game.Input.UI.Click.IsPressed();
-		if (leftMouseClick && mouseMovement.y < 0 && m_worldPosition.y > 0.6 & m_worldPosition.y < 1.5) {
-			m_diggingProgressFill.fillAmount += Math.Abs(mouseMovement.y * m_fillSpeed * Time.deltaTime);
+		bool leftMouseClick = Game.Input.UI.Click.IsPressed();
 
+		if (leftMouseClick && mouseMovement.y < 0 && m_mouseWorldPosition.y > 0.6 & m_mouseWorldPosition.y < 1.5) {
+			m_diggingProgressFill.fillAmount += Math.Abs(mouseMovement.y * m_fillSpeed * Time.deltaTime);
+			if (m_diggingProgressFill.fillAmount > (m_howOften * m_indexDig)) {
+				DigUp();
+				Debug.Log("You dug up a piece of snow: " + m_indexDig);
+				m_indexDig = m_indexDig + 1;
+			}
 		}
+
 		if (m_diggingProgressFill.fillAmount == 1) {
 			m_dugUp = true;
 		}
 	}
 
 	public override void InteractionEnd(Player player) {
-		Debug.Log("The body was dug up");
-		Debug.Log("Interaction end");
-		player.Controller.RemoveViewModifier("diggingView");
+		if (m_dugUp) {
+			Debug.Log("The body was dug up");
+			Game.GiveBelt();
+		}
+
 		player.Controller.RemoveSpeedModifier("diggingSpeed");
-		ShowDiggingProgressBar(false);
-		Game.GiveBelt();
+		m_diggingCanvas.SetActive(false);
+
+		Debug.Log("-->> Interaction END <<--");
 	}
 }

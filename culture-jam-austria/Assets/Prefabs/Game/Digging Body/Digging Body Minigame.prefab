@@ -440,9 +440,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8d639aeb703220408ebcb3afa344bce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_canvasDiggingBar: {fileID: 3557419913209195418}
+  m_diggingCanvas: {fileID: 3557419913209195418}
   m_diggingProgressFill: {fileID: 7700284382749575451}
-  m_fillSpeed: 0.2
+  m_fillSpeed: 0.1
 --- !u!65 &313712943683427646
 BoxCollider:
   m_ObjectHideFlags: 0
