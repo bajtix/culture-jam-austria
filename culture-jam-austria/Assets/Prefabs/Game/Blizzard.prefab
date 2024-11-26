@@ -137,7 +137,33 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   m_minimumFog: {x: 11.904762, y: 64.581436}
   m_maximumFog: {x: 0, y: 20.354948}
+  m_minimumVignette: {x: 0.2, y: 0.9}
+  m_maximumVignette: {x: 0, y: 0.7}
   m_snow: {fileID: 3725072147384594218}
+  m_snowAngle:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 30
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 30
+      inSlope: 30
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   m_snowStrength:
     serializedVersion: 2
     m_Curve:
@@ -237,8 +263,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_fogScreenspace: {fileID: 2100000, guid: 08c91e9b75db447a6a0ece7b6323fd8e, type: 2}
-  m_intensity: 6e-45
+  m_postproccessing: {fileID: 2100000, guid: 08c91e9b75db447a6a0ece7b6323fd8e, type: 2}
+  m_intensity: 0.025760332
 --- !u!114 &7171727003177733227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,9 +283,9 @@ MonoBehaviour:
   m_branchSpeed: 2
   m_changeSpeed: 0.5
   m_bendMultiplier: 1
-  m_speedMultiplier: 1
+  m_speedMultiplier: 1.0008631
   m_actualBendMultiplier: 1.0000002
-  m_actualSpeedMultiplier: 1.0000002
+  m_actualSpeedMultiplier: 1.047065
 --- !u!1 &7555357395161588220
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +312,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7555357395161588220}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6997018, y: 0.10206362, z: 0.10206353, w: 0.69970244}
+  m_LocalRotation: {x: 0.71185946, y: -0, z: -0, w: 0.702322}
   m_LocalPosition: {x: -0.04990816, y: 12.792361, z: -6.24713}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -428,9 +454,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startSpeed:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 10.308806
-      minScalar: 5
+      minMaxState: 3
+      scalar: 10.7269745
+      minScalar: 7.508882
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1130,7 +1156,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 99.44077
+      scalar: 100.23162
       minScalar: 10
       maxCurve:
         serializedVersion: 2

@@ -6,12 +6,29 @@ public class GameController : MonoBehaviour {
     [ReadOnly][SerializeField] private bool m_isSafe;
     [ReadOnly][SerializeField] private bool m_stormStrengthening, m_monsterHunting;
     [ReadOnly][SerializeField] private float m_insideTime, m_outsideTime, m_stormTime;
-    [SerializeField] private float m_minimalStormDirectionChangeTime;
-    [SerializeField] private float m_dangerousStormTime = 20;
-    [SerializeField] private float m_deadlyStormTime = 40;
-    [SerializeField] private float m_monsterSatisfiedTime = 50;
 
-    public bool Safe => m_isSafe;
+    [SerializeField] private float m_stormRecessionRate = 2;
+
+
+    [InfoBox("How long does it take for the storm to start receeding/proceeding")]
+    [SerializeField] private float m_minimalStormDirectionChangeTime;
+
+    [InfoBox("When the storm reaches this level, the monster hunt starts - there is no coming back, it WILL progress to the next stage")]
+    [SerializeField] private float m_huntingStartStormTime = 20;
+
+    [InfoBox("When the storm reaches this level, the player cannot survive outside of the shelter")]
+    [SerializeField] private float m_deadlyStormTime = 40;
+
+    [InfoBox("When the storm reaches this level, we advance to the next stage and allow the storm to recede.")]
+    [SerializeField] private float m_huntingEndStormTime = 50;
+
+    public bool IsPlayerSafe => m_isSafe;
+    public bool IsOutsideDeadly => m_stormTime >= m_deadlyStormTime;
+    public bool IsMonsterHunting => m_stormTime >= m_huntingStartStormTime;
+
+    public float StormDeadlyPercent => Mathf.Clamp01(m_stormTime / m_deadlyStormTime);
+    public float StormHuntingPercent => Mathf.Clamp01(m_stormTime / m_huntingStartStormTime);
+    public float StormEndHuntingPercent => Mathf.Clamp01(m_stormTime / m_huntingEndStormTime);
 
     public void SetSafe(bool to) {
         if (to != m_isSafe) {
@@ -39,7 +56,7 @@ public class GameController : MonoBehaviour {
 
                 if (!m_monsterHunting) {
                     m_stormStrengthening = false;
-                } else if (m_stormTime >= m_monsterSatisfiedTime) { // monster orgasm
+                } else if (m_stormTime >= m_huntingEndStormTime) { // monster orgasm
                     AdvanceStage();
                     m_monsterHunting = false;
                     m_stormStrengthening = false;
@@ -56,7 +73,7 @@ public class GameController : MonoBehaviour {
                 m_stormStrengthening = true;
             }
 
-            if (m_stormTime > m_dangerousStormTime) {
+            if (m_stormTime > m_huntingStartStormTime) {
                 m_monsterHunting = true;
             }
 
@@ -65,8 +82,8 @@ public class GameController : MonoBehaviour {
             }
         }
 
-        m_stormTime += (m_stormStrengthening ? 1 : -1) * Time.fixedDeltaTime;
-        m_stormTime = Mathf.Clamp(m_stormTime, 0, m_monsterSatisfiedTime);
+        m_stormTime += (m_stormStrengthening ? 1 : -m_stormRecessionRate) * Time.fixedDeltaTime;
+        m_stormTime = Mathf.Clamp(m_stormTime, 0, m_huntingEndStormTime);
 
         Game.Blizzard.SetIntensity(Mathf.Clamp01(m_stormTime / m_deadlyStormTime));
 
