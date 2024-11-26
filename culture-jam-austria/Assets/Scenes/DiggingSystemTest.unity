@@ -129,7 +129,6 @@ GameObject:
   m_Component:
   - component: {fileID: 23248487}
   - component: {fileID: 23248486}
-  - component: {fileID: 23248488}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -168,19 +167,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &23248488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 23248485}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72ac1c930e794d949a8c6bb0f8922a72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  diggingSystem: {fileID: 2139773437}
 --- !u!20 &106441772 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 2707479984104129005, guid: 15765197baad0ed499bc2863cd324704, type: 3}
@@ -942,7 +928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5457160831476131333, guid: 1f2aa1a6f7f7ec4438c31e52d5271b56, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5457160831476131333, guid: 1f2aa1a6f7f7ec4438c31e52d5271b56, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1031,9 +1017,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_canvasDiggingBar: {fileID: 462438223}
   m_diggingProgressFill: {fileID: 1277777709}
+  m_screenPosition: {x: 0, y: 0, z: 0}
+  m_worldPosition: {x: 0, y: 0, z: 0}
   m_fillSpeed: 0.2
-  screenPosition: {x: 0, y: 0, z: 0}
-  worldPosition: {x: 0, y: 0, z: 0}
 --- !u!65 &1141415919
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1859,17 +1845,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &2139773437 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5442731204060715681, guid: 1f2aa1a6f7f7ec4438c31e52d5271b56, type: 3}
-  m_PrefabInstance: {fileID: 1127133647}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8d639aeb703220408ebcb3afa344bce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
