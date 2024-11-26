@@ -32,8 +32,8 @@ public class DiggingSystem : Interactable {
 
 	public override void InteractionUpdate(Player player) {
 		m_mouseScreenPosition = Input.mousePosition;
-		m_mouseScreenPosition.z = Game.Player.Controller.Camera.nearClipPlane + 1;
-		m_mouseWorldPosition = Game.Player.Controller.Camera.ScreenToWorldPoint(m_mouseScreenPosition);
+		m_mouseScreenPosition.z = Game.Player.Camera.nearClipPlane + 1;
+		m_mouseWorldPosition = Game.Player.Camera.ScreenToWorldPoint(m_mouseScreenPosition);
 
 		var mouseMovement = Game.Input.Player.Look.ReadValue<Vector2>().normalized;
 		bool leftMouseClick = Game.Input.UI.Click.IsPressed();
