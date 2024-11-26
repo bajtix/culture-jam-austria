@@ -18,7 +18,7 @@ RenderSettings:
   m_FogColor: {r: 0.8820755, g: 0.8820755, b: 0.8820755, a: 0.8980392}
   m_FogMode: 1
   m_FogDensity: 0.01
-  m_LinearFogStart: 11.904761
+  m_LinearFogStart: 11.904762
   m_LinearFogEnd: 64.581436
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
@@ -9321,7 +9321,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 9de8efb6dceaa88b8a88c4ea19d42608, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

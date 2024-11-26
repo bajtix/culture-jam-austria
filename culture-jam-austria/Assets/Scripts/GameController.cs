@@ -150,6 +150,7 @@ public class GameController : MonoBehaviour {
 
 
     private void KillPlayer() {
+        if (Game.UI.Debug) Game.UI.Debug.JournalLog("Player died!!");
         Debug.Log("PLAYER DIED");
         onPlayerDied.Invoke();
     }
