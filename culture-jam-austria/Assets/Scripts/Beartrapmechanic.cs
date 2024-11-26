@@ -61,7 +61,9 @@ public class Beartrapmechanic : Interactable {
 
     public override bool CanStopInteraction(Player player) => false;
 
-    public override void InteractionStart(Player player) {
+	public override bool InteractionOver(Player player) => m_timeSinceDefusing >= m_defuseTime;
+
+	public override void InteractionStart(Player player) {
         print("Interakcja start");
         m_defusingcircle.SetActive(true);
         player.Controller.AddSpeedModifier("defusing", 0);
@@ -74,24 +76,15 @@ public class Beartrapmechanic : Interactable {
     public override void InteractionUpdate(Player player) {
         m_timeSinceDefusing += Time.deltaTime;
         m_defusingSlider.value = m_timeSinceDefusing / m_defuseTime * 3;
-        if (m_timeSinceDefusing >= m_defuseTime) {
-            print("Trap defused");
-            player.Controller.RemoveSpeedModifier("defusing");
-            m_isTrapDefused = true;
-            Game.Player.Controller.RemoveSpeedModifier("Stop");
-            m_defusingcircle.SetActive(false);
-        }
+      
     }
 
     public override void InteractionEnd(Player player) {
-        print("Interakcja koniec");
+        print("Trap defused");
         player.Controller.RemoveSpeedModifier("defusing");
+        m_defusingcircle.SetActive(false);
+        print("Interakcja koniec");
         m_isTrapDefused = true;
-        Game.Player.Controller.RemoveSpeedModifier("Stop");
-        if (!m_isTrapDefused) {
-            player.Controller.RemoveSpeedModifier("defusing");
-            m_defusingcircle.SetActive(false);
-        }
         if (m_defusingSlider != null) {
             m_defusingSlider.value = 0f;
         }
