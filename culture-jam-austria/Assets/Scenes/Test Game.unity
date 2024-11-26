@@ -15,11 +15,11 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
   m_Fog: 1
-  m_FogColor: {r: 0.8820755, g: 0.8820755, b: 0.8820755, a: 0.8980392}
+  m_FogColor: {r: 0.881099, g: 0.8810867, b: 0.8810867, a: 0.8983034}
   m_FogMode: 1
   m_FogDensity: 0.01
-  m_LinearFogStart: 11.904762
-  m_LinearFogEnd: 64.581436
+  m_LinearFogStart: 11.858889
+  m_LinearFogEnd: 64.41102
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -1618,15 +1618,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3725072147384594218, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
-      value: 10.308806
+      value: 10.343207
       objectReference: {fileID: 0}
     - target: {fileID: 3725072147384594218, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 99.44077
+      value: 99.44893
       objectReference: {fileID: 0}
     - target: {fileID: 3725072147384594218, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: InitialModule.startSpeed.minScalar
-      value: 7.2161646
+      value: 7.240245
       objectReference: {fileID: 0}
     - target: {fileID: 3725072147384594218, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
@@ -1690,11 +1690,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8125039500209215414, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.706627
       objectReference: {fileID: 0}
     - target: {fileID: 8125039500209215414, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.7071068
+      value: 0.7075862
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8566,22 +8566,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8384726165279999876, guid: ad8b024d7f311f160b61827718c130f7, type: 3}
-      propertyPath: m_text
-      value: <line-height=0><align=left>test<br><align=right>dupa<line-height=1em><br><align=left>test<br>
-      objectReference: {fileID: 0}
-    - target: {fileID: 8384726165279999876, guid: ad8b024d7f311f160b61827718c130f7, type: 3}
-      propertyPath: m_fontSize
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 8384726165279999876, guid: ad8b024d7f311f160b61827718c130f7, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 8384726165279999876, guid: ad8b024d7f311f160b61827718c130f7, type: 3}
-      propertyPath: m_enableAutoSizing
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10950,19 +10934,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2707479984104129005, guid: 15765197baad0ed499bc2863cd324704, type: 3}
       propertyPath: m_BackGroundColor.a
-      value: 0.9429411
+      value: 0.9432182
       objectReference: {fileID: 0}
     - target: {fileID: 2707479984104129005, guid: 15765197baad0ed499bc2863cd324704, type: 3}
       propertyPath: m_BackGroundColor.b
-      value: 0.92617923
+      value: 0.9251407
       objectReference: {fileID: 0}
     - target: {fileID: 2707479984104129005, guid: 15765197baad0ed499bc2863cd324704, type: 3}
       propertyPath: m_BackGroundColor.g
-      value: 0.92617923
+      value: 0.9251407
       objectReference: {fileID: 0}
     - target: {fileID: 2707479984104129005, guid: 15765197baad0ed499bc2863cd324704, type: 3}
       propertyPath: m_BackGroundColor.r
-      value: 0.92617923
+      value: 0.92515355
       objectReference: {fileID: 0}
     - target: {fileID: 4532838585268513909, guid: 15765197baad0ed499bc2863cd324704, type: 3}
       propertyPath: m_Name
