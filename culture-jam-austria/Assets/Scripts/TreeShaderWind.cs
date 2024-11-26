@@ -31,7 +31,6 @@ public class TreeShaderWind : MonoBehaviour {
     private void Update() {
         m_actualBendMultiplier = Mathf.Lerp(m_actualBendMultiplier, m_bendMultiplier, Time.deltaTime * m_changeSpeed);
         if (Mathf.Abs(m_actualBendMultiplier - m_bendMultiplier) > 0.001) {
-            print("update bend");
             Shader.SetGlobalVector("_Bend", m_bend * m_actualBendMultiplier);
             Shader.SetGlobalVector("_BranchBend", m_branchBend * m_actualBendMultiplier);
         }

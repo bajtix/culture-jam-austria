@@ -229,7 +229,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <line-height=0><align=left>test<br><align=right>dupa<line-height=1em><br><align=left>test<br>
+  m_text: debug ui
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -747,6 +747,7 @@ GameObject:
   - component: {fileID: 2582135951170828781}
   - component: {fileID: 5480745087230260044}
   - component: {fileID: 6034528899135991172}
+  - component: {fileID: 7405589872243395595}
   m_Layer: 5
   m_Name: Debug Pane
   m_TagString: Untagged
@@ -829,6 +830,18 @@ MonoBehaviour:
   m_progressBar: {fileID: 5108109460365453551}
   m_statusText: {fileID: 8384726165279999876}
   m_journal: {fileID: 3888610930402172090}
+--- !u!114 &7405589872243395595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3435814691792837411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccc3ce85d5fc3ca47848dffaaa750498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4883357951967028536
 GameObject:
   m_ObjectHideFlags: 0
