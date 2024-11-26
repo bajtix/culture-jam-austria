@@ -49,10 +49,11 @@ Material:
     - _Pixelate: 256
     - _Pixelate_Red: 40
     - _Pixelation: 128
+    - _Skip: 1
     - _Vignette: 1
-    - _White_Noise_Intensity: 0.00013199565
+    - _White_Noise_Intensity: 0.098304
     - _White_Noise_Speed: 300
-    - _Wiggle_Noise_Intensity: 0.00011666458
+    - _Wiggle_Noise_Intensity: 0.0017026346
     - _Wiggle_Noise_Scale: 100
     - _Wiggle_Noise_Speed: 2
     m_Colors:
@@ -60,6 +61,6 @@ Material:
     - _Isolated: {r: 1, g: 0, b: 0, a: 0}
     - _Saturation: {r: 0.3, g: 1, b: 0, a: 0}
     - _Value: {r: 0, g: 1, b: 0, a: 0}
-    - _Vignette_Control: {r: 0.19717629, g: 0.89717627, b: 0, a: 0}
+    - _Vignette_Control: {r: 0.2, g: 0.9, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
