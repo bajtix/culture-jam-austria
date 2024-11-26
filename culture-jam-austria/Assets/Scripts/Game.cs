@@ -6,7 +6,21 @@ public class Game : MonoBehaviour {
     private static GameInput m_input;
     private static Game m_instance;
 
-    public static GameInput Input {
+	private static bool m_hasBelt;
+	private static bool m_hasPlank;
+
+	public static bool CanCraft() {
+		return m_hasBelt&&m_hasPlank;
+	}
+
+	public static void GiveBelt() {
+		m_hasBelt = true;
+	}
+	public static void GivePlank() {
+		m_hasPlank = true;
+	}
+
+	public static GameInput Input {
         get {
             if (m_input == null) {
                 m_input = new GameInput();
