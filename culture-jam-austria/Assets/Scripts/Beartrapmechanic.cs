@@ -2,8 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Beartrapmechanic : Interactable {
-    [SerializeField] private GameObject Defusingcircle;
-    [SerializeField] private Slider defusingSlider;
+    [SerializeField] private GameObject m_defusingcircle;
+    [SerializeField] private Slider m_defusingSlider;
     private float m_trapworktime = 5f;
     private bool m_isTrapActivated = false;
     private float m_timeSinceActivated = 0f;
@@ -16,23 +16,23 @@ public class Beartrapmechanic : Interactable {
     public override string Tooltip => m_isTrapDefused ? "Trap defused" : "Defuse trap";
 
     private void Start() {
-        if (defusingSlider != null) {
-            defusingSlider.value = 0f;
-            defusingSlider.maxValue = m_defuseTime;
+        if (m_defusingSlider != null) {
+            m_defusingSlider.value = 0f;
+            m_defusingSlider.maxValue = m_defuseTime;
         }
     }
 
     private void Update() {
         if (m_isTrapActivated && !m_isTrapDefused) {
             m_timeSinceActivated += Time.deltaTime;
-            defusingSlider.value = m_timeSinceActivated / m_trapworktime * 3;
+            m_defusingSlider.value = m_timeSinceActivated / m_trapworktime * 3;
             if (m_timeSinceActivated >= m_trapworktime) {
                 Game.Player.Controller.RemoveSpeedModifier("Stop");
                 m_isTrapActivated = false;
                 m_timeSinceActivated = 0f;
-                Defusingcircle.SetActive(false);
-                if (defusingSlider != null) {
-                    defusingSlider.value = 0f;
+                m_defusingcircle.SetActive(false);
+                if (m_defusingSlider != null) {
+                    m_defusingSlider.value = 0f;
                 }
             }
             if (m_isTrapDefused) {
@@ -43,9 +43,9 @@ public class Beartrapmechanic : Interactable {
     private void OnTriggerEnter(Collider other) {
         if (!other.CompareTag("Player") || m_isTrapDefused) return;
         Trap_effect();
-        Defusingcircle.SetActive(true);
-        if (defusingSlider != null) {
-            defusingSlider.value = 0f;
+        m_defusingcircle.SetActive(true);
+        if (m_defusingSlider != null) {
+            m_defusingSlider.value = 0f;
         }
 
     }
@@ -61,39 +61,32 @@ public class Beartrapmechanic : Interactable {
 
     public override bool CanStopInteraction(Player player) => false;
 
-    public override void InteractionStart(Player player) {
+	public override bool InteractionOver(Player player) => m_timeSinceDefusing >= m_defuseTime;
+
+	public override void InteractionStart(Player player) {
         print("Interakcja start");
-        Defusingcircle.SetActive(true);
+        m_defusingcircle.SetActive(true);
         player.Controller.AddSpeedModifier("defusing", 0);
         m_timeSinceDefusing = 0f;
-        if (defusingSlider != null) {
-            defusingSlider.maxValue = m_defuseTime;
+        if (m_defusingSlider != null) {
+            m_defusingSlider.maxValue = m_defuseTime;
         }
 
     }
     public override void InteractionUpdate(Player player) {
         m_timeSinceDefusing += Time.deltaTime;
-        defusingSlider.value = m_timeSinceDefusing / m_defuseTime * 3;
-        if (m_timeSinceDefusing >= m_defuseTime) {
-            print("Trap defused");
-            player.Controller.RemoveSpeedModifier("defusing");
-            m_isTrapDefused = true;
-            Game.Player.Controller.RemoveSpeedModifier("Stop");
-            Defusingcircle.SetActive(false);
-        }
+        m_defusingSlider.value = m_timeSinceDefusing / m_defuseTime * 3;
+      
     }
 
     public override void InteractionEnd(Player player) {
-        print("Interakcja koniec");
+        print("Trap defused");
         player.Controller.RemoveSpeedModifier("defusing");
+        m_defusingcircle.SetActive(false);
+        print("Interakcja koniec");
         m_isTrapDefused = true;
-        Game.Player.Controller.RemoveSpeedModifier("Stop");
-        if (!m_isTrapDefused) {
-            player.Controller.RemoveSpeedModifier("defusing");
-            Defusingcircle.SetActive(false);
-        }
-        if (defusingSlider != null) {
-            defusingSlider.value = 0f;
+        if (m_defusingSlider != null) {
+            m_defusingSlider.value = 0f;
         }
     }
 }
