@@ -51,13 +51,14 @@ public class PlayerRemarkZone : MonoBehaviour {
             if (m_whichStage != null && m_whichStage != Game.Controller.CurrentStage) return;
             if (m_oneShot && m_played) return;
 
-            //Game.Player.Cutscene.PlayVoiceline(m_voiceline);
+            Game.Player.Cutscene.PlayVoiceline(m_voiceline);
             Debug.Log("rem " + m_voiceline.text);
             AddModifiers();
             Invoke(nameof(RemoveModifiers), m_voiceline.Duration);
 
             m_played = true;
             m_inRange = false;
+            m_stay = 0;
         }
 
     }

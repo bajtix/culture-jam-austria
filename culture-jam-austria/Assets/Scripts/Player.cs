@@ -15,6 +15,7 @@ public class Player : MonoBehaviour {
     [BoxGroup("Components")][SerializeField] private PlayerBrush m_brush;
     [BoxGroup("Components")][SerializeField] private PlayerInteractor m_interactor;
     [BoxGroup("Components")][SerializeField] private PlayerCameraFx m_cameraFx;
+    [BoxGroup("Components")][SerializeField] private PlayerCutsceneController m_cutsceneController;
 
     public PlayerState State => m_state;
     public Camera Camera => m_camera;
@@ -22,4 +23,5 @@ public class Player : MonoBehaviour {
     public PlayerBrush Brush => m_brush;
     public PlayerInteractor Interactor => m_interactor;
     public PlayerCameraFx CameraFx => m_cameraFx;
+    public PlayerCutsceneController Cutscene => m_cutsceneController;
 }

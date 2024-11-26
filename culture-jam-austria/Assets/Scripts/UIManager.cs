@@ -7,9 +7,11 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI m_interactionTooltip;
     [SerializeField] private UIPlayerStatus m_uiPlayerStatus;
     [SerializeField] private UIDebugPane m_uiDebugPane;
+    [SerializeField] private UISubtitles m_uiSubtitles;
 
     public UIPlayerStatus PlayerStatus => m_uiPlayerStatus;
     public UIDebugPane Debug => m_uiDebugPane;
+    public UISubtitles Subtitles => m_uiSubtitles;
 
     private void Start() {
         HideInteractionTooltip();
