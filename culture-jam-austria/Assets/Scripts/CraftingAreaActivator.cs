@@ -31,7 +31,7 @@ public class CraftingAreaActivator : Interactable {
 	}
 
 	public override bool CanInteract(Player player) => !m_craftingSuccess;
-	public override bool CanStopInteraction(Player player) => true;
+	public override bool CanStopInteraction(Player player) => false;
 	public override bool InteractionOver(Player player) => m_craftingSuccess;
 	public override void InteractionStart(Player player) {
 		Debug.Log("->> Interaction START <<--");

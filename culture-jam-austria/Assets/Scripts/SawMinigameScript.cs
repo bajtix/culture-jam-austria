@@ -17,10 +17,10 @@ public class SawMinigameScript : Interactable {
 	private float m_timeLimit = 2f;
 	private bool m_promptActive = false;
 	private float m_nextPromptDelay = 0f;
-	private float m_sliderMinValue = 0f; 
-	private float m_sliderMaxValue = 1f; 
-	private float m_sliderStep = 0.003f; 
-	private float m_sliderCenterValue = 0.5f; 
+	private float m_sliderMinValue = 0f;
+	private float m_sliderMaxValue = 1f;
+	private float m_sliderStep = 0.002f;
+	private float m_sliderCenterValue = 0.5f;
 	private float m_sliderTolerance = 0.1f;
 	private float m_timeOutsideRange = 0f;
 
