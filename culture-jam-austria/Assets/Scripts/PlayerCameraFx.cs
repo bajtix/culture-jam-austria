@@ -9,10 +9,8 @@ public class PlayerCameraFx : PlayerComponent {
         public float verticalFrequency;
     }
 
-    [SerializeField] private Camera m_camera;
     [SerializeField] private float m_smoothing = 2;
     [SerializeField] private BobType m_walking, m_sprinting, m_panting;
-    public Camera Camera => m_camera;
 
 
     private Vector3 m_cameraPosition;
@@ -23,7 +21,7 @@ public class PlayerCameraFx : PlayerComponent {
     private float m_shakeTimeLeft;
 
     private void Start() {
-        m_cameraPosition = m_camera.transform.localPosition;
+        m_cameraPosition = Player.Camera.transform.localPosition;
     }
 
     private Vector3 EvaluateBobbing(BobType type, float time) {
@@ -47,7 +45,7 @@ public class PlayerCameraFx : PlayerComponent {
         m_bobbingTime += walkspeed * Time.deltaTime;
 
 
-        m_camera.transform.localPosition = m_cameraPosition + vtoa + m_shakeVector;
+        Player.Camera.transform.localPosition = m_cameraPosition + vtoa + m_shakeVector;
     }
 
     private void FixedUpdate() {

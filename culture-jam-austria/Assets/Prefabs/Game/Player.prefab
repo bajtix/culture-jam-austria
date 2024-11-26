@@ -27,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4186025733962282008}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27067536, y: 0.000000059604645, z: -0.00000011175871, w: 0.96267074}
-  m_LocalPosition: {x: 0, y: 0.674, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6809027331582040217}
-  m_LocalEulerAnglesHint: {x: 31.409, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &2707479984104129005
 Camera:
   m_ObjectHideFlags: 0
@@ -44,7 +44,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.48584908, g: 0.48584908, b: 0.48584908, a: 0}
+  m_BackGroundColor: {r: 0.92617923, g: 0.92617923, b: 0.92617923, a: 0.9429411}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 8071082901373507057}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_state: 0
+  m_camera: {fileID: 2707479984104129005}
   m_controller: {fileID: 9206175945323899959}
   m_brush: {fileID: 28916422524878361}
   m_interactor: {fileID: 2636783713170832327}
@@ -287,7 +288,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_player: {fileID: 6638721736955259059}
   m_controller: {fileID: 6999068270183338304}
-  m_camera: {fileID: 2707479984104129005}
   m_speed: 4
   m_sprintSpeedMultiplier: 1.4
   m_tiredSpeedMultiplier: 0.7
@@ -313,7 +313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_player: {fileID: 6638721736955259059}
   m_camera: {fileID: 2707479984104129005}
-  m_maxDistance: 1
+  m_maxDistance: 2.5
   m_interactionMask:
     serializedVersion: 2
     m_Bits: 2147483647
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4532838585268513909}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0420f13f04c1638118e8e9925734b26c, type: 3}
   m_Name: 
@@ -349,6 +349,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_player: {fileID: 6638721736955259059}
+  m_postprocessing: {fileID: 2100000, guid: 08c91e9b75db447a6a0ece7b6323fd8e, type: 2}
+  m_disturbanceIntensity:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_noiseIntensity:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.0077691474
+      outSlope: 0.0077691474
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0
+      outWeight: 0.7509551
+    - serializedVersion: 3
+      time: 1
+      value: 0.554245
+      inSlope: 0.11742812
+      outSlope: 0.11742812
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.16845447
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_dangerNotifySpeed: 1
 --- !u!114 &8071082901373507057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,7 +412,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_player: {fileID: 6638721736955259059}
-  m_camera: {fileID: 2707479984104129005}
   m_smoothing: 2
   m_walking:
     horizontalStrength: 0.08

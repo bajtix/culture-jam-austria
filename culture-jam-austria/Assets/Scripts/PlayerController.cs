@@ -7,8 +7,6 @@ using System;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : PlayerComponent {
     [BoxGroup("Components")][SerializeField] private CharacterController m_controller;
-    [BoxGroup("Components")][SerializeField] private Camera m_camera;
-    public Camera Camera => m_camera;
 
     [BoxGroup("Speed")][SerializeField] private float m_speed = 4;
     [BoxGroup("Speed")][SerializeField] private float m_sprintSpeedMultiplier = 1.4f, m_tiredSpeedMultiplier = 0.9f;
@@ -36,7 +34,8 @@ public class PlayerController : PlayerComponent {
     private void Start() {
         if (Game.Input == null) Debug.LogError("No game input found!");
 
-        SetLook(transform.rotation.eulerAngles.y, m_camera.transform.localEulerAngles.x > 180 ? m_camera.transform.localEulerAngles.x - 360 : m_camera.transform.localEulerAngles.x);
+        SetLook(transform.rotation.eulerAngles.y, Player.Camera.transform.localEulerAngles.x > 180 ? Player.Camera.transform.localEulerAngles.x - 360 : Player.Camera.transform.localEulerAngles.x);
+        m_currentStamina = m_stamina;
 
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -105,7 +104,7 @@ public class PlayerController : PlayerComponent {
             if (m_pitch < -m_lookPitchLimit) m_pitch = -m_lookPitchLimit; // TODO: fix that
         }
 
-        m_camera.transform.localRotation = Quaternion.AngleAxis(m_pitch, Vector3.right);
+        Player.Camera.transform.localRotation = Quaternion.AngleAxis(m_pitch, Vector3.right);
         transform.rotation = Quaternion.AngleAxis(m_yaw, Vector3.up);
 
         if (m_viewModifier != null) {
@@ -115,11 +114,11 @@ public class PlayerController : PlayerComponent {
             if (mouseMovement.magnitude < 0.002f) m_mouseOffset = Vector2.Lerp(m_mouseOffset, Vector2.zero, Time.deltaTime * m_zeroingSpeed);
             var destPoint = m_viewModifier.Value.Value.Item2;
 
-            var offsetLook = m_camera.transform.up * m_mouseOffset.y + m_camera.transform.right * m_mouseOffset.x;
-            var vec = (destPoint + offsetLook - m_camera.transform.position).normalized;
+            var offsetLook = Player.Camera.transform.up * m_mouseOffset.y + Player.Camera.transform.right * m_mouseOffset.x;
+            var vec = (destPoint + offsetLook - Player.Camera.transform.position).normalized;
 
             var desiredLook = Quaternion.LookRotation(vec, Vector3.up);
-            m_camera.transform.rotation = Quaternion.Lerp(m_camera.transform.rotation, desiredLook, m_viewModifier.Value.Value.Item1);
+            Player.Camera.transform.rotation = Quaternion.Lerp(Player.Camera.transform.rotation, desiredLook, m_viewModifier.Value.Value.Item1);
         }
     }
 
