@@ -86,12 +86,12 @@ public class GameController : MonoBehaviour {
         m_stormTime += (m_stormStrengthening ? 1 : -m_stormRecessionRate) * Time.fixedDeltaTime;
         m_stormTime = Mathf.Clamp(m_stormTime, 0, m_huntingEndStormTime);
 
-        Game.Blizzard.SetIntensity(Mathf.Clamp01(m_stormTime / m_deadlyStormTime));
+        Game.Blizzard?.SetIntensity(Mathf.Clamp01(m_stormTime / m_deadlyStormTime));
 
-        Game.UI.Debug.SetProgressBar(Mathf.Clamp01(m_stormTime / m_deadlyStormTime));
-        Game.UI.Debug.SetStatusVar("Safe", m_playerSafe);
-        Game.UI.Debug.SetStatusVar("Monster Hunt", m_monsterHunting);
-        Game.UI.Debug.SetStatusVar("Outside Deadly", IsOutsideDeadly);
+        Game.UI.Debug?.SetProgressBar(Mathf.Clamp01(m_stormTime / m_deadlyStormTime));
+        Game.UI.Debug?.SetStatusVar("Safe", m_playerSafe);
+        Game.UI.Debug?.SetStatusVar("Monster Hunt", m_monsterHunting);
+        Game.UI.Debug?.SetStatusVar("Outside Deadly", IsOutsideDeadly);
     }
 
     private void AdvanceStage() {

@@ -15,6 +15,13 @@ public class TreeShaderWind : MonoBehaviour {
 
 
 
+    private void Start() {
+        Shader.SetGlobalVector("_Bend", m_bend * m_actualBendMultiplier);
+        Shader.SetGlobalVector("_BranchBend", m_branchBend * m_actualBendMultiplier);
+        Shader.SetGlobalFloat("_Speed", m_speed * m_actualSpeedMultiplier);
+        Shader.SetGlobalFloat("_BranchSpeed", m_branchSpeed * m_actualSpeedMultiplier);
+    }
+
     public void SetMultipliers(float bendMultiplier, float speedMultiplier) {
         m_bendMultiplier = bendMultiplier;
         m_speedMultiplier = speedMultiplier;
