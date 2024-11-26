@@ -1,9 +1,11 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Voice Line", menuName = "Game/VoiceLine")]
-public class PlayerVoiceline : ScriptableObject {
+public class PlayerVoiceline : ScriptableObject
+{
     [System.Serializable]
-    public enum VoiceLineType {
+    public enum VoiceLineType
+    {
         CutsceneDialogue,
         Remark,
         SoundEffect
@@ -13,4 +15,6 @@ public class PlayerVoiceline : ScriptableObject {
     public VoiceLineType type;
     [Multiline] public string text;
     public AudioClip audio;
+
+    public float Duration => audio.length;
 }
