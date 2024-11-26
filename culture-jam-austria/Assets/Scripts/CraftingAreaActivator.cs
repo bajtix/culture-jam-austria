@@ -21,7 +21,7 @@ public class CraftingAreaActivator : Interactable {
 
 	public override string Tooltip => "Craft";
 
-	public override bool CanInteract(Player player) => Game.CanCraft();
+	public override bool CanInteract(Player player) => true;
 	public override bool CanStopInteraction(Player player) => true;
 	public override bool InteractionOver(Player player) => false;
 	public override void InteractionStart(Player player) {

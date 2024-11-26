@@ -28,6 +28,7 @@ public class DiggingSystem : Interactable {
 
 		m_diggingCanvas.SetActive(true);
 		Game.Player.Controller.AddSpeedModifier("diggingSpeed", 0f);
+		Game.Player.Controller.AddViewModifier("diggingView", transform.position, 1f);
 	}
 
 	public override void InteractionUpdate(Player player) {
@@ -58,6 +59,7 @@ public class DiggingSystem : Interactable {
 			Game.GiveBelt();
 		}
 
+		player.Controller.RemoveViewModifier("diggingView");
 		player.Controller.RemoveSpeedModifier("diggingSpeed");
 		m_diggingCanvas.SetActive(false);
 
