@@ -1,21 +1,15 @@
 using System;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class DiggingSystem : Interactable {
 	[SerializeField] private GameObject m_canvasDiggingBar;
 	[SerializeField] private Image m_diggingProgressFill;
+	[SerializeField] private Vector3 m_screenPosition;
+	[SerializeField] private Vector3 m_worldPosition;
 	[SerializeField] private float m_fillSpeed = 0.2f;
 	private float m_percentageDig = 0;
 	private bool m_dugUp = false;
-
-	public Vector3 screenPosition;
-	public Vector3 worldPosition;
-	private Plane m_plane = new Plane(Vector3.up, 0);
-
 
 	public override string Tooltip => "Dig up the body";
 
@@ -38,15 +32,13 @@ public class DiggingSystem : Interactable {
 	}
 
 	public override void InteractionUpdate(Player player) {
-		screenPosition = Input.mousePosition;
-		screenPosition.z = Camera.main.nearClipPlane +1;
-		worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
-
+		m_screenPosition = Input.mousePosition;
+		m_screenPosition.z = Camera.main.nearClipPlane +1;
+		m_worldPosition = Camera.main.ScreenToWorldPoint(m_screenPosition);
 
 		var mouseMovement = Game.Input.Player.Look.ReadValue<Vector2>().normalized;
 		var leftMouseClick = Game.Input.UI.Click.IsPressed();
-		if (leftMouseClick && mouseMovement.y < 0) {
-			Debug.Log(worldPosition.y);
+		if (leftMouseClick && mouseMovement.y < 0 && m_worldPosition.y > 0.5 & m_worldPosition.y < 1.5) {
 			m_diggingProgressFill.fillAmount += Math.Abs(mouseMovement.y * m_fillSpeed * Time.deltaTime);
 			m_percentageDig = m_diggingProgressFill.fillAmount;
 		}
