@@ -13,11 +13,13 @@ public class PlayerController : PlayerComponent {
     [BoxGroup("Speed")][SerializeField][Tooltip("Max sprint time in seconds")] private float m_stamina = 4;
     [BoxGroup("Speed")][SerializeField] private float m_staminaRegenMultiplier = 0.5f;
     [BoxGroup("Mouse Look")][SerializeField] private float m_lookPitchLimit = 85;
-    [BoxGroup("Mouse Look")][SerializeField] private float m_viewSens = 16, m_interactionSens = .2f;
+    [BoxGroup("Mouse Look")][SerializeField] private float m_viewSens = 16;
+    [BoxGroup("Mouse Look")][SerializeField] private float m_interactionSens = .2f;
     [BoxGroup("Mouse Look")][SerializeField] private float m_zeroingSpeed = 2f;
 
     private float m_currentStamina;
     private bool m_tired = false;
+
 
     private Dictionary<string, float> m_speedModifiers = new Dictionary<string, float>();
     private KeyValuePair<string, (float, Vector3)>? m_viewModifier = null;
@@ -94,19 +96,23 @@ public class PlayerController : PlayerComponent {
 
     private void Update() {
         var mouseMovement = Game.Input.Player.Look.ReadValue<Vector2>() * Time.deltaTime;
-        if (m_viewModifier == null) {
+        if (m_viewModifier == null || m_viewModifier.Value.Value.Item1 < 0.5f) {
             m_yaw += mouseMovement.x * m_viewSens;
-            m_pitch -= mouseMovement.y * m_viewSens;
+            m_pitch += mouseMovement.y * m_viewSens;
             if (m_yaw > 360) m_yaw %= 360;
             if (m_yaw < 0) m_yaw = 360 - m_yaw;
 
             if (m_pitch > m_lookPitchLimit) m_pitch = m_lookPitchLimit;
             if (m_pitch < -m_lookPitchLimit) m_pitch = -m_lookPitchLimit; // TODO: fix that
         }
+        var playerWantsToLook = new Vector3(
+            Mathf.Cos(m_pitch * Mathf.Deg2Rad) * Mathf.Sin(m_yaw * Mathf.Deg2Rad),
+            Mathf.Sin(m_pitch * Mathf.Deg2Rad),
+            Mathf.Cos(m_pitch * Mathf.Deg2Rad) * Mathf.Cos(m_yaw * Mathf.Deg2Rad)
+        );
 
-        Player.Camera.transform.localRotation = Quaternion.AngleAxis(m_pitch, Vector3.right);
-        transform.rotation = Quaternion.AngleAxis(m_yaw, Vector3.up);
 
+        var desiredLook = Quaternion.LookRotation(playerWantsToLook, Vector3.up);
         if (m_viewModifier != null) {
             mouseMovement *= m_interactionSens;
             m_mouseOffset += mouseMovement;
@@ -117,9 +123,14 @@ public class PlayerController : PlayerComponent {
             var offsetLook = Player.Camera.transform.up * m_mouseOffset.y + Player.Camera.transform.right * m_mouseOffset.x;
             var vec = (destPoint + offsetLook - Player.Camera.transform.position).normalized;
 
-            var desiredLook = Quaternion.LookRotation(vec, Vector3.up);
-            Player.Camera.transform.rotation = Quaternion.Lerp(Player.Camera.transform.rotation, desiredLook, m_viewModifier.Value.Value.Item1);
+            playerWantsToLook = Vector3.Lerp(playerWantsToLook, vec, m_viewModifier.Value.Value.Item1);
         }
+
+
+        transform.rotation = Quaternion.Euler(0, desiredLook.eulerAngles.y, 0);
+
+        desiredLook = Quaternion.LookRotation(playerWantsToLook, Vector3.up);
+        Player.Camera.transform.rotation = desiredLook;
     }
 
     public void AddSpeedModifier(string name, float value) {

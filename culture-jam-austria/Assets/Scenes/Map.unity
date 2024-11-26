@@ -9873,11 +9873,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_whichStage: {fileID: 0}
-  m_minimumStay: 0.5
-  m_oneShot: 0
+  m_minimumStay: 0.1
+  m_oneShot: 1
   m_voiceline: {fileID: 11400000, guid: ede1986b0a1e78e90b39150c35868d7c, type: 2}
   m_suggestedLook: {fileID: 1102391157}
+  m_lookStrength: 1
+  m_lookSpeed: 2
   m_speedModifier: 1
+  m_actualVm: 0
 --- !u!65 &1791380697
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9916,7 +9919,7 @@ Transform:
   m_GameObject: {fileID: 1791380695}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.71, y: 0.73, z: 20.78}
+  m_LocalPosition: {x: -3.16, y: 0.73, z: 15.93}
   m_LocalScale: {x: 8.4511, y: 8.4511, z: 8.4511}
   m_ConstrainProportionsScale: 0
   m_Children: []
