@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SawMinigame : MonoBehaviour, IInteractable {
+public class SawMinigame : Interactable {
     [SerializeField] private GameObject Defusingcircle;
     [SerializeField] private Slider defusingSlider;
     private float m_trapworktime = 5f;
@@ -13,7 +13,7 @@ public class SawMinigame : MonoBehaviour, IInteractable {
 
 
 
-    string IInteractable.Tooltip => m_isTrapDefused ? "Trap defused" : "Defuse trap";
+    public override string Tooltip => m_isTrapDefused ? "Trap defused" : "Defuse trap";
 
     private void Start() {
         if (defusingSlider != null) {
@@ -56,22 +56,17 @@ public class SawMinigame : MonoBehaviour, IInteractable {
         Game.Player.Controller.AddSpeedModifier("Stop", 0f);
     }
 
-    void IInteractable.HighlightBegin(Player player) {
 
-    }
-    void IInteractable.HighlightEnd(Player player) {
-
-    }
-    bool IInteractable.CanInteract(Player player) {
+    public override bool CanInteract(Player player) {
         return !m_isTrapDefused && !m_isTrapActivated;
     }
-    bool IInteractable.CanStopInteraction(Player player) {
+    public override bool CanStopInteraction(Player player) {
         return false;
     }
-    bool IInteractable.InteractionOver(Player player) {
+    public override bool InteractionOver(Player player) {
         return false;
     }
-    void IInteractable.InteractionStart(Player player) {
+    public override void InteractionStart(Player player) {
         print("Interakcja start");
         Defusingcircle.SetActive(true);
         player.Controller.AddSpeedModifier("defusing", 0);
@@ -81,7 +76,7 @@ public class SawMinigame : MonoBehaviour, IInteractable {
         }
 
     }
-    void IInteractable.InteractionUpdate(Player player) {
+    public override void InteractionUpdate(Player player) {
         m_timeSinceDefusing += Time.deltaTime;
         defusingSlider.value = m_timeSinceDefusing / m_defuseTime * 3;
         if (m_timeSinceDefusing >= m_defuseTime) {
@@ -92,10 +87,8 @@ public class SawMinigame : MonoBehaviour, IInteractable {
             Defusingcircle.SetActive(false);
         }
     }
-    void IInteractable.InteractionFixedUpdate(Player player) {
 
-    }
-    void IInteractable.InteractionEnd(Player player) {
+    public override void InteractionEnd(Player player) {
         print("Interakcja koniec");
         player.Controller.RemoveSpeedModifier("defusing");
         m_isTrapDefused = true;
