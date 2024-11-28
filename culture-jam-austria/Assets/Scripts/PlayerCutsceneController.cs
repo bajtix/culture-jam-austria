@@ -24,9 +24,7 @@ public class PlayerCutsceneController : PlayerComponent {
 
     private List<CameraEntry> m_cameraStack = new List<CameraEntry>();
 
-    private void Start() {
-        AddCamera("main", Player.PlayerCamera);
-    }
+    public float transitionSpeed = 4;
 
     public void AddCamera(string n, Tatzelcam c) {
         if (m_cameraStack.Where(a => a.name == n).Count() != 0) {
@@ -52,7 +50,7 @@ public class PlayerCutsceneController : PlayerComponent {
                 Player.CameraController.RemoveCam(m_cameraStack[i].name);
                 m_cameraStack.RemoveAt(i);
             } else {
-                m_cameraStack[i].w = Mathf.Lerp(m_cameraStack[i].w, m_cameraStack[i] == lastAndActive ? 1 : 0, Time.deltaTime);
+                m_cameraStack[i].w = Mathf.Lerp(m_cameraStack[i].w, m_cameraStack[i] == lastAndActive ? 1 : 0, Time.deltaTime * transitionSpeed);
                 if (m_cameraStack[i].w < 0.001f) m_cameraStack[i].w = 0;
                 if (m_cameraStack[i].w > 1 - 0.001f) m_cameraStack[i].w = 1;
                 Player.CameraController.AddCam(m_cameraStack[i].name, m_cameraStack[i].cam, m_cameraStack[i].w);
