@@ -15,10 +15,12 @@ public class TearingPlanks : Interactable {
 	public override bool CanStopInteraction(Player player) => false;
 
 	public override void InteractionEnd(Player player) {
+		player.Controller.RemoveSpeedModifier("tearingSpeed");
 		//give plank
 	}
 	public override void InteractionStart(Player player) {
 		m_canvasInfoTearing.SetActive(true);
+		Game.Player.Controller.AddSpeedModifier("tearingSpeed", 0f);
 	}
 	public override void InteractionUpdate(Player player) {
 		var mouseMovement = Game.Input.Player.Look.ReadValue<Vector2>();

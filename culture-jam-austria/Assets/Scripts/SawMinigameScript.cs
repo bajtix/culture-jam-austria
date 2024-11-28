@@ -60,15 +60,15 @@ public class SawMinigameScript : Interactable {
 
 
 	public override bool CanInteract(Player player) => !m_plankIsCut;
-	public override bool CanStopInteraction(Player player) => true;
+	public override bool CanStopInteraction(Player player) => false;
 	public override bool InteractionOver(Player player) => m_plankIsCut;
 	public override void InteractionStart(Player player) {
 		print("Start interaction");
 		m_sawMinigame.SetActive(true);
-		player.Controller.AddSpeedModifier("cutting", 0);
+		player.Controller.AddSpeedModifier("sawSpeed", 0f);
 		m_timer = 0f;
 		UpdatePrompt();
-		Game.Player.Controller.AddViewModifier("CUTTINGView", transform.position, 1f);
+		Game.Player.Controller.AddViewModifier("sawView", transform.position, 1f);
 	}
 
 	public override void InteractionUpdate(Player player) {
@@ -81,9 +81,9 @@ public class SawMinigameScript : Interactable {
 
 	public override void InteractionEnd(Player player) {
 		print("Stop interaction");
-		player.Controller.RemoveSpeedModifier("cutting");
+		player.Controller.RemoveSpeedModifier("sawSpeed");
 		m_timeLimit = 2f;
-		player.Controller.RemoveViewModifier("CUTTINGView");
+		player.Controller.RemoveViewModifier("sawView");
 	}
 
 	private void IsCorrectButton() {
