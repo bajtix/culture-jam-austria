@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UIElements;
 
-public class CraftingAreaActivator : Interactable {
+public class HammerSystem : Interactable {
 
 	[SerializeField] private GameObject m_progressBar;
 	[SerializeField] private TextMeshProUGUI m_scoreBar;
@@ -14,7 +14,6 @@ public class CraftingAreaActivator : Interactable {
 	[SerializeField] private float m_moveSpeed = 100f;
 	private bool m_craftingSuccess = false;
 
-	private float m_direction = 1f;
 	private RectTransform m_pointerTransform;
 	private Vector3 m_targetPosition;
 	private float m_score = 0;
@@ -33,7 +32,7 @@ public class CraftingAreaActivator : Interactable {
 	public override bool CanStopInteraction(Player player) => true;
 	public override bool InteractionOver(Player player) => m_craftingSuccess;
 	public override void InteractionStart(Player player) {
-		Debug.Log("->> Interaction START <<--");
+		Debug.Log("->> Hammer - interaction start <<--");
 
 		m_pointerTransform = m_pointer.GetComponent<RectTransform>();
 		m_targetPosition = m_pointA.position;
@@ -51,10 +50,8 @@ public class CraftingAreaActivator : Interactable {
 		if (Vector3.Distance(m_pointerTransform.position, m_pointA.position) < 0.1f) {
 			Debug.Log(m_pointerTransform.position);
 			m_targetPosition = m_pointB.position;
-			m_direction = 1f;
 		} else if (Vector3.Distance(m_pointerTransform.position, m_pointB.position) < 0.1f) {
 			m_targetPosition = m_pointA.position;
-			m_direction = -1f;
 		}
 
 		if (Input.GetKeyDown(KeyCode.Space)) {
@@ -71,6 +68,6 @@ public class CraftingAreaActivator : Interactable {
 		Game.Player.Controller.RemoveViewModifier("CraftingView");
 		m_progressBar.SetActive(false);
 
-		Debug.Log("-->> Interaction END <<--");
+		Debug.Log("-->> Hammer - interaction end <<--");
 	}
 }

@@ -60,7 +60,7 @@ public class SawMinigameScript : Interactable {
 
 
 	public override bool CanInteract(Player player) => !m_plankIsCut;
-	public override bool CanStopInteraction(Player player) => false;
+	public override bool CanStopInteraction(Player player) => true;
 	public override bool InteractionOver(Player player) => m_plankIsCut;
 	public override void InteractionStart(Player player) {
 		print("Start interaction");

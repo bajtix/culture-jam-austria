@@ -24,11 +24,11 @@ public class DiggingSystem : Interactable {
 	public override bool CanStopInteraction(Player player) => true;
 	public override bool InteractionOver(Player player) => m_dugUp;
 	public override void InteractionStart(Player player) {
-		Debug.Log("->> Interaction START <<--");
+		Debug.Log("->> Digging - interaction start <<--");
 
 		m_diggingCanvas.SetActive(true);
 		Game.Player.Controller.AddSpeedModifier("diggingSpeed", 0f);
-		Game.Player.Controller.AddViewModifier("diggingView", transform.position, 1f);
+		// Game.Player.Controller.AddViewModifier("diggingView", transform.position, 1f);
 	}
 
 	public override void InteractionUpdate(Player player) {
@@ -58,10 +58,10 @@ public class DiggingSystem : Interactable {
 			Debug.Log("The body was dug up");
 		}
 
-		player.Controller.RemoveViewModifier("diggingView");
+		// player.Controller.RemoveViewModifier("diggingView");
 		player.Controller.RemoveSpeedModifier("diggingSpeed");
 		m_diggingCanvas.SetActive(false);
 
-		Debug.Log("-->> Interaction END <<--");
+		Debug.Log("-->> Digging - interaction end <<--");
 	}
 }

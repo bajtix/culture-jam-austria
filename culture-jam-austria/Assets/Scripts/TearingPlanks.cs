@@ -4,10 +4,6 @@ using UnityEngine;
 public class TearingPlanks : Interactable {
 	[SerializeField] private GameObject m_plank;
 	[SerializeField] private GameObject m_canvasInfoTearing;
-	private float m_durationShake = 1f;
-	private float m_strengthShake = 0.5f;
-	private float m_randomnessShake = 1f;
-	private int m_vibratoShake = 1;
 	private int m_moveCount = 0;
 
 	private void DestroyPlanks() {
