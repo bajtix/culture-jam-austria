@@ -15,11 +15,11 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
   m_Fog: 1
-  m_FogColor: {r: 0.881099, g: 0.8810867, b: 0.8810867, a: 0.8983034}
+  m_FogColor: {r: 0.8820755, g: 0.8820755, b: 0.8820755, a: 0.8980392}
   m_FogMode: 1
   m_FogDensity: 0.01
-  m_LinearFogStart: 11.858889
-  m_LinearFogEnd: 64.41102
+  m_LinearFogStart: 11.904762
+  m_LinearFogEnd: 64.581436
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -1618,15 +1618,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3725072147384594218, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
-      value: 10.343207
+      value: 10.308806
       objectReference: {fileID: 0}
     - target: {fileID: 3725072147384594218, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 99.44893
+      value: 99.44077
       objectReference: {fileID: 0}
     - target: {fileID: 3725072147384594218, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: InitialModule.startSpeed.minScalar
-      value: 7.240245
+      value: 7.2161646
       objectReference: {fileID: 0}
     - target: {fileID: 3725072147384594218, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
@@ -1682,7 +1682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8125039500209215414, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.3
+      value: 11.2
       objectReference: {fileID: 0}
     - target: {fileID: 8125039500209215414, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1690,11 +1690,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8125039500209215414, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.706627
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 8125039500209215414, guid: d52728838b02c2cc3b4ebea0fdee0321, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.7075862
+      value: 0.7071068
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6363,11 +6363,26 @@ MonoBehaviour:
   m_insideTime: 0
   m_outsideTime: 0
   m_stormTime: 0
-  m_stormRecessionRate: 2
-  m_minimalStormDirectionChangeTime: 10
-  m_huntingStartStormTime: 60
-  m_deadlyStormTime: 80
-  m_huntingEndStormTime: 100
+  m_stages:
+  - {fileID: 11400000, guid: 1c0e38ed80893134895eed28d2dbc3b1, type: 2}
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerEnteredSafety:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitedSafety:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerDied:
+    m_PersistentCalls:
+      m_Calls: []
+  onGameLost:
+    m_PersistentCalls:
+      m_Calls: []
+  onGameWon:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1041353115
 GameObject:
   m_ObjectHideFlags: 0
@@ -10932,22 +10947,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2707479984104129005, guid: 15765197baad0ed499bc2863cd324704, type: 3}
-      propertyPath: m_BackGroundColor.a
-      value: 0.9432182
-      objectReference: {fileID: 0}
-    - target: {fileID: 2707479984104129005, guid: 15765197baad0ed499bc2863cd324704, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.9251407
-      objectReference: {fileID: 0}
-    - target: {fileID: 2707479984104129005, guid: 15765197baad0ed499bc2863cd324704, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0.9251407
-      objectReference: {fileID: 0}
-    - target: {fileID: 2707479984104129005, guid: 15765197baad0ed499bc2863cd324704, type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0.92515355
-      objectReference: {fileID: 0}
     - target: {fileID: 4532838585268513909, guid: 15765197baad0ed499bc2863cd324704, type: 3}
       propertyPath: m_Name
       value: Player

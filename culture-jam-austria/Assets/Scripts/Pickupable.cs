@@ -18,7 +18,7 @@ public class Pickupable : Interactable {
         m_collider.enabled = false;
     }
     public override void InteractionUpdate(Player player) {
-        transform.position = player.Camera.transform.position + player.Camera.transform.forward;
+        transform.position = player.PlayerCamera.transform.position + player.PlayerCamera.transform.forward;
     }
 
 }

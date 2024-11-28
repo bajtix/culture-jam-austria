@@ -1,7 +1,12 @@
 using UnityEngine;
 
-public class PlayerCutsceneController : MonoBehaviour {
+public class PlayerCutsceneController : PlayerComponent {
     [SerializeField] private AudioSource m_voiceSource;
+
+
+    private void Start() {
+        Player.CameraController.AddCam("main", Player.PlayerCamera, 1);
+    }
 
     public void PlayVoiceline(PlayerVoiceline line) {
         if (line.text.Contains("{"))
