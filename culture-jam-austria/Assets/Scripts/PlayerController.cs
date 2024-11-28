@@ -40,6 +40,8 @@ public class PlayerController : PlayerComponent {
         m_currentStamina = m_stamina;
 
         Cursor.lockState = CursorLockMode.Locked;
+
+        Player.Cutscene.AddCamera("main", Player.PlayerCamera);
     }
 
     private float EvaluateSpeedModifier() {
