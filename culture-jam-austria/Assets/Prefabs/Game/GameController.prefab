@@ -50,8 +50,23 @@ MonoBehaviour:
   m_insideTime: 0
   m_outsideTime: 0
   m_stormTime: 0
-  m_stormRecessionRate: 2
-  m_minimalStormDirectionChangeTime: 0
-  m_huntingStartStormTime: 20
-  m_deadlyStormTime: 40
-  m_huntingEndStormTime: 50
+  m_stages:
+  - {fileID: 11400000, guid: 1c0e38ed80893134895eed28d2dbc3b1, type: 2}
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerEnteredSafety:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitedSafety:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerDied:
+    m_PersistentCalls:
+      m_Calls: []
+  onGameLost:
+    m_PersistentCalls:
+      m_Calls: []
+  onGameWon:
+    m_PersistentCalls:
+      m_Calls: []
