@@ -37,7 +37,7 @@ public class TestClockMinigame : Interactable {
         m_timeLeft -= Time.fixedDeltaTime;
         m_display.value = m_timeLeft / m_totalTime;
         m_tdisplay?.SetText($"{m_timeLeft:0.0}s ({(m_totalTime - m_timeLeft) * 100 / m_totalTime:0}%)" + (m_canStop ? " [e] to stop" : ""));
-        m_display.transform.parent.LookAt(player.Camera.transform.position + player.Camera.transform.forward * 4);
+        m_display.transform.parent.LookAt(player.PlayerCamera.transform.position + player.PlayerCamera.transform.forward * 4);
     }
 
     public override bool CanStopInteraction(Player player) => m_canStop || m_timeLeft <= 0;
