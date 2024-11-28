@@ -61,6 +61,6 @@ Material:
     - _Isolated: {r: 1, g: 0, b: 0, a: 0}
     - _Saturation: {r: 0.3, g: 1, b: 0, a: 0}
     - _Value: {r: 0, g: 1, b: 0, a: 0}
-    - _Vignette_Control: {r: 0.2, g: 0.9, b: 0, a: 0}
+    - _Vignette_Control: {r: 0.19801353, g: 0.8980135, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
