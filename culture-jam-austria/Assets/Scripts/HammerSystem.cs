@@ -33,13 +33,12 @@ public class HammerSystem : Interactable {
 	public override bool InteractionOver(Player player) => m_craftingSuccess;
 	public override void InteractionStart(Player player) {
 		Debug.Log("->> Hammer - interaction start <<--");
-
+		m_progressBar.SetActive(true);
 		m_pointerTransform = m_pointer.GetComponent<RectTransform>();
 		m_targetPosition = m_pointA.position;
-		m_progressBar.SetActive(true);
 
-		Game.Player.Controller.AddSpeedModifier("CraftingSpeed", 0f);
-		Game.Player.Controller.AddViewModifier("CraftingView", GetComponent<BoxCollider>().transform.position, 0.5f);
+		player.Controller.AddSpeedModifier("CraftingSpeed", 0f);
+		player.Controller.AddViewModifier("CraftingView", GetComponent<BoxCollider>().transform.position, 0.5f);
 	}
 
 	public override void InteractionUpdate(Player player) {
@@ -64,8 +63,8 @@ public class HammerSystem : Interactable {
 	}
 
 	public override void InteractionEnd(Player player) {
-		Game.Player.Controller.RemoveSpeedModifier("CraftingSpeed");
-		Game.Player.Controller.RemoveViewModifier("CraftingView");
+		player.Controller.RemoveSpeedModifier("CraftingSpeed");
+		player.Controller.RemoveViewModifier("CraftingView");
 		m_progressBar.SetActive(false);
 
 		Debug.Log("-->> Hammer - interaction end <<--");
