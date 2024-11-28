@@ -51,9 +51,9 @@ Material:
     - _Pixelation: 190
     - _Skip: 0
     - _Vignette: 1
-    - _White_Noise_Intensity: 0.07431412
+    - _White_Noise_Intensity: 0.060124423
     - _White_Noise_Speed: 300
-    - _Wiggle_Noise_Intensity: 0.004060069
+    - _Wiggle_Noise_Intensity: 0.0037120613
     - _Wiggle_Noise_Scale: 100
     - _Wiggle_Noise_Speed: 2
     m_Colors:
