@@ -9,6 +9,7 @@ public class PlayerCutsceneController : MonoBehaviour {
         else
             Game.UI.Subtitles.SingleSubtitle(line.text, 0, line.Duration);
 
-        m_voiceSource.PlayOneShot(line.audio);
+        if (line.HasAudio)
+            m_voiceSource.PlayOneShot(line.audio);
     }
 }

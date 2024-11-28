@@ -23,6 +23,11 @@ public class RemarkZone : MonoBehaviour {
         m_inRange = true;
     }
 
+    public void RemotelyActivate() {
+        m_inRange = true;
+        m_stay = m_minimumStay;
+    }
+
     private void OnTriggerLeave(Collider col) {
         if (!col.CompareTag("Player")) return;
         m_inRange = false;
