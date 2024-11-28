@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7558872452529359431}
   - component: {fileID: 6146600780992473716}
+  - component: {fileID: 5493940506172113419}
   - component: {fileID: 4870659433105103220}
   m_Layer: 0
   m_Name: Digging Area
@@ -50,6 +51,20 @@ MonoBehaviour:
   m_diggingProgressFill: {fileID: 7700284382749575451}
   m_fillSpeed: 0.2
   m_howOften: 0.1
+  dugUp: 0
+--- !u!114 &5493940506172113419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249861162594775759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70f1480edc1c324fb3f0e5094babf5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_diggingSystem: {fileID: 6146600780992473716}
 --- !u!65 &4870659433105103220
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -635,6 +650,10 @@ PrefabInstance:
     - target: {fileID: 4083501151425157549, guid: 7077c0ce545a549e5967a71605595fa5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233112405309087440, guid: 7077c0ce545a549e5967a71605595fa5, type: 3}
+      propertyPath: m_Name
+      value: Belt
       objectReference: {fileID: 0}
     - target: {fileID: 7926839288223873370, guid: 7077c0ce545a549e5967a71605595fa5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'

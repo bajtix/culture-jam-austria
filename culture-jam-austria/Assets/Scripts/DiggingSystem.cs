@@ -12,7 +12,7 @@ public class DiggingSystem : Interactable {
 	private Vector3 m_mouseWorldPosition;
 
 	private float m_indexDig = 1;
-	private bool m_dugUp = false;
+	public bool dugUp = false;
 
 	public override string Tooltip => "Dig up the body";
 
@@ -20,41 +20,41 @@ public class DiggingSystem : Interactable {
 		//removing a piece of snow
 	}
 
-	public override bool CanInteract(Player player) => !m_dugUp;
+	public override bool CanInteract(Player player) => !dugUp;
 	public override bool CanStopInteraction(Player player) => true;
-	public override bool InteractionOver(Player player) => m_dugUp;
+	public override bool InteractionOver(Player player) => dugUp;
 	public override void InteractionStart(Player player) {
 		Debug.Log("->> Digging - interaction start <<--");
 
 		m_diggingCanvas.SetActive(true);
-		Game.Player.Controller.AddSpeedModifier("diggingSpeed", 0f);
+		player.Controller.AddSpeedModifier("diggingSpeed", 0f);
 		// Game.Player.Controller.AddViewModifier("diggingView", transform.position, 1f);
 	}
 
 	public override void InteractionUpdate(Player player) {
 		m_mouseScreenPosition = Input.mousePosition;
-		m_mouseScreenPosition.z = Game.Player.Camera.nearClipPlane + 1;
-		m_mouseWorldPosition = Game.Player.Camera.ScreenToWorldPoint(m_mouseScreenPosition);
+		m_mouseScreenPosition.z = player.Camera.nearClipPlane + 1;
+		m_mouseWorldPosition = player.Camera.ScreenToWorldPoint(m_mouseScreenPosition);
 
 		var mouseMovement = Game.Input.Player.Look.ReadValue<Vector2>().normalized;
 		bool leftMouseClick = Game.Input.UI.Click.IsPressed();
 
 		if (leftMouseClick && mouseMovement.y < 0 && m_mouseWorldPosition.y > 0.6 & m_mouseWorldPosition.y < 1.5) {
-			m_diggingProgressFill.fillAmount += Math.Abs(mouseMovement.y * m_fillSpeed * Time.deltaTime);
+			m_diggingProgressFill.fillAmount += Math.Abs(mouseMovement.y) * m_fillSpeed * 0.006f;
 			if (m_diggingProgressFill.fillAmount > (m_howOften * m_indexDig)) {
 				DigUp();
 				Debug.Log("You dug up a piece of snow: " + m_indexDig);
-				m_indexDig = m_indexDig + 1;
+				m_indexDig++;
 			}
 		}
 
 		if (m_diggingProgressFill.fillAmount == 1) {
-			m_dugUp = true;
+			dugUp = true;
 		}
 	}
 
 	public override void InteractionEnd(Player player) {
-		if (m_dugUp) {
+		if (dugUp) {
 			Debug.Log("The body was dug up");
 		}
 
