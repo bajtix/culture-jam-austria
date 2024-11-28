@@ -86,19 +86,20 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.unity.multiplayer.center": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.modules.uielements": "1.0.0"
-      }
-    },
     "com.unity.nuget.mono-cecil": {
       "version": "1.11.4",
       "depth": 3,
       "source": "registry",
       "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.polybrush": {
+      "version": "1.1.8",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.settings-manager": "2.0.1"
+      },
       "url": "https://packages.unity.com"
     },
     "com.unity.probuilder": {
@@ -220,23 +221,6 @@
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
       }
-    },
-    "com.unity.visualscripting": {
-      "version": "1.9.4",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.ugui": "1.0.0",
-        "com.unity.modules.jsonserialize": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "nrjwolf.games.attachattributes": {
-      "version": "https://github.com/Nrjwolf/unity-auto-attach-component-attributes.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "719b0afa8a1abd8765d71d6ce1cce7b97718bc59"
     },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",
