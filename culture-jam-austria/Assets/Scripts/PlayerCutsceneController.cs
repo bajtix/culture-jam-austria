@@ -24,11 +24,8 @@ public class PlayerCutsceneController : PlayerComponent {
 
     private List<CameraEntry> m_cameraStack = new List<CameraEntry>();
 
-<<<<<<< HEAD
     public float transitionSpeed = 4;
 
-=======
->>>>>>> 6c9aab2287d7df4a507e30f18e2116bd2e70fbf8
     public void AddCamera(string n, Tatzelcam c) {
         if (m_cameraStack.Where(a => a.name == n).Count() != 0) {
             throw new System.Exception("Cannot add another camera '" + n + "', it already is on the stack");
