@@ -579,7 +579,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6137461038844002127
 RectTransform:
   m_ObjectHideFlags: 0
@@ -753,7 +753,7 @@ MonoBehaviour:
   m_buttonDImage: {fileID: 2168237522768255531}
   m_scoreText: {fileID: 3725844540418041845}
   m_slider: {fileID: 3491258947810324512}
-  m_diggingProgressFill: {fileID: 986898704541142064}
+  m_progressFill: {fileID: 986898704541142064}
 --- !u!65 &2647072196655231718
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -807,8 +807,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 4346615659887544460}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 4, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

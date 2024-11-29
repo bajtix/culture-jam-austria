@@ -9,7 +9,7 @@ public class SawMinigameScript : Interactable {
 	[SerializeField] private Image m_buttonDImage;
 	[SerializeField] private TMP_Text m_scoreText;
 	[SerializeField] private Slider m_slider;
-	[SerializeField] private Image m_diggingProgressFill;
+	[SerializeField] private Image m_progressFill;
 
 	private bool m_plankIsCut = false;
 	private bool m_minigamefail = false;
@@ -25,8 +25,8 @@ public class SawMinigameScript : Interactable {
 		m_isA = UnityEngine.Random.Range(0, 2) == 0;
 		UpdatePrompt();
 		m_slider.value = 0.5f;
-		if (m_diggingProgressFill != null) {
-			m_diggingProgressFill.fillAmount = 0f;
+		if (m_progressFill != null) {
+			m_progressFill.fillAmount = 0f;
 		}
 	}
 
@@ -62,15 +62,13 @@ public class SawMinigameScript : Interactable {
 		m_sawMinigame.SetActive(true);
 		player.Controller.AddSpeedModifier("sawSpeed", 0f);
 		m_timer = 0f;
-		if (m_diggingProgressFill != null) {
-			m_diggingProgressFill.fillAmount = 0f;
-		}
+			m_progressFill.fillAmount = 0f;
 		UpdatePrompt();
 		Game.Player.Controller.AddViewModifier("sawView", transform.position, 1f);
 	}
 
 	public override void InteractionUpdate(Player player) {
-		if (m_diggingProgressFill.fillAmount >= 1f) {
+		if (m_progressFill.fillAmount >= 1f) {
 			Debug.Log("Plank was cut!");
 			m_plankIsCut = true;
 		}
@@ -84,7 +82,7 @@ public class SawMinigameScript : Interactable {
 		player.Controller.RemoveViewModifier("sawView");
 		m_minigamefail = false;
 		m_plankIsCut = false;
-		m_diggingProgressFill.fillAmount = 0f;
+		m_progressFill.fillAmount = 0f;
 		m_timer = 0f;
 		m_slider.value = 0.5f;
 	}
@@ -93,8 +91,8 @@ public class SawMinigameScript : Interactable {
 		if (m_slider.value >= 0.4f && m_slider.value <= 0.6f) {
 			if (Input.GetKeyDown(KeyCode.A)) {
 				if (m_isA) {
-					m_diggingProgressFill.fillAmount += 0.07f;
-					Debug.Log("Correct input! Progress: " + m_diggingProgressFill.fillAmount);
+					m_progressFill.fillAmount += 0.05f;
+					Debug.Log("Correct! Progress: " + m_progressFill.fillAmount);
 					UpdatePrompt();
 				} else {
 					m_minigamefail = true;
@@ -102,8 +100,8 @@ public class SawMinigameScript : Interactable {
 				m_timer = 0f;
 			} else if (Input.GetKeyDown(KeyCode.D)) {
 				if (!m_isA) {
-					m_diggingProgressFill.fillAmount += 0.07f;
-					Debug.Log("Correct input! Progress: " + m_diggingProgressFill.fillAmount);
+					m_progressFill.fillAmount += 0.05f;
+					Debug.Log("Correct! Progress: " + m_progressFill.fillAmount);
 					UpdatePrompt();
 				} else {
 					m_minigamefail = true;
@@ -119,7 +117,7 @@ public class SawMinigameScript : Interactable {
 		m_promptActive = false;
 		m_buttonAImage.enabled = false;
 		m_buttonDImage.enabled = false;
-		float progress = m_diggingProgressFill.fillAmount;
+		float progress = m_progressFill.fillAmount;
 		m_nextPromptDelay = Mathf.Lerp(0.3f, 0.7f, progress);
 		m_timeLimit = Mathf.Lerp(0.7f, 0.2f, progress);
 		m_isA = !m_isA;
@@ -127,7 +125,7 @@ public class SawMinigameScript : Interactable {
 
 	private void OnTimeExpired() {
 		Debug.Log("Time expired!");
-		m_diggingProgressFill.fillAmount = Mathf.Max(0, m_diggingProgressFill.fillAmount - 0.05f);
+		m_progressFill.fillAmount = Mathf.Max(0, m_progressFill.fillAmount - 0.05f);
 		m_buttonAImage.enabled = false;
 		m_buttonDImage.enabled = false;
 		m_promptActive = false;
@@ -147,13 +145,13 @@ public class SawMinigameScript : Interactable {
 
 	private void IncreaseSliderValue() {
 		if (m_slider.value < 1f) {
-			m_slider.value += 0.002f;
+			m_slider.value += 0.003f;
 		}
 	}
 
 	private void DecreaseSliderValue() {
 		if (m_slider.value > 0f) {
-			m_slider.value -= 0.002f;
+			m_slider.value -= 0.003f;
 		}
 	}
 }
