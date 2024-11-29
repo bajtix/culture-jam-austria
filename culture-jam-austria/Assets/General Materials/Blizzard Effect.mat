@@ -41,6 +41,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - <noninit>: 0
     - _Distance: 0.1
     - _Dither_St: 0.48
     - _Noise_Intensity: 0.08438211
@@ -51,18 +52,12 @@ Material:
     - _Pixelation: 190
     - _Skip: 0
     - _Vignette: 1
-
-    - _White_Noise_Intensity: 0.052063078
-    - _White_Noise_Speed: 300
-    - _Wiggle_Noise_Intensity: 0.003488056
-
+    - _White_Noise_Intensity: 0.0007551429
+    - _White_Noise_Speed: 0
+    - _Wiggle_Noise_Intensity: 0.00038399905
     - _Wiggle_Noise_Scale: 100
-    - _Wiggle_Noise_Speed: 2
+    - _Wiggle_Noise_Speed: 0
     m_Colors:
-    - _Hue: {r: 0.68, g: 1.16, b: 0, a: 0}
-    - _Isolated: {r: 1, g: 0, b: 0, a: 0}
-    - _Saturation: {r: 0.3, g: 1, b: 0, a: 0}
-    - _Value: {r: 0, g: 1, b: 0, a: 0}
-    - _Vignette_Control: {r: 0.19801353, g: 0.8980135, b: 0, a: 0}
+    - _Vignette_Control: {r: 0.2, g: 0.9, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
