@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI m_interactionTooltip;
+    [SerializeField] private TextMeshProUGUI m_progressText;
+    [SerializeField] private GameObject m_progressPanel;
+    [SerializeField] private Image m_progressGraphic;
     [SerializeField] private UIPlayerStatus m_uiPlayerStatus;
     [SerializeField] private UIDebugPane m_uiDebugPane;
     [SerializeField] private UISubtitles m_uiSubtitles;
@@ -15,6 +18,7 @@ public class UIManager : MonoBehaviour {
 
     private void Start() {
         HideInteractionTooltip();
+        HideProgress();
     }
 
     public void SetInteractionTooltip(string s) {
@@ -24,5 +28,15 @@ public class UIManager : MonoBehaviour {
 
     public void HideInteractionTooltip() {
         m_interactionTooltip.gameObject.SetActive(false);
+    }
+
+    public void SetProgress(string title, float progress) {
+        m_progressPanel.SetActive(true);
+        m_progressText.text = title;
+        m_progressGraphic.fillAmount = progress;
+    }
+
+    public void HideProgress() {
+        m_progressPanel.SetActive(false);
     }
 }

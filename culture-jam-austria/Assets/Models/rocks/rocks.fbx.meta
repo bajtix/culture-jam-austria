@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f90e0cd3e4859a924abcaa335b4040fe
+guid: 56a57b16f44b468f78d0f06f469a7d39
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: lambert23
-    second: {fileID: 2100000, guid: 7b804082fc1c572649cbd1515c6e641f, type: 2}
+      name: rock
+    second: {fileID: 2100000, guid: 8a42c4ab781b0fb13a0d93032ccc18d9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
