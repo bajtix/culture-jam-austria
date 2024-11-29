@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerCutsceneController : PlayerComponent {
     [SerializeField] private AudioSource m_voiceSource;
 
+    [System.Serializable]
+
     private class CameraEntry {
         public string name;
         public Tatzelcam cam;
@@ -22,7 +24,7 @@ public class PlayerCutsceneController : PlayerComponent {
         public override string ToString() => $"{name} = {w}";
     }
 
-    private List<CameraEntry> m_cameraStack = new List<CameraEntry>();
+    [SerializeField] private List<CameraEntry> m_cameraStack = new List<CameraEntry>();
 
     public float transitionSpeed = 4;
 
@@ -40,6 +42,11 @@ public class PlayerCutsceneController : PlayerComponent {
             return;
         }
         cams.First().active = false;
+        cams.First().w = 0;
+        var ce = new CameraEntry(Random.Range(0, 1000).ToString(), cams.First().cam);
+        ce.w = 1;
+        ce.active = false;
+        m_cameraStack.Add(ce);
     }
 
 
