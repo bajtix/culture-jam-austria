@@ -54,7 +54,7 @@ Material:
     - _Vignette: 1
     - _White_Noise_Intensity: 0
     - _White_Noise_Speed: 0
-    - _Wiggle_Noise_Intensity: 0.0000046900764
+    - _Wiggle_Noise_Intensity: 0.00000047657787
     - _Wiggle_Noise_Scale: 100
     - _Wiggle_Noise_Speed: 0
     m_Colors:
