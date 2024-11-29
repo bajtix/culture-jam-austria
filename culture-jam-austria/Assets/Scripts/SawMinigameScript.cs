@@ -14,13 +14,12 @@ public class SawMinigameScript : Interactable {
 	private bool m_plankIsCut = false;
 	private bool m_minigamefail = false;
 	private bool m_isA = true;
+	private bool m_promptActive = false;
 	private float m_timer = 0f;
 	private float m_timeLimit = 2f;
-	private bool m_promptActive = false;
 	private float m_nextPromptDelay = 0f;
 
 	public override string Tooltip => "Cut Plank";
-
 	private void Start() {
 		m_isA = UnityEngine.Random.Range(0, 2) == 0;
 		UpdatePrompt();
@@ -62,7 +61,7 @@ public class SawMinigameScript : Interactable {
 		m_sawMinigame.SetActive(true);
 		player.Controller.AddSpeedModifier("sawSpeed", 0f);
 		m_timer = 0f;
-			m_progressFill.fillAmount = 0f;
+		m_progressFill.fillAmount = 0f;
 		UpdatePrompt();
 		Game.Player.Controller.AddViewModifier("sawView", transform.position, 1f);
 	}
@@ -78,10 +77,9 @@ public class SawMinigameScript : Interactable {
 		print("Stop interaction");
 		m_sawMinigame.SetActive(false);
 		player.Controller.RemoveSpeedModifier("sawSpeed");
-		m_timeLimit = 2f;
 		player.Controller.RemoveViewModifier("sawView");
+		m_timeLimit = 2f;
 		m_minigamefail = false;
-		m_plankIsCut = false;
 		m_progressFill.fillAmount = 0f;
 		m_timer = 0f;
 		m_slider.value = 0.5f;
@@ -109,7 +107,7 @@ public class SawMinigameScript : Interactable {
 				m_timer = 0f;
 			}
 		} else {
-			Debug.Log("Kurwa trzymaj w podanej wartoœci");
+			Debug.Log("Kurwa trzymaj sie w podanej wartosci");
 		}
 	}
 
@@ -118,8 +116,8 @@ public class SawMinigameScript : Interactable {
 		m_buttonAImage.enabled = false;
 		m_buttonDImage.enabled = false;
 		float progress = m_progressFill.fillAmount;
-		m_nextPromptDelay = Mathf.Lerp(0.3f, 0.7f, progress);
-		m_timeLimit = Mathf.Lerp(0.7f, 0.2f, progress);
+		m_nextPromptDelay = Mathf.Lerp(0.2f, 0.6f, progress);
+		m_timeLimit = Mathf.Lerp(0.7f, 0.1f, progress);
 		m_isA = !m_isA;
 	}
 
