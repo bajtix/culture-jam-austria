@@ -145,6 +145,7 @@ public class GameController : MonoBehaviour {
 
     private void GameOver() {
         Debug.Log("ITS JOEVER");
+		Game.Player.Controller.enabled = false;
         onGameLost.Invoke();
     }
 
