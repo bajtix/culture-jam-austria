@@ -62,7 +62,7 @@ namespace lxkvcs
             return new Color(Mathf.Lerp(a.r, b.r, _r), Mathf.Lerp(a.g, b.g, _r), Mathf.Lerp(a.b, b.b, _r), Mathf.Lerp(a.a, b.a, _r));
         }
 
-        public static bool ProjectIsSRP => GraphicsSettings.renderPipelineAsset != null;
+        public static bool ProjectIsSRP => GraphicsSettings.defaultRenderPipeline != null;
 
         public static string[] EnumItemNames<T>()
         {
