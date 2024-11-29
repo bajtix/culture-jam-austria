@@ -16,6 +16,6 @@ MonoBehaviour:
   stormMinTime: 10
   stormRecessionRate: 2
   stormDirectionChangeTime: 10
-  huntingStartStormTime: 100
-  deadlyStormTime: 145
-  huntingEndStormTime: 152
+  huntingStartStormTime: 150
+  deadlyStormTime: 160
+  huntingEndStormTime: 170
