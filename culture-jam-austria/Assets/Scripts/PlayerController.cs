@@ -36,10 +36,12 @@ public class PlayerController : PlayerComponent {
     private void Start() {
         if (Game.Input == null) Debug.LogError("No game input found!");
 
-        SetLook(transform.rotation.eulerAngles.y, Player.Camera.transform.localEulerAngles.x > 180 ? Player.Camera.transform.localEulerAngles.x - 360 : Player.Camera.transform.localEulerAngles.x);
+        SetLook(transform.rotation.eulerAngles.y, Player.PlayerCamera.transform.localEulerAngles.x > 180 ? Player.PlayerCamera.transform.localEulerAngles.x - 360 : Player.PlayerCamera.transform.localEulerAngles.x);
         m_currentStamina = m_stamina;
 
         Cursor.lockState = CursorLockMode.Locked;
+
+        Player.Cutscene.AddCamera("main", Player.PlayerCamera);
     }
 
     private float EvaluateSpeedModifier() {
@@ -120,8 +122,8 @@ public class PlayerController : PlayerComponent {
             if (mouseMovement.magnitude < 0.002f) m_mouseOffset = Vector2.Lerp(m_mouseOffset, Vector2.zero, Time.deltaTime * m_zeroingSpeed);
             var destPoint = m_viewModifier.Value.Value.Item2;
 
-            var offsetLook = Player.Camera.transform.up * m_mouseOffset.y + Player.Camera.transform.right * m_mouseOffset.x;
-            var vec = (destPoint + offsetLook - Player.Camera.transform.position).normalized;
+            var offsetLook = Player.PlayerCamera.transform.up * m_mouseOffset.y + Player.PlayerCamera.transform.right * m_mouseOffset.x;
+            var vec = (destPoint + offsetLook - Player.PlayerCamera.transform.position).normalized;
 
             playerWantsToLook = Vector3.Lerp(playerWantsToLook, vec, m_viewModifier.Value.Value.Item1);
         }
@@ -130,7 +132,7 @@ public class PlayerController : PlayerComponent {
         transform.rotation = Quaternion.Euler(0, desiredLook.eulerAngles.y, 0);
 
         desiredLook = Quaternion.LookRotation(playerWantsToLook, Vector3.up);
-        Player.Camera.transform.rotation = desiredLook;
+        Player.PlayerCamera.transform.rotation = desiredLook;
     }
 
     public void AddSpeedModifier(string name, float value) {

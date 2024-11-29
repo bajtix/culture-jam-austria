@@ -21,7 +21,7 @@ public class PlayerCameraFx : PlayerComponent {
     private float m_shakeTimeLeft;
 
     private void Start() {
-        m_cameraPosition = Player.Camera.transform.localPosition;
+        m_cameraPosition = Player.PlayerCamera.transform.localPosition;
     }
 
     private Vector3 EvaluateBobbing(BobType type, float time) {
@@ -45,7 +45,7 @@ public class PlayerCameraFx : PlayerComponent {
         m_bobbingTime += walkspeed * Time.deltaTime;
 
 
-        Player.Camera.transform.localPosition = m_cameraPosition + vtoa + m_shakeVector;
+        Player.PlayerCamera.transform.localPosition = m_cameraPosition + vtoa + m_shakeVector;
     }
 
     private void FixedUpdate() {
