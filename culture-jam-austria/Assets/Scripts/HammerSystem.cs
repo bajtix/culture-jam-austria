@@ -1,3 +1,5 @@
+using System;
+using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
@@ -5,68 +7,125 @@ using UnityEngine.UIElements;
 
 public class HammerSystem : Interactable {
 
-	[SerializeField] private GameObject m_progressBar;
-	[SerializeField] private TextMeshProUGUI m_scoreBar;
-	[SerializeField] private GameObject m_pointer;
-	[SerializeField] private RectTransform m_pointA;
-	[SerializeField] private RectTransform m_pointB;
-	[SerializeField] private RectTransform m_safeZone;
+	[SerializeField] private GameObject m_ui;
+	[SerializeField] private RectTransform m_pointer;
+
+	[SerializeField] private Animator m_animator;
 	[SerializeField] private float m_moveSpeed = 100f;
-	private bool m_craftingSuccess = false;
+	[SerializeField] private int m_requiredHits = 10;
+	[SerializeField][ReadOnly] private float m_currentProgress = 0f;
+	[SerializeField][ReadOnly] private float m_currentMoveSpeed = 1f;
+	[SerializeField] private float m_requiredAccuracy = 0.1f;
+	[SerializeField] private float m_acceleration = 1f;
+	[SerializeField] private float m_movePixels = 128f;
 
-	private RectTransform m_pointerTransform;
-	private Vector3 m_targetPosition;
-	private float m_score = 0;
+	[SerializeField] private Tatzelcam m_camera;
 
-	public override string Tooltip => "Nail the belt to the skis";
+	private float m_pointerPosition;
+	private bool m_right = true;
+	private bool m_hasMissed = false;
 
-	private void CheckSuccess() {
-		if (RectTransformUtility.RectangleContainsScreenPoint(m_safeZone, m_pointerTransform.position, null)) {
-			m_score++;
-		} else {
-			m_score = 0;
-		}
+	private bool m_hasPlank, m_hasBelt;
+
+	[SerializeField] private GameObject m_plank, m_belt, m_hammer;
+
+	public override string Tooltip => "Nail the belt to the plank";
+
+	private void Start() {
+		m_plank.SetActive(m_hasBelt);
+		m_belt.SetActive(m_hasPlank);
+		m_hammer.SetActive(false);
 	}
 
-	public override bool CanInteract(Player player) => !m_craftingSuccess;
-	public override bool CanStopInteraction(Player player) => true;
-	public override bool InteractionOver(Player player) => m_craftingSuccess;
-	public override void InteractionStart(Player player) {
-		Debug.Log("->> Hammer - interaction start <<--");
-		m_progressBar.SetActive(true);
-		m_pointerTransform = m_pointer.GetComponent<RectTransform>();
-		m_targetPosition = m_pointA.position;
 
-		player.Controller.AddSpeedModifier("CraftingSpeed", 0f);
-		player.Controller.AddViewModifier("CraftingView", GetComponent<BoxCollider>().transform.position, 0.5f);
+	public override bool CanInteract(Player player) => m_hasBelt && m_hasPlank;
+	public override bool CanStopInteraction(Player player) => true;
+	public override bool InteractionOver(Player player) => m_currentProgress >= 1 || m_hasMissed;
+
+	public override void InteractionStart(Player player) {
+		player.Controller.AddSpeedModifier("hammer", 0f);
+		player.Controller.AddViewModifier("hammer", GetComponent<BoxCollider>().transform.position, 0.5f);
+		m_ui.SetActive(true);
+
+		player.Cutscene.AddCamera("hammer", m_camera);
+
+		m_currentMoveSpeed = m_moveSpeed;
+		if (m_currentProgress >= 0.5f) {
+			m_currentMoveSpeed += m_acceleration * m_requiredHits / 2;
+		}
+
+		m_hasMissed = false;
+		m_hammer.SetActive(true);
+		m_animator.SetBool("active", true);
 	}
 
 	public override void InteractionUpdate(Player player) {
-		m_scoreBar.text = "Correct hammer blows: " + m_score.ToString();
-
-		m_pointerTransform.position = Vector3.MoveTowards(m_pointerTransform.position, m_targetPosition, m_moveSpeed * Time.deltaTime);
-
-		if (Vector3.Distance(m_pointerTransform.position, m_pointA.position) < 0.1f) {
-			Debug.Log(m_pointerTransform.position);
-			m_targetPosition = m_pointB.position;
-		} else if (Vector3.Distance(m_pointerTransform.position, m_pointB.position) < 0.1f) {
-			m_targetPosition = m_pointA.position;
+		if (m_right) {
+			m_pointerPosition += Time.deltaTime * m_currentMoveSpeed;
+			if (m_pointerPosition >= 1) m_right = false;
+		} else {
+			m_pointerPosition -= Time.deltaTime * m_currentMoveSpeed;
+			if (m_pointerPosition <= -1) m_right = true;
 		}
 
-		if (Input.GetKeyDown(KeyCode.Space)) {
-			CheckSuccess();
+		m_pointer.anchoredPosition = Vector3.right * (m_pointerPosition * m_movePixels);
+
+		if (Game.Input.Player.Jump.WasPerformedThisFrame()) {
+			if (Mathf.Abs(m_pointerPosition) < m_requiredAccuracy)
+				Hit();
+			else
+				Miss();
 		}
 
-		if (m_score > 10) {
-			m_craftingSuccess = true;
-		}
+		m_animator.SetFloat("nail progress", m_currentProgress - 0.01f);
+	}
+
+	[Button("plank")]
+	public void AddPlank() {
+		m_hasPlank = true;
+		m_plank.SetActive(m_hasBelt);
+		m_belt.SetActive(m_hasPlank);
+	}
+
+	[Button("belt")]
+	public void AddBelt() {
+		m_hasBelt = true;
+		m_plank.SetActive(m_hasBelt);
+		m_belt.SetActive(m_hasPlank);
+	}
+
+
+
+	private void Miss() {
+		if (m_currentProgress >= 0.5) m_currentProgress = 0.5f;
+		else m_currentProgress = 0;
+		m_hasMissed = true;
+	}
+
+	private void Hit() {
+		m_currentProgress += 1f / m_requiredHits;
+		m_currentMoveSpeed += m_acceleration;
+
+		m_animator.Play("hammer|beat nail");
 	}
 
 	public override void InteractionEnd(Player player) {
-		player.Controller.RemoveSpeedModifier("CraftingSpeed");
-		player.Controller.RemoveViewModifier("CraftingView");
-		m_progressBar.SetActive(false);
+		player.Controller.RemoveSpeedModifier("hammer");
+		player.Controller.RemoveViewModifier("hammer");
 
-		Debug.Log("-->> Hammer - interaction end <<--");
+		player.Cutscene.PopCamera("hammer");
+		m_ui.SetActive(false);
+		m_hammer.SetActive(false);
+
+		if (m_currentProgress >= 1) {
+			m_hasBelt = false;
+			m_hasPlank = false;
+			m_currentProgress = 0;
+		}
+
+		m_plank.SetActive(m_hasBelt);
+		m_belt.SetActive(m_hasPlank);
+
+		m_animator.SetBool("active", false || m_currentProgress >= 0.5f);
 	}
 }
