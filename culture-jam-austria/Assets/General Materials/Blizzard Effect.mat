@@ -52,15 +52,12 @@ Material:
     - _Pixelation: 190
     - _Skip: 0
     - _Vignette: 1
-<<<<<<< HEAD
     - _White_Noise_Intensity: 0.55424374
     - _White_Noise_Speed: 100
     - _Wiggle_Noise_Intensity: 0.009999977
-=======
     - _White_Noise_Intensity: 0.382822
     - _White_Noise_Speed: 100
     - _Wiggle_Noise_Intensity: 0.0067258137
->>>>>>> origin/working-on-map-Jeremi
     - _Wiggle_Noise_Scale: 100
     - _Wiggle_Noise_Speed: 1
     m_Colors:

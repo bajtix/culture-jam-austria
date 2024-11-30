@@ -52,6 +52,9 @@ MonoBehaviour:
   m_stormTime: 0
   m_stages:
   - {fileID: 11400000, guid: 1c0e38ed80893134895eed28d2dbc3b1, type: 2}
+  - {fileID: 11400000, guid: 04d599db0a6b8e07480e90b147a61222, type: 2}
+  - {fileID: 11400000, guid: fd733114a596da74083c37b6b6b76dff, type: 2}
+  - {fileID: 11400000, guid: 6d556e420d2fad346a55ffc76ba6ddf7, type: 2}
   onStageChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -63,7 +66,19 @@ MonoBehaviour:
       m_Calls: []
   onPlayerDied:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: MonsterController, Assembly-CSharp
+        m_MethodName: Die
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onGameLost:
     m_PersistentCalls:
       m_Calls: []
