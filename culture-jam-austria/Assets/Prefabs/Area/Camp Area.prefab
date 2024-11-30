@@ -40570,6 +40570,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deadbody_rigged (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3085921858774298823, guid: dc14fb44ff4f2a441bdfe762a6fe4659, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

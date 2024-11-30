@@ -32,11 +32,14 @@ public class SkiMinigame : Interactable {
     public override void InteractionEnd(Player player) {
 
     }
+
     public override void InteractionStart(Player player) {
         player.Cutscene.AddCamera("ending", m_camera);
         player.Controller.enabled = false;
         Game.Controller.SetSafe(true);
 
+        Game.Controller.Victory();
+        Game.UI.Win();
         m_director.Play();
     }
 }

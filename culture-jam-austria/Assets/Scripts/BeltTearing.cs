@@ -4,6 +4,7 @@ public class BeltTearing : Interactable {
     [SerializeField] private Animator m_belt;
     [SerializeField] private GameObject m_resultingItem;
     [SerializeField] private float m_timeItTakes;
+    [SerializeField] private Tatzelcam m_camera;
 
     private float m_progress;
 
@@ -20,7 +21,8 @@ public class BeltTearing : Interactable {
     public override void InteractionStart(Player player) {
         m_progress = 0;
         player.Controller.AddSpeedModifier("belttearing", 0f);
-        player.Controller.AddViewModifier("belttearing", m_belt.transform.position, 0.8f);
+        //player.Controller.AddViewModifier("belttearing", m_belt.transform.position, 0.8f);
+        player.Cutscene.AddCamera("belttearing", m_camera);
     }
 
     public override void InteractionUpdate(Player player) {
@@ -36,7 +38,8 @@ public class BeltTearing : Interactable {
             m_belt.gameObject.SetActive(false);
         }
         player.Controller.RemoveSpeedModifier("belttearing");
-        player.Controller.RemoveViewModifier("belttearing");
+        // player.Controller.RemoveViewModifier("belttearing");
+        player.Cutscene.PopCamera("belttearing");
         Game.UI.HideProgress();
     }
 
