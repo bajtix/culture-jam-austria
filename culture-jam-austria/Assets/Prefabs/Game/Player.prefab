@@ -356,6 +356,7 @@ Transform:
   - {fileID: 1280932745572314274}
   - {fileID: 6906764717500587132}
   - {fileID: 4561914989335358311}
+  - {fileID: 3627975378461793817}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4989137536116328561
@@ -507,7 +508,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4532838585268513909}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0420f13f04c1638118e8e9925734b26c, type: 3}
   m_Name: 
@@ -624,7 +625,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   m_dangerNotifySpeed: 1
-  m_redVolume: {fileID: 2322647579201275482, guid: 8f8d69b4d028f7f498c3a9931d795b59, type: 3}
+  m_redVolume: {fileID: 2037464884617267561}
 --- !u!114 &8071082901373507057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -698,6 +699,55 @@ MonoBehaviour:
   m_animator_monster: {fileID: 4992759795838962020}
   m_monster_cam: {fileID: 424180040161742928}
   m_game_over_screen: {fileID: 9213667781027089443, guid: 8f8d69b4d028f7f498c3a9931d795b59, type: 3}
+--- !u!1 &8830495365285701522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3627975378461793817}
+  - component: {fileID: 2037464884617267561}
+  m_Layer: 0
+  m_Name: Global Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3627975378461793817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8830495365285701522}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6809027331582040217}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2037464884617267561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8830495365285701522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 9a6a968e90662464fb97e638fef51261, type: 2}
 --- !u!1001 &6449854249979291577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -757,6 +807,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ec70a79c53d70264e98e95a4aedabab7, type: 3}
       propertyPath: m_Name
       value: monster_with_anim
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ec70a79c53d70264e98e95a4aedabab7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -415136158766342463, guid: ec70a79c53d70264e98e95a4aedabab7, type: 3}

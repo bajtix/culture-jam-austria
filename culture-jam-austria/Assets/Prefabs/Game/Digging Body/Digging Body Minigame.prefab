@@ -749,10 +749,7 @@ MonoBehaviour:
   m_b: {fileID: 1836145680347600944}
   m_arms: {fileID: 1453481118709508813}
   m_armsGfx: {fileID: 5195025351060416873}
-  m_digDown: 0
   m_renderer: {fileID: 5602872215589791771}
-  m_progress: 0
-  m_nextSwitch: 0
 --- !u!65 &5297329859223376717
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1265,7 +1262,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &697634192229095053
 RectTransform:
   m_ObjectHideFlags: 0
