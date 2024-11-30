@@ -99,7 +99,7 @@ MonoBehaviour:
   m_collider: {fileID: 7302714019923955177}
   m_puzzleTag: belt
   m_maxPlaceDistance: 3
-  m_carrySpeed: 0.9
+  m_carrySpeed: 0.8
   m_carryPosition: {x: 0.41, y: 0.21, z: -0.4}
   m_carryRotation: {x: 0, y: -88.2, z: -72.37}
 --- !u!1001 &671086886880871134

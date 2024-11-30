@@ -25,7 +25,7 @@ public class PlankTearingGame : Interactable {
     public override void InteractionStart(Player player) {
         m_progress = 0;
         player.Controller.AddSpeedModifier("planktearing", 0f);
-        player.Controller.AddViewModifier("planktearing", m_initialPlankPosition, 0.8f);
+        player.Controller.AddViewModifier("planktearing", transform.position + m_initialPlankPosition, 0.8f);
     }
 
     public override void InteractionUpdate(Player player) {

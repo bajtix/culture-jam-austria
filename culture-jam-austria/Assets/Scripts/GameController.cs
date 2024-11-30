@@ -145,7 +145,8 @@ public class GameController : MonoBehaviour {
 
     private void GameOver() {
         Debug.Log("ITS JOEVER");
-		Game.Player.Controller.enabled = false;
+        Game.Player.Controller.enabled = false;
+        KillPlayer();
         onGameLost.Invoke();
     }
 
@@ -154,5 +155,11 @@ public class GameController : MonoBehaviour {
         if (Game.UI.Debug) Game.UI.Debug.JournalLog("Player died!!");
         Debug.Log("PLAYER DIED");
         onPlayerDied.Invoke();
+    }
+
+    public void Victory() {
+        if (Game.UI.Debug) Game.UI.Debug.JournalLog("Player won!");
+
+        onGameWon.Invoke();
     }
 }
