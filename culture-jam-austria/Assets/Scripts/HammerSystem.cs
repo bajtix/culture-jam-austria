@@ -35,6 +35,7 @@ public class HammerSystem : Interactable {
 		m_plank.SetActive(m_hasPlank);
 		m_belt.SetActive(m_hasBelt);
 		m_hammer.SetActive(false);
+		m_ui.SetActive(false);
 	}
 
 

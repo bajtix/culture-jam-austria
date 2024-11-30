@@ -41,6 +41,7 @@ public class SawMinigameScript : Interactable {
 		m_discardedEnd.SetActive(m_hasPlank);
 		m_mainEnd.SetActive(m_hasPlank);
 		m_canvas.SetActive(false);
+		m_saw.gameObject.SetActive(false);
 	}
 
 	public override bool CanInteract(Player player) => m_hasPlank;
@@ -55,6 +56,8 @@ public class SawMinigameScript : Interactable {
 		player.Cutscene.AddCamera("saw", m_camera);
 
 		m_canvas.SetActive(true);
+		m_saw.gameObject.SetActive(true);
+
 		m_timer = 0f;
 		m_minigamefail = false;
 		m_pressure = 0f;
@@ -141,6 +144,7 @@ public class SawMinigameScript : Interactable {
 		print("Stop interaction");
 
 		m_canvas.SetActive(false);
+		m_saw.gameObject.SetActive(false);
 		player.Controller.RemoveSpeedModifier("saw");
 		player.Controller.RemoveViewModifier("saw");
 		player.Cutscene.PopCamera("saw");
