@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour {
     }
 
     public void SetInteractionTooltip(string s) {
-        m_interactionTooltip.text = s;
+        m_interactionTooltip.text = "<sprite=0>" + s;
         m_interactionTooltip.gameObject.SetActive(true);
     }
 
