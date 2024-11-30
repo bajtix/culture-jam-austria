@@ -10,14 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d19feec73d7e5f47954db513774a049, type: 3}
-  m_Name: shed_enter
+  m_Name: capsite
   m_EditorClassIdentifier: 
   type: 0
-  text: '{0}{3000}This place is relatively safe...
-
-    {3000}{4300}Not for long,
-
-    {4300}{6500}it''s
-    barely holding against the wind.'
+  text: "{0}{3000}Kurt... Lukas...\n{3000}{5000}I need to save myself... For their
+    sake. \n{5000}{9000}Their bodies can have something useful on them..."
   m_duration: 0
-  audio: {fileID: 8300000, guid: b76ae975a3c21e14b956694c3ed6c5cc, type: 3}
+  audio: {fileID: 8300000, guid: 3760a09efbf157840b5a1149e9ce91f2, type: 3}
