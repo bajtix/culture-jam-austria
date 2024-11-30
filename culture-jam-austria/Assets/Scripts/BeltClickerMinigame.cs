@@ -5,7 +5,7 @@ public class BeltClickerMinigame : Interactable {
 
 	public override string Tooltip => "Take the belt";
 
-	public override bool CanInteract(Player player) => m_diggingSystem.dugUp;
+	//public override bool CanInteract(Player player) => m_diggingSystem.dugUp;
 	public override bool CanStopInteraction(Player player) => true;
 	public override bool InteractionOver(Player player) => false;
 	public override void InteractionStart(Player player) {
