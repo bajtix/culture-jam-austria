@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3112007557232557772}
   - component: {fileID: 568903605812784766}
   - component: {fileID: 2080761863310385069}
+  - component: {fileID: 2306903345284329544}
+  - component: {fileID: 2494819806757931574}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -26,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4732069238860176823}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.45451948, y: 0.5416752, z: 0.5416752, w: 0.45451948}
+  m_LocalRotation: {x: -0.35355344, y: 0.61237246, z: 0.61237246, w: 0.35355344}
   m_LocalPosition: {x: -2.394, y: 1.075, z: 0.552}
   m_LocalScale: {x: 100.000015, y: 100.00002, z: 100.000015}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3661804349275670939}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 100}
+  m_LocalEulerAnglesHint: {x: -90, y: 20, z: 100}
 --- !u!33 &568903605812784766
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -86,6 +88,44 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2306903345284329544
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4732069238860176823}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0012712528, y: 0.0143140815, z: 0.02111124}
+  m_Center: {x: -0.00041049652, y: 0.0073728235, z: -0.00018907244}
+--- !u!114 &2494819806757931574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4732069238860176823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4219f586034539c86c2525a3e2c5ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_closedAngle: 0
+  m_openAngle: 120
+  m_openSpeed: 4
+  m_collider: {fileID: 2306903345284329544}
+  m_lockedVoiceline: {fileID: 0}
 --- !u!1001 &3844929330940735088
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96,15 +136,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2b87166d1230f60b095a94d9e06653a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.77
+      value: 137.16751
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b87166d1230f60b095a94d9e06653a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.04
+      value: 43.80385
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b87166d1230f60b095a94d9e06653a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -64.52
+      value: 9.8570175
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b87166d1230f60b095a94d9e06653a0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -112,7 +152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b87166d1230f60b095a94d9e06653a0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b87166d1230f60b095a94d9e06653a0, type: 3}
       propertyPath: m_LocalRotation.y
@@ -120,7 +160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b87166d1230f60b095a94d9e06653a0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b87166d1230f60b095a94d9e06653a0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -218,6 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_isSecured: 1
+  m_door: {fileID: 2494819806757931574}
 --- !u!65 &4288432883539987311
 BoxCollider:
   m_ObjectHideFlags: 0
