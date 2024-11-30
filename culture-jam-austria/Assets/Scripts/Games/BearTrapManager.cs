@@ -1,34 +1,32 @@
+using System.Linq;
+using NaughtyAttributes;
 using UnityEngine;
 
-public class BearTrapSpawnScr : MonoBehaviour
-{
+public class BearTrapManager : StageBehaviour {
 	[SerializeField] private Transform[] m_locations;
 	[SerializeField] private Transform[] m_bearTraps;
 
-	private int m_currentPos;
 
 	private void Start() {
 		Scatter();
 	}
 
-	private void Update() {
-		//if (Game.Input.Player.Jump.WasPressedThisFrame()) {
-		//	Scatter();
-		//}
+	protected override void OnStageChanged(int s) {
+		Scatter();
 	}
 
+	[Button("Scatter")]
 	public void Scatter() {
-		Debug.Log("Scatter");
+		Debug.Log("Scattering bear traps");
 		int[] usedPos = new int[m_bearTraps.Length];
 
-		for(int i = 0;i<usedPos.Length;i++) {
+		for (int i = 0; i < usedPos.Length; i++) {
 			usedPos[i] = -1;
 		}
 
-
-		for(int i = 0;i<m_bearTraps.Length;i++){
+		for (int i = 0; i < m_bearTraps.Length; i++) {
 			int index = Random.Range(0, m_locations.Length);
-			while (InArray(usedPos, index)) {
+			while (usedPos.Contains(index)) {
 				index = Random.Range(0, m_locations.Length);
 			}
 			usedPos[i] = index;
@@ -37,12 +35,4 @@ public class BearTrapSpawnScr : MonoBehaviour
 		}
 	}
 
-	private bool InArray(int[] arr, int val) {
-		foreach(int a in arr) {
-			if(val == a) {
-				return true;
-			}
-		}
-		return false;
-	}
 }
