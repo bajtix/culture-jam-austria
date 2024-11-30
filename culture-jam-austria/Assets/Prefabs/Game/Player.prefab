@@ -624,7 +624,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   m_dangerNotifySpeed: 1
-  m_redVolume: {fileID: 0}
+  m_redVolume: {fileID: 2322647579201275482, guid: 8f8d69b4d028f7f498c3a9931d795b59, type: 3}
 --- !u!114 &8071082901373507057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -668,6 +668,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_player: {fileID: 6638721736955259059}
   m_voiceSource: {fileID: 3302382139087219465}
+  m_cameraStack: []
   transitionSpeed: 40000
 --- !u!114 &8195697429607675619
 MonoBehaviour:
@@ -696,7 +697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_animator_monster: {fileID: 4992759795838962020}
   m_monster_cam: {fileID: 424180040161742928}
-  m_game_over_screen: {fileID: 0}
+  m_game_over_screen: {fileID: 9213667781027089443, guid: 8f8d69b4d028f7f498c3a9931d795b59, type: 3}
 --- !u!1001 &6449854249979291577
 PrefabInstance:
   m_ObjectHideFlags: 0
