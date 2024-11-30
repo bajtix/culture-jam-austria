@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageIndex: 0
   stormMinTime: 0
-  stormRecessionRate: 1.7
+  stormRecessionRate: 3
   stormDirectionChangeTime: 10
-  huntingStartStormTime: 100
-  deadlyStormTime: 140
-  huntingEndStormTime: 155
+  huntingStartStormTime: 170
+  deadlyStormTime: 185
+  huntingEndStormTime: 195
