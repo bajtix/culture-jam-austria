@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d19feec73d7e5f47954db513774a049, type: 3}
+  m_Name: shed_enter
+  m_EditorClassIdentifier: 
+  type: 0
+  text: '{0}{2000}This place is relatively safe...
+
+    {2000}{3500}Not for long,
+
+    {3500}{5500}it''s
+    barely holding against the wind.'
+  m_duration: 0
+  audio: {fileID: 0}
