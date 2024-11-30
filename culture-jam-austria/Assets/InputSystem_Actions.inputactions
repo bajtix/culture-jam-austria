@@ -990,6 +990,157 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Hammer",
+            "id": "a9918a21-5530-4a5d-ad22-9f3d51c68821",
+            "actions": [
+                {
+                    "name": "Hammer",
+                    "type": "Button",
+                    "id": "08b4fc89-6f95-438f-ad94-46d5fc33f62e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d95bd6f1-8b20-4677-b39f-72aa4fb58cc6",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Hammer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fbeb2df2-b01d-4b54-a54a-8b1bf19b6b44",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Hammer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Saw",
+            "id": "05425bc4-634f-4ea9-b477-d42ee091b6c3",
+            "actions": [
+                {
+                    "name": "Press",
+                    "type": "Button",
+                    "id": "303a21c1-c4c9-4c91-bca8-6858fee880e6",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Bounce Forward",
+                    "type": "Button",
+                    "id": "beffb004-f7c4-49a8-a547-eb5ce2a179a0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Bounce Backward",
+                    "type": "Button",
+                    "id": "08cab05a-d395-45d9-94cb-bf182aee094a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e7176fd2-c9dd-4d37-8c51-22412f085a29",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8143699b-e084-4f47-9d96-06d237e43d6c",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ae30d438-98b7-4b8a-9c84-a0bb906fe8cc",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "85fcfe91-99aa-4775-abf0-2f12014b77df",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Bounce Forward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3459e942-bffd-40ab-b818-f90de9287683",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Bounce Forward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2cd17e07-8a4d-4181-9047-2661f6f53300",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Bounce Backward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ced4d85c-b2cc-4b96-ad52-1160fd86fbdd",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Bounce Backward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

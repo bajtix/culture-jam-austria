@@ -1,172 +1,170 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using NaughtyAttributes;
 
 public class SawMinigameScript : Interactable {
-	[SerializeField] private GameObject m_sawMinigame;
+	[SerializeField] private GameObject m_canvas;
 	[SerializeField] private Image m_buttonAImage;
 	[SerializeField] private Image m_buttonDImage;
-	[SerializeField] private TMP_Text m_scoreText;
-	[SerializeField] private Slider m_slider;
 
-	private int m_score = 0;
-	private bool m_plankIsCut = false;
+	[SerializeField] private Slider m_pressureDisplay;
+	[SerializeField] private Image m_progressFill;
+
+	[SerializeField] private float m_pressureSensitivity = 1.5f;
+	[SerializeField] private float m_timeToClick = 0.2f;
+	[SerializeField] private float m_optimalPressureArea = 1.5f;
+	[SerializeField] private float m_minTime = 0.5f, m_maxTime = 1f;
+	[SerializeField] private float m_requiredSawing = 10;
+	[SerializeField] private Transform m_saw;
+	[SerializeField] private float m_sawMove = 1.5f, m_sawDown = 3f;
+	[SerializeField] private Tatzelcam m_camera;
+	[SerializeField] private GameObject m_discardedEnd;
+	[SerializeField] private GameObject m_mainEnd;
+
+	private bool m_minigamefail = false;
 	private bool m_isA = true;
-	private float m_timer = 0f;
-	private float m_timeLimit = 2f;
-	private bool m_promptActive = false;
-	private float m_nextPromptDelay = 0f;
-	private float m_sliderMinValue = 0f;
-	private float m_sliderMaxValue = 1f;
-	private float m_sliderStep = 0.002f;
-	private float m_sliderCenterValue = 0.5f;
-	private float m_sliderTolerance = 0.1f;
-	private float m_timeOutsideRange = 0f;
+	[SerializeField][ReadOnly] private float m_timer = 0f;
+	private float m_nextCut = 1;
+	private float m_pressure = 0;
+	private float m_progress = 0;
+
+	private bool m_hasPlank = true;
 
 	public override string Tooltip => "Cut Plank";
 
+
 	private void Start() {
-		m_isA = UnityEngine.Random.Range(0, 2) == 0;
+		m_isA = Random.Range(0, 2) == 0;
 		UpdatePrompt();
-		m_slider.value = m_sliderCenterValue;
+
+		m_discardedEnd.SetActive(m_hasPlank);
+		m_mainEnd.SetActive(m_hasPlank);
+		m_canvas.SetActive(false);
 	}
 
-	private void Update() {
-		if (m_sawMinigame.activeSelf) {
-			m_timer += Time.deltaTime;
+	public override bool CanInteract(Player player) => m_hasPlank;
+	public override bool CanStopInteraction(Player player) => true;
+	public override bool InteractionOver(Player player) => m_minigamefail || m_progress >= 1;
 
-			if (m_promptActive) {
-				if (m_timer > m_timeLimit) {
-					OnTimeExpired();
-				}
-				IsCorrectButton();
-			} else {
-				m_nextPromptDelay -= Time.deltaTime;
-				if (m_nextPromptDelay <= 0f) {
-					ActivatePrompt();
-				}
-			}
-			if (Input.GetMouseButton(0)) {
-				IncreaseSliderValue();
-			}
-			else {
-				DecreaseSliderValue();
-			}
-			CheckSliderPosition();
-		}
-	}
-
-
-
-	public override bool CanInteract(Player player) => !m_plankIsCut;
-	public override bool CanStopInteraction(Player player) => false;
-	public override bool InteractionOver(Player player) => m_plankIsCut;
 	public override void InteractionStart(Player player) {
 		print("Start interaction");
-		m_sawMinigame.SetActive(true);
-		player.Controller.AddSpeedModifier("sawSpeed", 0f);
+
+		player.Controller.AddSpeedModifier("saw", 0f);
+		player.Controller.AddViewModifier("saw", transform.position, 1f);
+		player.Cutscene.AddCamera("saw", m_camera);
+
+		m_canvas.SetActive(true);
 		m_timer = 0f;
-		UpdatePrompt();
-		Game.Player.Controller.AddViewModifier("sawView", transform.position, 1f);
+		m_minigamefail = false;
+		m_pressure = 0f;
+		m_progress = 0f;
+
 	}
 
 	public override void InteractionUpdate(Player player) {
-		if (m_score == 20) {
-			print("Plank was cut");
-			m_plankIsCut = true;
-			m_sawMinigame.SetActive(false);
+		UpdatePrompt(m_timer > m_nextCut);
+
+		if (Game.Input.Saw.BounceForward.WasPerformedThisFrame()) {
+
+			if (m_isA && m_timer >= m_nextCut
+				&& m_timer <= m_nextCut + m_timeToClick
+				&& Mathf.Abs(m_pressure - 0.5f) < m_optimalPressureArea
+			) {
+				CompleteSwitchDirection();
+			} else {
+				FailDirectionSwitch();
+			}
 		}
+
+		if (Game.Input.Saw.BounceBackward.WasPerformedThisFrame()) {
+			if (!m_isA && m_timer >= m_nextCut
+				&& m_timer <= m_nextCut + m_timeToClick
+				&& Mathf.Abs(m_pressure - 0.5f) < m_optimalPressureArea
+			) {
+				CompleteSwitchDirection();
+			} else {
+				FailDirectionSwitch();
+			}
+		}
+
+		if (m_timer > m_nextCut + m_timeToClick) {
+			FailDirectionSwitch();
+		}
+
+		if (Mathf.Abs(m_pressure - 0.5f) < m_optimalPressureArea) {
+			m_timer += Time.deltaTime;
+			m_progress += Time.deltaTime / m_requiredSawing;
+		}
+
+
+		if (Game.Input.Saw.Press.IsPressed()) {
+			m_pressure += Time.deltaTime * m_pressureSensitivity;
+		} else {
+			m_pressure -= Time.deltaTime * m_pressureSensitivity;
+		}
+
+		m_pressure = Mathf.Clamp01(m_pressure);
+
+		m_saw.transform.localPosition =
+			(!m_isA ? Mathf.Clamp01(m_timer / m_nextCut) : 1 - Mathf.Clamp01(m_timer / m_nextCut)) * 0.001f * m_sawMove * Vector3.up
+			- Vector3.forward * m_progress * 0.001f * m_sawDown;
+
+		if (m_timer > m_nextCut) {
+			m_progressFill.fillAmount = 1 - Mathf.Clamp01((m_timer - m_nextCut) / m_timeToClick);
+		} else {
+			m_progressFill.fillAmount = 0;
+		}
+
+		m_pressureDisplay.value = m_pressure;
+	}
+
+	private void CompleteSwitchDirection() {
+		m_timer = 0;
+		m_isA = !m_isA;
+		m_nextCut = Random.Range(m_minTime, m_maxTime);
+	}
+
+	private void FailDirectionSwitch() {
+		m_timer = 0;
+		m_minigamefail = true;
+	}
+
+	[Button("plank")]
+	public void AddPlank() {
+		m_hasPlank = true;
+		m_discardedEnd.SetActive(m_hasPlank);
+		m_mainEnd.SetActive(m_hasPlank);
 	}
 
 	public override void InteractionEnd(Player player) {
 		print("Stop interaction");
-		player.Controller.RemoveSpeedModifier("sawSpeed");
-		m_timeLimit = 2f;
-		player.Controller.RemoveViewModifier("sawView");
-	}
 
-	private void IsCorrectButton() {
-		if (Input.GetKeyDown(KeyCode.A)) {
-			if (m_isA) {
-				m_score++;
-				print("Correct input!");
-				UpdateScoreText();
-				UpdatePrompt();
-			} else {
-				m_score = Mathf.Max(0, m_score - 1);
-				print("Wrong input!");
-			}
-			m_timer = 0f;
-		} else if (Input.GetKeyDown(KeyCode.D)) {
-			if (!m_isA) {
-				m_score++;
-				print("Correct input!");
-				UpdateScoreText();
-				UpdatePrompt();
-			} else {
-				m_score = Mathf.Max(0, m_score - 1);
-				print("Wrong input!");
-			}
-			m_timer = 0f;
+		m_canvas.SetActive(false);
+		player.Controller.RemoveSpeedModifier("saw");
+		player.Controller.RemoveViewModifier("saw");
+		player.Cutscene.PopCamera("saw");
+
+		if (m_progress >= 1) {
+			var sp = Instantiate(m_discardedEnd, m_discardedEnd.transform.parent);
+			sp.transform.SetParent(null);
+			sp.AddComponent<Rigidbody>();
+
+			m_hasPlank = false;
 		}
-	}
 
-	private void UpdateScoreText() {
-		if (m_scoreText != null) {
-			m_scoreText.text = $"Score: {m_score}";
-		}
-	}
+		m_mainEnd.SetActive(m_hasPlank);
+		m_discardedEnd.SetActive(m_hasPlank);
 
-	private void UpdatePrompt() {
-		m_promptActive = false;
-		m_buttonAImage.enabled = false;
-		m_buttonDImage.enabled = false;
-		float progress = Mathf.InverseLerp(0, 20, m_score);
-		m_nextPromptDelay = Mathf.Lerp(0.3f, 0.7f, progress);
-		m_timeLimit = Mathf.Lerp(0.7f, 0.2f, progress);
-	}
-
-	private void OnTimeExpired() {
-		print("Time expired!");
-		m_score = Mathf.Max(0, m_score - 1);
-		UpdateScoreText();
-		m_buttonAImage.enabled = false;
-		m_buttonDImage.enabled = false;
-		m_promptActive = false;
-	}
-	private void ActivatePrompt() {
-		m_promptActive = true;
-		m_isA = UnityEngine.Random.Range(0, 2) == 0;
-		if (m_isA) {
-			m_buttonAImage.enabled = true;
-			m_buttonDImage.enabled = false;
-		} else {
-			m_buttonDImage.enabled = true;
-			m_buttonAImage.enabled = false;
-		}
+		m_minigamefail = false;
+		m_progressFill.fillAmount = 0f;
 		m_timer = 0f;
+		m_pressureDisplay.value = 0.5f;
 	}
-	private void IncreaseSliderValue() {
-		if (m_slider.value < m_sliderMaxValue) {
-			m_slider.value += m_sliderStep;
-		}
+
+	private void UpdatePrompt(bool promptActive = false) {
+		m_buttonAImage.enabled = m_isA && promptActive;
+		m_buttonDImage.enabled = !m_isA && promptActive;
 	}
-	private void DecreaseSliderValue() {
-		if (m_slider.value > m_sliderMinValue) {
-			m_slider.value -= m_sliderStep;
-		}
-	}
-	private void CheckSliderPosition() {
-		if (Mathf.Abs(m_slider.value - m_sliderCenterValue) <= m_sliderTolerance) {
-			m_timeOutsideRange = 0f;
-		} else {
-			m_timeOutsideRange += Time.deltaTime;
-			if (m_timeOutsideRange >= 1f) {
-				m_score = Mathf.Max(0, m_score - 1);
-				UpdateScoreText();
-				m_timeOutsideRange = 0f;
-			}
-		}
-	}
+
 }

@@ -25,20 +25,20 @@ public class HammerSystem : Interactable {
 	private bool m_right = true;
 	private bool m_hasMissed = false;
 
-	private bool m_hasPlank, m_hasBelt;
+	private bool m_hasBelt, m_hasPlank;
 
 	[SerializeField] private GameObject m_plank, m_belt, m_hammer;
 
 	public override string Tooltip => "Nail the belt to the plank";
 
 	private void Start() {
-		m_plank.SetActive(m_hasBelt);
-		m_belt.SetActive(m_hasPlank);
+		m_plank.SetActive(m_hasPlank);
+		m_belt.SetActive(m_hasBelt);
 		m_hammer.SetActive(false);
 	}
 
 
-	public override bool CanInteract(Player player) => m_hasBelt && m_hasPlank;
+	public override bool CanInteract(Player player) => m_hasPlank && m_hasBelt;
 	public override bool CanStopInteraction(Player player) => true;
 	public override bool InteractionOver(Player player) => m_currentProgress >= 1 || m_hasMissed;
 
@@ -70,7 +70,7 @@ public class HammerSystem : Interactable {
 
 		m_pointer.anchoredPosition = Vector3.right * (m_pointerPosition * m_movePixels);
 
-		if (Game.Input.Player.Jump.WasPerformedThisFrame()) {
+		if (Game.Input.Hammer.Hammer.WasPerformedThisFrame()) {
 			if (Mathf.Abs(m_pointerPosition) < m_requiredAccuracy)
 				Hit();
 			else
@@ -83,15 +83,15 @@ public class HammerSystem : Interactable {
 	[Button("plank")]
 	public void AddPlank() {
 		m_hasPlank = true;
-		m_plank.SetActive(m_hasBelt);
-		m_belt.SetActive(m_hasPlank);
+		m_plank.SetActive(m_hasPlank);
+		m_belt.SetActive(m_hasBelt);
 	}
 
 	[Button("belt")]
 	public void AddBelt() {
 		m_hasBelt = true;
-		m_plank.SetActive(m_hasBelt);
-		m_belt.SetActive(m_hasPlank);
+		m_plank.SetActive(m_hasPlank);
+		m_belt.SetActive(m_hasBelt);
 	}
 
 
@@ -118,13 +118,13 @@ public class HammerSystem : Interactable {
 		m_hammer.SetActive(false);
 
 		if (m_currentProgress >= 1) {
-			m_hasBelt = false;
 			m_hasPlank = false;
+			m_hasBelt = false;
 			m_currentProgress = 0;
 		}
 
-		m_plank.SetActive(m_hasBelt);
-		m_belt.SetActive(m_hasPlank);
+		m_plank.SetActive(m_hasPlank);
+		m_belt.SetActive(m_hasBelt);
 
 		m_animator.SetBool("active", false || m_currentProgress >= 0.5f);
 	}

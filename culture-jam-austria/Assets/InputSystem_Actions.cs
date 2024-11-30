@@ -1012,6 +1012,157 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Hammer"",
+            ""id"": ""a9918a21-5530-4a5d-ad22-9f3d51c68821"",
+            ""actions"": [
+                {
+                    ""name"": ""Hammer"",
+                    ""type"": ""Button"",
+                    ""id"": ""08b4fc89-6f95-438f-ad94-46d5fc33f62e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""d95bd6f1-8b20-4677-b39f-72aa4fb58cc6"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hammer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fbeb2df2-b01d-4b54-a54a-8b1bf19b6b44"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hammer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Saw"",
+            ""id"": ""05425bc4-634f-4ea9-b477-d42ee091b6c3"",
+            ""actions"": [
+                {
+                    ""name"": ""Press"",
+                    ""type"": ""Button"",
+                    ""id"": ""303a21c1-c4c9-4c91-bca8-6858fee880e6"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Bounce Forward"",
+                    ""type"": ""Button"",
+                    ""id"": ""beffb004-f7c4-49a8-a547-eb5ce2a179a0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Bounce Backward"",
+                    ""type"": ""Button"",
+                    ""id"": ""08cab05a-d395-45d9-94cb-bf182aee094a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""e7176fd2-c9dd-4d37-8c51-22412f085a29"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Press"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8143699b-e084-4f47-9d96-06d237e43d6c"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Press"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ae30d438-98b7-4b8a-9c84-a0bb906fe8cc"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Press"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""85fcfe91-99aa-4775-abf0-2f12014b77df"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Bounce Forward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3459e942-bffd-40ab-b818-f90de9287683"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Bounce Forward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2cd17e07-8a4d-4181-9047-2661f6f53300"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Bounce Backward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ced4d85c-b2cc-4b96-ad52-1160fd86fbdd"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Bounce Backward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1100,12 +1251,22 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_UI_ScrollWheel = m_UI.FindAction("ScrollWheel", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        // Hammer
+        m_Hammer = asset.FindActionMap("Hammer", throwIfNotFound: true);
+        m_Hammer_Hammer = m_Hammer.FindAction("Hammer", throwIfNotFound: true);
+        // Saw
+        m_Saw = asset.FindActionMap("Saw", throwIfNotFound: true);
+        m_Saw_Press = m_Saw.FindAction("Press", throwIfNotFound: true);
+        m_Saw_BounceForward = m_Saw.FindAction("Bounce Forward", throwIfNotFound: true);
+        m_Saw_BounceBackward = m_Saw.FindAction("Bounce Backward", throwIfNotFound: true);
     }
 
     ~@GameInput()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, GameInput.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, GameInput.UI.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Hammer.enabled, "This will cause a leak and performance issues, GameInput.Hammer.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Saw.enabled, "This will cause a leak and performance issues, GameInput.Saw.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -1391,6 +1552,114 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Hammer
+    private readonly InputActionMap m_Hammer;
+    private List<IHammerActions> m_HammerActionsCallbackInterfaces = new List<IHammerActions>();
+    private readonly InputAction m_Hammer_Hammer;
+    public struct HammerActions
+    {
+        private @GameInput m_Wrapper;
+        public HammerActions(@GameInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Hammer => m_Wrapper.m_Hammer_Hammer;
+        public InputActionMap Get() { return m_Wrapper.m_Hammer; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(HammerActions set) { return set.Get(); }
+        public void AddCallbacks(IHammerActions instance)
+        {
+            if (instance == null || m_Wrapper.m_HammerActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_HammerActionsCallbackInterfaces.Add(instance);
+            @Hammer.started += instance.OnHammer;
+            @Hammer.performed += instance.OnHammer;
+            @Hammer.canceled += instance.OnHammer;
+        }
+
+        private void UnregisterCallbacks(IHammerActions instance)
+        {
+            @Hammer.started -= instance.OnHammer;
+            @Hammer.performed -= instance.OnHammer;
+            @Hammer.canceled -= instance.OnHammer;
+        }
+
+        public void RemoveCallbacks(IHammerActions instance)
+        {
+            if (m_Wrapper.m_HammerActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IHammerActions instance)
+        {
+            foreach (var item in m_Wrapper.m_HammerActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_HammerActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public HammerActions @Hammer => new HammerActions(this);
+
+    // Saw
+    private readonly InputActionMap m_Saw;
+    private List<ISawActions> m_SawActionsCallbackInterfaces = new List<ISawActions>();
+    private readonly InputAction m_Saw_Press;
+    private readonly InputAction m_Saw_BounceForward;
+    private readonly InputAction m_Saw_BounceBackward;
+    public struct SawActions
+    {
+        private @GameInput m_Wrapper;
+        public SawActions(@GameInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Press => m_Wrapper.m_Saw_Press;
+        public InputAction @BounceForward => m_Wrapper.m_Saw_BounceForward;
+        public InputAction @BounceBackward => m_Wrapper.m_Saw_BounceBackward;
+        public InputActionMap Get() { return m_Wrapper.m_Saw; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(SawActions set) { return set.Get(); }
+        public void AddCallbacks(ISawActions instance)
+        {
+            if (instance == null || m_Wrapper.m_SawActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_SawActionsCallbackInterfaces.Add(instance);
+            @Press.started += instance.OnPress;
+            @Press.performed += instance.OnPress;
+            @Press.canceled += instance.OnPress;
+            @BounceForward.started += instance.OnBounceForward;
+            @BounceForward.performed += instance.OnBounceForward;
+            @BounceForward.canceled += instance.OnBounceForward;
+            @BounceBackward.started += instance.OnBounceBackward;
+            @BounceBackward.performed += instance.OnBounceBackward;
+            @BounceBackward.canceled += instance.OnBounceBackward;
+        }
+
+        private void UnregisterCallbacks(ISawActions instance)
+        {
+            @Press.started -= instance.OnPress;
+            @Press.performed -= instance.OnPress;
+            @Press.canceled -= instance.OnPress;
+            @BounceForward.started -= instance.OnBounceForward;
+            @BounceForward.performed -= instance.OnBounceForward;
+            @BounceForward.canceled -= instance.OnBounceForward;
+            @BounceBackward.started -= instance.OnBounceBackward;
+            @BounceBackward.performed -= instance.OnBounceBackward;
+            @BounceBackward.canceled -= instance.OnBounceBackward;
+        }
+
+        public void RemoveCallbacks(ISawActions instance)
+        {
+            if (m_Wrapper.m_SawActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ISawActions instance)
+        {
+            foreach (var item in m_Wrapper.m_SawActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_SawActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public SawActions @Saw => new SawActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -1460,5 +1729,15 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         void OnScrollWheel(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+    }
+    public interface IHammerActions
+    {
+        void OnHammer(InputAction.CallbackContext context);
+    }
+    public interface ISawActions
+    {
+        void OnPress(InputAction.CallbackContext context);
+        void OnBounceForward(InputAction.CallbackContext context);
+        void OnBounceBackward(InputAction.CallbackContext context);
     }
 }
