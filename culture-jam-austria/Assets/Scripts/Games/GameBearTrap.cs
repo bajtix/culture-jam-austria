@@ -49,6 +49,8 @@ public class GameBearTrap : Interactable {
         }
 
         m_bloodParticle.Play();
+
+        Game.Player.Cutscene.Swear();
     }
 
     private void StopTrapEffect() {

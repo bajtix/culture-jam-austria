@@ -20,7 +20,7 @@ public class HammerSystem : Interactable {
 	[SerializeField] private Tatzelcam m_camera;
 	[SerializeField] private Puzzle m_puzzle;
 
-	[SerializeField] private AudioClip m_hammerHit;
+	[SerializeField] private SoundBite m_hammerSound;
 
 	private float m_pointerPosition;
 	private bool m_right = true;
@@ -119,6 +119,7 @@ public class HammerSystem : Interactable {
 		m_currentMoveSpeed += m_acceleration;
 
 		m_animator.Play("hammer|beat nail");
+		Game.SexMan.Play(m_hammerSound, transform.position, 1);
 	}
 
 	public override void InteractionEnd(Player player) {

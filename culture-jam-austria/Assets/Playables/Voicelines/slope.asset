@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d19feec73d7e5f47954db513774a049, type: 3}
-  m_Name: capsite
+  m_Name: slope
   m_EditorClassIdentifier: 
   type: 0
-  text: "{0}{3000}Kurt... Lukas...\n{3000}{5000}I need to save myself... For their
-    sake. \n{5000}{9000}Their bodies can have something useful on them..."
+  text: "{0}{2200}This is really steep, \n{2220}{4200} walking down there is not
+    an option\n{4200}{9700} If I had skis i could slide down to safety"
   m_duration: 0
-  audio: {fileID: 8300000, guid: 3760a09efbf157840b5a1149e9ce91f2, type: 3}
+  audio: {fileID: 8300000, guid: 31908499e44daf246a7ba76f3d1d2822, type: 3}

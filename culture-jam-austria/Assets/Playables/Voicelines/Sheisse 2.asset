@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d19feec73d7e5f47954db513774a049, type: 3}
   m_Name: Sheisse 2
   m_EditorClassIdentifier: 
-  type: 0
+  type: 1
   text: Fucking hell!
   m_duration: 1
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: ab5a401bbef79124193591f6230eb891, type: 3}

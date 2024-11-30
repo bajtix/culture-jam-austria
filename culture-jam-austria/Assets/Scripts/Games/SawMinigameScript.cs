@@ -23,6 +23,7 @@ public class SawMinigameScript : Interactable {
 	[SerializeField] private GameObject m_mainEnd;
 	[SerializeField] private GameObject m_resultingObject;
 	[SerializeField] private Puzzle m_puzzle;
+	[SerializeField] private SoundBite m_sound1, m_sound2;
 
 	private bool m_minigamefail = false;
 	private bool m_isA = true;
@@ -131,6 +132,8 @@ public class SawMinigameScript : Interactable {
 
 	private void CompleteSwitchDirection() {
 		m_timer = 0;
+		if (m_isA) Game.SexMan.Play(m_sound1, transform.position, 0.9f);
+		else Game.SexMan.Play(m_sound2, transform.position, 0.9f);
 		m_isA = !m_isA;
 		m_nextCut = Random.Range(m_minTime, m_maxTime);
 	}

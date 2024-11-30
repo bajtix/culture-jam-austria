@@ -292,6 +292,7 @@ MonoBehaviour:
   m_resultingObject: {fileID: 8659969370638999476}
   m_camera: {fileID: 2466279098050370171}
   m_puzzle: {fileID: 4400693696700847074}
+  m_hammerSound: {fileID: 11400000, guid: 6be3c2f02f4b070c3b74c052eed6abb3, type: 2}
   m_plank: {fileID: 8418013075944195742}
   m_belt: {fileID: 8967636911263975496}
   m_hammer: {fileID: 3371393337249356899}

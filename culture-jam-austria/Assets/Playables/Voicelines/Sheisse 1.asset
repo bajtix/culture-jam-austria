@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d19feec73d7e5f47954db513774a049, type: 3}
   m_Name: Sheisse 1
   m_EditorClassIdentifier: 
-  type: 0
+  type: 1
   text: Shit!
   m_duration: 1
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 26a5120f949a30144ad5a42a131e2b99, type: 3}

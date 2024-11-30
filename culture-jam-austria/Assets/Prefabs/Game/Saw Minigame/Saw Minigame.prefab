@@ -161,6 +161,8 @@ MonoBehaviour:
   m_mainEnd: {fileID: 7607364069264722221}
   m_resultingObject: {fileID: 7432511403848316095}
   m_puzzle: {fileID: 7822142509343007421}
+  m_sound1: {fileID: 11400000, guid: 882adce47c062f4a79df3d5285508e96, type: 2}
+  m_sound2: {fileID: 11400000, guid: dbcbacd77b9766b9e9f4fcf98a5d0e93, type: 2}
   m_timer: 0
 --- !u!65 &2711555695651071508
 BoxCollider:

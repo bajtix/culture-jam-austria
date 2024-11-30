@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerCutsceneController : PlayerComponent {
     [SerializeField] private AudioSource m_voiceSource;
+    [SerializeField] private AudioSource m_shoutSource;
     [SerializeField] private PlayerVoiceline[] m_swears;
 
     [System.Serializable]
@@ -73,8 +74,14 @@ public class PlayerCutsceneController : PlayerComponent {
         else
             Game.UI.Subtitles.SingleSubtitle(line.text, 0, line.Duration);
 
-        if (line.HasAudio)
-            m_voiceSource.PlayOneShot(line.audio);
+        if (line.HasAudio) {
+            if (line.type == PlayerVoiceline.VoiceLineType.CutsceneDialogue) {
+
+                m_voiceSource.PlayOneShot(line.audio);
+            } else {
+                m_shoutSource.PlayOneShot(line.audio);
+            }
+        }
     }
 
     public void Swear() {

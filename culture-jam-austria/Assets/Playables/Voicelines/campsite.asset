@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d19feec73d7e5f47954db513774a049, type: 3}
-  m_Name: 6. The Storm Is Too Strong
+  m_Name: campsite
   m_EditorClassIdentifier: 
   type: 0
-  text: 'The storm is too strong,
-
-    I shouldn''t go outside'
-  m_duration: 4
-  audio: {fileID: 0}
+  text: "{0}{3000}Kurt... Lukas...\n{3000}{5000}I need to save myself... For their
+    sake. \n{5000}{9000}Their bodies can have something useful on them..."
+  m_duration: 0
+  audio: {fileID: 8300000, guid: 3760a09efbf157840b5a1149e9ce91f2, type: 3}

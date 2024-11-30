@@ -8,8 +8,13 @@ public class PlayerStatusInformer : PlayerComponent {
     [SerializeField] private AnimationCurve m_noiseIntensity;
     [SerializeField] private AnimationCurve m_redFilterIntensity;
     [SerializeField] private float m_dangerNotifySpeed = 1f;
-	[SerializeField] private Volume m_redVolume;
+    [SerializeField] private Volume m_redVolume;
+
+    [SerializeField] private PlayerVoiceline m_coldGoBackVoice;
+    private bool m_playedVoiceline;
     private float m_danger;
+
+
     private void Update() {
         //  stamina bar
         Game.UI.PlayerStatus.StaminaSetVisible(Player.Controller.Stamina < 1);
@@ -21,6 +26,12 @@ public class PlayerStatusInformer : PlayerComponent {
         m_postprocessing.SetFloat("_Wiggle_Noise_Intensity", 0.01f * m_disturbanceIntensity.Evaluate(Game.Controller.StormHuntingPercent) * m_danger);
         m_postprocessing.SetFloat("_White_Noise_Intensity", m_noiseIntensity.Evaluate(Game.Controller.StormHuntingPercent) * m_danger);
 
-		m_redVolume.weight = m_redFilterIntensity.Evaluate(Game.Controller.StormHuntingPercent) * m_danger;
+        m_redVolume.weight = m_redFilterIntensity.Evaluate(Game.Controller.StormHuntingPercent) * m_danger;
+
+
+        if (!m_playedVoiceline && Game.Controller.IsMonsterHunting) {
+            Player.Cutscene.PlayVoiceline(m_coldGoBackVoice);
+            m_playedVoiceline = true;
+        }
     }
 }
