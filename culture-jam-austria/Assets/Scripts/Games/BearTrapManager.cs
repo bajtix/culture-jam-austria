@@ -6,6 +6,9 @@ public class BearTrapManager : StageBehaviour {
 	[SerializeField] private Transform[] m_locations;
 	[SerializeField] private Transform[] m_bearTraps;
 
+	[SerializeField] private Clawmark m_clawmark;
+	[SerializeField] private float m_clawChance;
+
 
 	private void Start() {
 		Scatter();
@@ -32,6 +35,12 @@ public class BearTrapManager : StageBehaviour {
 			usedPos[i] = index;
 
 			m_bearTraps[i].position = m_locations[index].position;
+
+			if (Random.Range(0, 1f) < m_clawChance) try {
+					m_clawmark.Place(m_locations[index].position);
+				} catch {
+					//ign
+				}
 		}
 	}
 

@@ -14,7 +14,7 @@ public class DrawingSurface : MonoBehaviour {
     private Material m_drawMaterial, m_targetMaterial;
 
 
-    private void Start() {
+    private void Awake() {
         m_targetMaterial = m_useSharedMaterial ? GetComponent<MeshRenderer>().sharedMaterial : GetComponent<MeshRenderer>().material;
         m_front = new RenderTexture(0x1 << m_resolution, 0x1 << m_resolution, 0, UnityEngine.Experimental.Rendering.GraphicsFormat.R16_SFloat);
         m_back = new RenderTexture(m_front);
