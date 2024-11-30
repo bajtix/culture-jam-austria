@@ -34,13 +34,13 @@ public class BearTrapManager : StageBehaviour {
 			}
 			usedPos[i] = index;
 
-			m_bearTraps[i].position = m_locations[index].position;
-
 			if (Random.Range(0, 1f) < m_clawChance) try {
-					m_clawmark.Place(m_locations[index].position);
+					m_clawmark.Place(m_bearTraps[i].position + Vector3.up * 0.2f);
 				} catch {
 					//ign
 				}
+			m_bearTraps[i].position = m_locations[index].position;
+
 		}
 	}
 

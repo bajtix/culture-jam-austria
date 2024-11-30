@@ -2689,17 +2689,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e92e95da45b794abafb21b0444da9d4, type: 3}
---- !u!114 &467928336 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1238762530568426749, guid: 52467c29f24b7a2118517d08e9ec00e3, type: 3}
-  m_PrefabInstance: {fileID: 6715419143681553722}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 526394076209cbd748b310577dd5e43f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &477096805 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5751906032474501877, guid: 4e92e95da45b794abafb21b0444da9d4, type: 3}
@@ -13726,12 +13715,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 167407958488927257, guid: 52467c29f24b7a2118517d08e9ec00e3, type: 3}
-      propertyPath: m_clawmark
-      value: 
-      objectReference: {fileID: 467928336}
-    - target: {fileID: 167407958488927257, guid: 52467c29f24b7a2118517d08e9ec00e3, type: 3}
       propertyPath: m_clawChance
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3289107013747265613, guid: 52467c29f24b7a2118517d08e9ec00e3, type: 3}
       propertyPath: m_Name
