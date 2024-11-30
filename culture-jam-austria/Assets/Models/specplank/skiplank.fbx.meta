@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 584a16f9718eb759ab439186c4af8d1d
+guid: 36859bdadfb5a9770801ef18f137682c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,18 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Belt.001
+    second: {fileID: 2100000, guid: 32cc479cf8aefcdd1917216bd90a60ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Special Plank_BAKED
     second: {fileID: 2100000, guid: 91a5d1c37b9b795d990d266429b45910, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: crafttable
-    second: {fileID: 2100000, guid: 71f837e172b24f3f7bb1dac3668ff7d8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: saw
-    second: {fileID: 2100000, guid: 4144b41b7d100f0469f9aea1097331ef, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

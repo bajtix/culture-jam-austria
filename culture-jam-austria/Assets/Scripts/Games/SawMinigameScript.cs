@@ -21,6 +21,7 @@ public class SawMinigameScript : Interactable {
 	[SerializeField] private Tatzelcam m_camera;
 	[SerializeField] private GameObject m_discardedEnd;
 	[SerializeField] private GameObject m_mainEnd;
+	[SerializeField] private GameObject m_resultingObject;
 	[SerializeField] private Puzzle m_puzzle;
 
 	private bool m_minigamefail = false;
@@ -37,7 +38,6 @@ public class SawMinigameScript : Interactable {
 
 	public void UpdatePuzzleItems() {
 		m_hasRawPlank = m_puzzle.Has("rawplank");
-		m_discardedEnd.SetActive(m_hasRawPlank);
 		m_mainEnd.SetActive(m_hasRawPlank);
 	}
 
@@ -45,7 +45,7 @@ public class SawMinigameScript : Interactable {
 		m_isA = Random.Range(0, 2) == 0;
 		UpdatePrompt();
 
-		m_discardedEnd.SetActive(m_hasRawPlank);
+		m_discardedEnd.SetActive(false);
 		m_mainEnd.SetActive(m_hasRawPlank);
 		m_canvas.SetActive(false);
 		m_saw.gameObject.SetActive(false);
@@ -143,7 +143,6 @@ public class SawMinigameScript : Interactable {
 	[Button("plank")]
 	public void AddPlank() {
 		m_hasRawPlank = true;
-		m_discardedEnd.SetActive(m_hasRawPlank);
 		m_mainEnd.SetActive(m_hasRawPlank);
 	}
 
@@ -159,13 +158,17 @@ public class SawMinigameScript : Interactable {
 		if (m_progress >= 1) {
 			var sp = Instantiate(m_discardedEnd, m_discardedEnd.transform.parent);
 			sp.transform.SetParent(null);
+			sp.SetActive(true);
 			sp.AddComponent<Rigidbody>();
 
 			m_puzzle.ConsumeAll();
+
+			sp = Instantiate(m_resultingObject, m_resultingObject.transform.parent);
+			sp.SetActive(true);
+			sp.transform.SetParent(null);
 		}
 
 		m_mainEnd.SetActive(m_hasRawPlank);
-		m_discardedEnd.SetActive(m_hasRawPlank);
 
 		m_minigamefail = false;
 		m_progressFill.fillAmount = 0f;

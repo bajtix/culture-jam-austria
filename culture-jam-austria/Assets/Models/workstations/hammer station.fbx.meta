@@ -23,7 +23,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: hammer
-    second: {fileID: 8318008077161016557, guid: 9ca7a472fd5522901a34dae7d4904dbd, type: 3}
+    second: {fileID: 2100000, guid: 0ea72b3eae051a0bcad56358b1cf200b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
