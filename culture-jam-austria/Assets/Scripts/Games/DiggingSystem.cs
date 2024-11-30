@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class DiggingSystem : Interactable {
 	[SerializeField] private GameObject m_diggingCanvas;
@@ -11,6 +10,7 @@ public class DiggingSystem : Interactable {
 	[SerializeField] private Transform m_a, m_b, m_arms;
 	[SerializeField] private GameObject m_armsGfx;
 	[SerializeField] private SkinnedMeshRenderer m_renderer;
+	[SerializeField] private Collider m_destroyedCollider;
 
 
 	private bool m_digDown;
@@ -64,6 +64,9 @@ public class DiggingSystem : Interactable {
 	}
 
 	public override void InteractionEnd(Player player) {
+		if (m_progress >= 1) {
+			Destroy(m_destroyedCollider);
+		}
 
 		player.Controller.RemoveViewModifier("dig");
 		player.Controller.RemoveSpeedModifier("dig");

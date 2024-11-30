@@ -37,7 +37,7 @@ public class GameBearTrap : Interactable {
         m_isTrapActivated = true;
         m_timeSinceActivated = 0f;
         m_animator.Play("snap");
-        Game.Player.Interactor.enabled = true;
+        Game.Player.Interactor.enabled = false;
 
         if (m_bloodDecal != null) {
             var go = Instantiate(m_bloodDecal, m_bloodDecal.transform.parent);
@@ -53,7 +53,7 @@ public class GameBearTrap : Interactable {
 
     private void StopTrapEffect() {
         Game.Player.Controller.RemoveSpeedModifier("Stop");
-        Game.Player.Interactor.enabled = false;
+        Game.Player.Interactor.enabled = true;
         m_isTrapActivated = false;
         m_timeSinceActivated = 0f;
         Game.UI.HideProgress();
