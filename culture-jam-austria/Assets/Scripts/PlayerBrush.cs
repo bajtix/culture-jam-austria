@@ -19,6 +19,7 @@ public class PlayerBrush : PlayerComponent {
         void PlaceFootstep(Vector3 pos, Vector2 sc, float rot) {
             if (!Physics.Raycast(pos, Vector3.down, out var hit, 2)) return;
             m_surface = hit.collider.GetComponent<DrawingSurface>();
+            if (m_surface == null) return;
             m_surface.AddTextureMark(m_print, hit.textureCoord, rot, sc, m_strength);
         }
 
