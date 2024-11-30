@@ -31,6 +31,8 @@ public class Game : MonoBehaviour {
     [SerializeField] private Blizzard m_blizzard;
     [SerializeField] private WindSound m_windSound;
     [SerializeField] private GameController m_gameController;
+    [SerializeField] public LayerMask interactionMask = int.MaxValue;
+
     public static UIManager UI {
         get {
             if (Instance.m_uIManager == null) Instance.m_uIManager = FindFirstObjectByType<UIManager>();

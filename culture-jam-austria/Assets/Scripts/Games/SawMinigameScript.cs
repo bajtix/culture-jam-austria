@@ -21,6 +21,7 @@ public class SawMinigameScript : Interactable {
 	[SerializeField] private Tatzelcam m_camera;
 	[SerializeField] private GameObject m_discardedEnd;
 	[SerializeField] private GameObject m_mainEnd;
+	[SerializeField] private Puzzle m_puzzle;
 
 	private bool m_minigamefail = false;
 	private bool m_isA = true;
@@ -29,22 +30,28 @@ public class SawMinigameScript : Interactable {
 	private float m_pressure = 0;
 	private float m_progress = 0;
 
-	private bool m_hasPlank = true;
+	private bool m_hasRawPlank = false;
 
 	public override string Tooltip => "Cut Plank";
 
+
+	public void UpdatePuzzleItems() {
+		m_hasRawPlank = m_puzzle.Has("rawplank");
+		m_discardedEnd.SetActive(m_hasRawPlank);
+		m_mainEnd.SetActive(m_hasRawPlank);
+	}
 
 	private void Start() {
 		m_isA = Random.Range(0, 2) == 0;
 		UpdatePrompt();
 
-		m_discardedEnd.SetActive(m_hasPlank);
-		m_mainEnd.SetActive(m_hasPlank);
+		m_discardedEnd.SetActive(m_hasRawPlank);
+		m_mainEnd.SetActive(m_hasRawPlank);
 		m_canvas.SetActive(false);
 		m_saw.gameObject.SetActive(false);
 	}
 
-	public override bool CanInteract(Player player) => m_hasPlank;
+	public override bool CanInteract(Player player) => m_hasRawPlank;
 	public override bool CanStopInteraction(Player player) => true;
 	public override bool InteractionOver(Player player) => m_minigamefail || m_progress >= 1;
 
@@ -135,9 +142,9 @@ public class SawMinigameScript : Interactable {
 
 	[Button("plank")]
 	public void AddPlank() {
-		m_hasPlank = true;
-		m_discardedEnd.SetActive(m_hasPlank);
-		m_mainEnd.SetActive(m_hasPlank);
+		m_hasRawPlank = true;
+		m_discardedEnd.SetActive(m_hasRawPlank);
+		m_mainEnd.SetActive(m_hasRawPlank);
 	}
 
 	public override void InteractionEnd(Player player) {
@@ -154,11 +161,11 @@ public class SawMinigameScript : Interactable {
 			sp.transform.SetParent(null);
 			sp.AddComponent<Rigidbody>();
 
-			m_hasPlank = false;
+			m_puzzle.ConsumeAll();
 		}
 
-		m_mainEnd.SetActive(m_hasPlank);
-		m_discardedEnd.SetActive(m_hasPlank);
+		m_mainEnd.SetActive(m_hasRawPlank);
+		m_discardedEnd.SetActive(m_hasRawPlank);
 
 		m_minigamefail = false;
 		m_progressFill.fillAmount = 0f;
