@@ -10,13 +10,14 @@ public class SexMan : MonoBehaviour {
         src.spatialBlend = threed;
         src.volume = bite.GetVolume();
         src.pitch = bite.GetPitch();
-        src.clip = bite.clip;
+        var clip = bite.GetClip();
+        src.clip = clip;
         src.outputAudioMixerGroup = bite.group;
         src.playOnAwake = false;
 
         src.transform.position = location;
 
         src.Play();
-        Destroy(src, bite.clip.length);
+        Destroy(src, clip.length);
     }
 }

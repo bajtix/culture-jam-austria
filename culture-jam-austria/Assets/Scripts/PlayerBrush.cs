@@ -8,6 +8,7 @@ public class PlayerBrush : PlayerComponent {
     [SerializeField] private float m_scale;
     [SerializeField] private float m_footstepOffset = 0.05f;
     [SerializeField][ReadOnly] private DrawingSurface m_surface;
+    [SerializeField] private SoundBite m_soundEffect;
 
     private Vector3 m_lastPosition;
     private bool m_left;
@@ -25,7 +26,7 @@ public class PlayerBrush : PlayerComponent {
 
         var stepPosition = transform.position - transform.right * (m_left ? 1 : -1) * m_footstepOffset;
         PlaceFootstep(stepPosition, new Vector2(m_left ? m_scale : -m_scale, m_scale), m_left ? transform.rotation.eulerAngles.y : -transform.rotation.eulerAngles.y);
-
+        Game.SexMan.Play(m_soundEffect, transform.position, 0.2f);
 
         m_left = !m_left;
     }

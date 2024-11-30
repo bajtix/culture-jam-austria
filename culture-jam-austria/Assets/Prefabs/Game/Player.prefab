@@ -595,6 +595,7 @@ MonoBehaviour:
   m_scale: 0.5
   m_footstepOffset: 0.2
   m_surface: {fileID: 0}
+  m_soundEffect: {fileID: 11400000, guid: 48a66c02f80703cc4af9d9e54a70b3b1, type: 2}
 --- !u!114 &8987008925528031759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -744,7 +745,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_player: {fileID: 6638721736955259059}
   m_voiceSource: {fileID: 3302382139087219465}
-  m_swears: []
+  m_swears:
+  - {fileID: 11400000, guid: 15f80084c945dff1f8256e8bdccced1e, type: 2}
+  - {fileID: 11400000, guid: 6eeb6589ece539404a9d37721267bb02, type: 2}
   m_cameraStack: []
   transitionSpeed: 5
 --- !u!114 &8195697429607675619
