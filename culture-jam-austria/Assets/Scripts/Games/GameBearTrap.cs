@@ -39,10 +39,12 @@ public class GameBearTrap : Interactable {
         m_animator.Play("snap");
 
         if (m_bloodDecal != null) {
-            var g = Instantiate(m_bloodDecal, m_bloodDecal.transform.parent);
-            g.SetActive(true);
-            g.transform.position = m_bloodDecal.transform.position + Random.insideUnitSphere;
-            g.transform.SetParent(null);
+            var go = Instantiate(m_bloodDecal, m_bloodDecal.transform.parent);
+            go.SetActive(true);
+
+            var randomVector = Random.insideUnitCircle;
+            go.transform.position = m_bloodDecal.transform.position + new Vector3(randomVector.x, 0, randomVector.y);
+            go.transform.SetParent(null);
         }
 
         m_bloodParticle.Play();

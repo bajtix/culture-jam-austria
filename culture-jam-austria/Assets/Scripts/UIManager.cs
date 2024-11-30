@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI m_interactionTooltip;
     [SerializeField] private TextMeshProUGUI m_progressText;
     [SerializeField] private GameObject m_progressPanel;
+    [SerializeField] private GameObject m_deathPanel;
     [SerializeField] private Image m_progressGraphic;
     [SerializeField] private UIPlayerStatus m_uiPlayerStatus;
     [SerializeField] private UIDebugPane m_uiDebugPane;
@@ -22,7 +23,7 @@ public class UIManager : MonoBehaviour {
     }
 
     public void SetInteractionTooltip(string s) {
-        m_interactionTooltip.text = s;
+        m_interactionTooltip.text = "<sprite=0>" + s;
         m_interactionTooltip.gameObject.SetActive(true);
     }
 
@@ -38,5 +39,9 @@ public class UIManager : MonoBehaviour {
 
     public void HideProgress() {
         m_progressPanel.SetActive(false);
+    }
+
+    public void Dead() {
+        m_deathPanel.SetActive(true);
     }
 }
