@@ -18,6 +18,7 @@ public class Player : MonoBehaviour {
     [BoxGroup("Components")][SerializeField] private PlayerCameraFx m_cameraFx;
     [BoxGroup("Components")][SerializeField] private PlayerCutsceneController m_cutsceneController;
     [BoxGroup("Components")][SerializeField] private PlayerCameraController m_cameraController;
+    [SerializeField] private Transform m_carryTransform;
 
     public PlayerState State => m_state;
     public Camera Camera => m_camera;
@@ -28,4 +29,5 @@ public class Player : MonoBehaviour {
     public PlayerCameraFx CameraFx => m_cameraFx;
     public PlayerCutsceneController Cutscene => m_cutsceneController;
     public PlayerCameraController CameraController => m_cameraController;
+    public Transform CarryTransform => m_carryTransform;
 }

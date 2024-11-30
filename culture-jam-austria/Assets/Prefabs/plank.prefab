@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2643097757685622236}
   - component: {fileID: 3936855445347010848}
   - component: {fileID: 1934329972050697502}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,11 +95,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcb5d9bbe314351aa81d3a721cb8a719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_weight: 1
   m_rigidbody: {fileID: 3936855445347010848}
   m_collider: {fileID: 2643097757685622236}
   m_puzzleTag: plank
   m_maxPlaceDistance: 3
+  m_carrySpeed: 0.8
+  m_carryPosition: {x: 0.33, y: 0.25, z: -0.5}
+  m_carryRotation: {x: -5, y: 10, z: 89}
 --- !u!1001 &4544202598259752554
 PrefabInstance:
   m_ObjectHideFlags: 0

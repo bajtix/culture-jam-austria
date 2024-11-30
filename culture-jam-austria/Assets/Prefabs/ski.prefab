@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1200351116768006996}
   - component: {fileID: 5216195319687484135}
   - component: {fileID: 7060786477922203004}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ski
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,11 +95,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcb5d9bbe314351aa81d3a721cb8a719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_weight: 5
   m_rigidbody: {fileID: 5216195319687484135}
   m_collider: {fileID: 1200351116768006996}
   m_puzzleTag: ski
   m_maxPlaceDistance: 3
+  m_carrySpeed: 0.9
+  m_carryPosition: {x: 0.5, y: 0.6, z: -0.2}
+  m_carryRotation: {x: -510.95, y: 0, z: 0}
 --- !u!1001 &3369508498432388238
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 213459446857394173}
   - component: {fileID: 1534918383108868786}
   - component: {fileID: 2939832683118831060}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: rawplank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,11 +95,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcb5d9bbe314351aa81d3a721cb8a719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_weight: 1
   m_rigidbody: {fileID: 1534918383108868786}
   m_collider: {fileID: 213459446857394173}
   m_puzzleTag: rawplank
   m_maxPlaceDistance: 3
+  m_carrySpeed: 0.6
+  m_carryPosition: {x: 0.33, y: 0.25, z: -0.5}
+  m_carryRotation: {x: -5, y: 190, z: 89}
 --- !u!1001 &7998782871042627332
 PrefabInstance:
   m_ObjectHideFlags: 0
