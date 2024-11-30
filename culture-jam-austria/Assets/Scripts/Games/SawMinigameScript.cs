@@ -138,6 +138,7 @@ public class SawMinigameScript : Interactable {
 	private void FailDirectionSwitch() {
 		m_timer = 0;
 		m_minigamefail = true;
+		Game.Player.Cutscene.Swear();
 	}
 
 	[Button("plank")]

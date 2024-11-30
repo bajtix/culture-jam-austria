@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 
 public class PlayerCutsceneController : PlayerComponent {
     [SerializeField] private AudioSource m_voiceSource;
+    [SerializeField] private PlayerVoiceline[] m_swears;
 
     [System.Serializable]
 
@@ -75,5 +75,9 @@ public class PlayerCutsceneController : PlayerComponent {
 
         if (line.HasAudio)
             m_voiceSource.PlayOneShot(line.audio);
+    }
+
+    public void Swear() {
+        PlayVoiceline(m_swears[Random.Range(0, m_swears.Length)]);
     }
 }

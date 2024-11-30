@@ -27,7 +27,6 @@ public class PlayerBrush : PlayerComponent {
         PlaceFootstep(stepPosition, new Vector2(m_left ? m_scale : -m_scale, m_scale), m_left ? transform.rotation.eulerAngles.y : -transform.rotation.eulerAngles.y);
 
 
-
         m_left = !m_left;
     }
 }

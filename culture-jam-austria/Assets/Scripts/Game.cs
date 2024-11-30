@@ -27,6 +27,7 @@ public class Game : MonoBehaviour {
     // Assignables
 
     [SerializeField] private UIManager m_uIManager;
+    [SerializeField] private SexMan m_sexMan;
     [SerializeField] private Player m_player;
     [SerializeField] private Blizzard m_blizzard;
     [SerializeField] private WindSound m_windSound;
@@ -37,6 +38,13 @@ public class Game : MonoBehaviour {
         get {
             if (Instance.m_uIManager == null) Instance.m_uIManager = FindFirstObjectByType<UIManager>();
             return Instance.m_uIManager;
+        }
+    }
+
+    public static SexMan SexMan {
+        get {
+            if (Instance.m_sexMan == null) Instance.m_sexMan = FindFirstObjectByType<SexMan>();
+            return Instance.m_sexMan;
         }
     }
 

@@ -20,6 +20,8 @@ public class HammerSystem : Interactable {
 	[SerializeField] private Tatzelcam m_camera;
 	[SerializeField] private Puzzle m_puzzle;
 
+	[SerializeField] private AudioClip m_hammerHit;
+
 	private float m_pointerPosition;
 	private bool m_right = true;
 	private bool m_hasMissed = false;
@@ -109,6 +111,7 @@ public class HammerSystem : Interactable {
 		if (m_currentProgress >= 0.5) m_currentProgress = 0.5f;
 		else m_currentProgress = 0;
 		m_hasMissed = true;
+		Game.Player.Cutscene.Swear();
 	}
 
 	private void Hit() {
