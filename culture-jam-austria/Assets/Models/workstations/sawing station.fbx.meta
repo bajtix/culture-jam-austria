@@ -3,7 +3,22 @@ guid: 584a16f9718eb759ab439186c4af8d1d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Special Plank_BAKED
+    second: {fileID: 2100000, guid: 91a5d1c37b9b795d990d266429b45910, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: crafttable
+    second: {fileID: 2100000, guid: 71f837e172b24f3f7bb1dac3668ff7d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: saw
+    second: {fileID: -1969116163703827245, guid: cccbc3fa9588ba4b6a36900abc88cebd, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
