@@ -103,7 +103,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""name"": ""Sprint"",
                     ""type"": ""Button"",
                     ""id"": ""641cd816-40e6-41b4-8c3d-04687c349290"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -1163,6 +1163,98 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Digging"",
+            ""id"": ""f58481a8-c1b5-44b3-91ce-40550a83bd66"",
+            ""actions"": [
+                {
+                    ""name"": ""Activate"",
+                    ""type"": ""Button"",
+                    ""id"": ""a8782f63-9720-419f-8fb1-9e5394ec9425"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dig"",
+                    ""type"": ""Value"",
+                    ""id"": ""d8f7c3f1-33fa-4571-8c8b-d7850e54f115"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""fe363be9-6849-413d-b856-ce17a429760b"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Activate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7635d6d3-2bf2-4009-99c8-be679e7fa91c"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Activate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""94f9c9c3-b46f-4bb8-9c8e-e9047f33d224"",
+                    ""path"": ""<Mouse>/delta/y"",
+                    ""interactions"": """",
+                    ""processors"": ""Clamp(min=-1,max=1)"",
+                    ""groups"": """",
+                    ""action"": ""Dig"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""55bf1f3f-0ed0-4f8d-81d7-6951633431ca"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dig"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""d7404914-2717-4095-981e-0edb3c35fcd3"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dig"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""15f01af5-c9c0-4321-a5d8-b7a1a4b2a61a"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dig"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1259,6 +1351,10 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_Saw_Press = m_Saw.FindAction("Press", throwIfNotFound: true);
         m_Saw_BounceForward = m_Saw.FindAction("Bounce Forward", throwIfNotFound: true);
         m_Saw_BounceBackward = m_Saw.FindAction("Bounce Backward", throwIfNotFound: true);
+        // Digging
+        m_Digging = asset.FindActionMap("Digging", throwIfNotFound: true);
+        m_Digging_Activate = m_Digging.FindAction("Activate", throwIfNotFound: true);
+        m_Digging_Dig = m_Digging.FindAction("Dig", throwIfNotFound: true);
     }
 
     ~@GameInput()
@@ -1267,6 +1363,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, GameInput.UI.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Hammer.enabled, "This will cause a leak and performance issues, GameInput.Hammer.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Saw.enabled, "This will cause a leak and performance issues, GameInput.Saw.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Digging.enabled, "This will cause a leak and performance issues, GameInput.Digging.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -1660,6 +1757,60 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         }
     }
     public SawActions @Saw => new SawActions(this);
+
+    // Digging
+    private readonly InputActionMap m_Digging;
+    private List<IDiggingActions> m_DiggingActionsCallbackInterfaces = new List<IDiggingActions>();
+    private readonly InputAction m_Digging_Activate;
+    private readonly InputAction m_Digging_Dig;
+    public struct DiggingActions
+    {
+        private @GameInput m_Wrapper;
+        public DiggingActions(@GameInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Activate => m_Wrapper.m_Digging_Activate;
+        public InputAction @Dig => m_Wrapper.m_Digging_Dig;
+        public InputActionMap Get() { return m_Wrapper.m_Digging; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DiggingActions set) { return set.Get(); }
+        public void AddCallbacks(IDiggingActions instance)
+        {
+            if (instance == null || m_Wrapper.m_DiggingActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DiggingActionsCallbackInterfaces.Add(instance);
+            @Activate.started += instance.OnActivate;
+            @Activate.performed += instance.OnActivate;
+            @Activate.canceled += instance.OnActivate;
+            @Dig.started += instance.OnDig;
+            @Dig.performed += instance.OnDig;
+            @Dig.canceled += instance.OnDig;
+        }
+
+        private void UnregisterCallbacks(IDiggingActions instance)
+        {
+            @Activate.started -= instance.OnActivate;
+            @Activate.performed -= instance.OnActivate;
+            @Activate.canceled -= instance.OnActivate;
+            @Dig.started -= instance.OnDig;
+            @Dig.performed -= instance.OnDig;
+            @Dig.canceled -= instance.OnDig;
+        }
+
+        public void RemoveCallbacks(IDiggingActions instance)
+        {
+            if (m_Wrapper.m_DiggingActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IDiggingActions instance)
+        {
+            foreach (var item in m_Wrapper.m_DiggingActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_DiggingActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public DiggingActions @Digging => new DiggingActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -1739,5 +1890,10 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         void OnPress(InputAction.CallbackContext context);
         void OnBounceForward(InputAction.CallbackContext context);
         void OnBounceBackward(InputAction.CallbackContext context);
+    }
+    public interface IDiggingActions
+    {
+        void OnActivate(InputAction.CallbackContext context);
+        void OnDig(InputAction.CallbackContext context);
     }
 }
