@@ -1,6 +1,4 @@
-using System;
 using NaughtyAttributes;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UIElements;
@@ -18,8 +16,9 @@ public class HammerSystem : Interactable {
 	[SerializeField] private float m_requiredAccuracy = 0.1f;
 	[SerializeField] private float m_acceleration = 1f;
 	[SerializeField] private float m_movePixels = 128f;
-
+	[SerializeField] private GameObject m_resultingObject;
 	[SerializeField] private Tatzelcam m_camera;
+	[SerializeField] private Puzzle m_puzzle;
 
 	private float m_pointerPosition;
 	private bool m_right = true;
@@ -36,6 +35,15 @@ public class HammerSystem : Interactable {
 		m_belt.SetActive(m_hasBelt);
 		m_hammer.SetActive(false);
 		m_ui.SetActive(false);
+		m_resultingObject.SetActive(false);
+	}
+
+	public void UpdatePuzzle() {
+		m_hasBelt = m_puzzle.Has("belt");
+		m_hasPlank = m_puzzle.Has("plank");
+
+		m_plank.SetActive(m_hasPlank);
+		m_belt.SetActive(m_hasBelt);
 	}
 
 
@@ -119,9 +127,12 @@ public class HammerSystem : Interactable {
 		m_hammer.SetActive(false);
 
 		if (m_currentProgress >= 1) {
-			m_hasPlank = false;
-			m_hasBelt = false;
+			m_puzzle.ConsumeAll();
 			m_currentProgress = 0;
+
+			var sp = Instantiate(m_resultingObject, m_resultingObject.transform.parent);
+			sp.SetActive(true);
+			sp.transform.SetParent(null);
 		}
 
 		m_plank.SetActive(m_hasPlank);

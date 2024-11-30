@@ -101,8 +101,8 @@ public class PlayerController : PlayerComponent {
         if (m_viewModifier == null || m_viewModifier.Value.Value.Item1 < 0.5f) {
             m_yaw += mouseMovement.x * m_viewSens;
             m_pitch += mouseMovement.y * m_viewSens;
-            if (m_yaw > 360) m_yaw %= 360;
-            if (m_yaw < 0) m_yaw = 360 - m_yaw;
+            //if (m_yaw >= 360) m_yaw %= 360;
+            //if (m_yaw <= 0) m_yaw = 360 - m_yaw;
 
             if (m_pitch > m_lookPitchLimit) m_pitch = m_lookPitchLimit;
             if (m_pitch < -m_lookPitchLimit) m_pitch = -m_lookPitchLimit; // TODO: fix that
