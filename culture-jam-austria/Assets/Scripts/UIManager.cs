@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Tweens;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI m_interactionTooltip;
@@ -53,6 +54,13 @@ public class UIManager : MonoBehaviour {
     public void HideProgress() {
         m_progressPanel.SetActive(false);
     }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.P)) {
+            SceneManager.LoadScene(0);
+        }
+    }
+
 
     public void Dead() {
         m_deathPanel.SetActive(true);
