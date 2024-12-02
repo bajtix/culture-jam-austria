@@ -518,6 +518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_monsterAnimator: {fileID: 4992759795838962020}
   m_monsterCam: {fileID: 424180040161742928}
+  m_huntStartSound: {fileID: 0}
 --- !u!1 &4532838585268513909
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,10 +675,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_player: {fileID: 6638721736955259059}
   m_print: {fileID: 2800000, guid: 93a2bca2b062ae86dab8ebc81710df77, type: 3}
-  m_footstepDistance: 1
+  m_footstepDistance: 3
   m_strength: 0.2
   m_scale: 0.5
-  m_footstepOffset: 0.2
+  m_footstepOffset: 0.3
   m_surface: {fileID: 0}
   m_soundEffect: {fileID: 11400000, guid: 48a66c02f80703cc4af9d9e54a70b3b1, type: 2}
 --- !u!114 &8987008925528031759
@@ -786,7 +787,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   m_dangerNotifySpeed: 1
   m_redVolume: {fileID: 2037464884617267561}
-  m_coldGoBackVoice: {fileID: 0}
+  m_coldGoBackVoice: {fileID: 11400000, guid: 0511bc787b3f3df479c4384635bee1a1, type: 2}
 --- !u!114 &8071082901373507057
 MonoBehaviour:
   m_ObjectHideFlags: 0

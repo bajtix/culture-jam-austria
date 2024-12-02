@@ -4,6 +4,7 @@ using UnityEngine.Animations;
 public class MonsterController : StageBehaviour {
 	[SerializeField] private Animator m_monsterAnimator;
 	[SerializeField] private Tatzelcam m_monsterCam;
+	[SerializeField] private SoundBite m_huntStartSound;
 
 	private bool m_dead = false;
 
@@ -32,5 +33,9 @@ public class MonsterController : StageBehaviour {
 			m_dead = true;
 			PlayAnim();
 		}
+	}
+
+	protected override void OnHuntStarted() {
+		Game.SexMan.Play(m_huntStartSound, transform.position - transform.forward, 0.6f);
 	}
 }

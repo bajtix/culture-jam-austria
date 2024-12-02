@@ -10,16 +10,16 @@ public class BearTrapManager : StageBehaviour {
 	[SerializeField] private float m_clawChance;
 
 
-	private void Start() {
-		Scatter();
-	}
+	// private void Start() {
+	// 	Scatter(); gets called anyways!
+	// }
 
 	protected override void OnStageChanged(int s) {
-		Scatter();
+		Scatter(s != 0);
 	}
 
 	[Button("Scatter")]
-	public void Scatter() {
+	public void Scatter(bool placeClaws = true) {
 		Debug.Log("Scattering bear traps");
 		int[] usedPos = new int[m_bearTraps.Length];
 
@@ -34,7 +34,7 @@ public class BearTrapManager : StageBehaviour {
 			}
 			usedPos[i] = index;
 
-			if (Random.Range(0, 1f) < m_clawChance) try {
+			if (Random.Range(0, 1f) < m_clawChance && placeClaws) try {
 					m_clawmark.Place(m_bearTraps[i].position + Vector3.up * 0.2f);
 				} catch {
 					//ign

@@ -8,6 +8,7 @@ public abstract class StageBehaviour : MonoBehaviour {
         Game.Controller.onPlayerDied.AddListener(OnPlayerDied);
         Game.Controller.onGameLost.AddListener(OnGameLost);
         Game.Controller.onGameWon.AddListener(OnGameWon);
+        Game.Controller.onHuntStarted.AddListener(OnHuntStarted);
     }
 
     protected virtual void OnDisable() {
@@ -17,6 +18,8 @@ public abstract class StageBehaviour : MonoBehaviour {
         Game.Controller.onPlayerDied.RemoveListener(OnPlayerDied);
         Game.Controller.onGameLost.RemoveListener(OnGameLost);
         Game.Controller.onGameWon.RemoveListener(OnGameWon);
+        Game.Controller.onHuntStarted.RemoveListener(OnHuntStarted);
+
     }
 
     protected virtual void OnStageChanged(int s) { }
@@ -25,5 +28,6 @@ public abstract class StageBehaviour : MonoBehaviour {
     protected virtual void OnPlayerDied() { }
     protected virtual void OnGameWon() { }
     protected virtual void OnGameLost() { }
+    protected virtual void OnHuntStarted() { }
 
 }

@@ -78,11 +78,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 816467c2984906d4e92a2eac679dc80a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_canvas: {fileID: 0}
-  m_defuseProgress: {fileID: 0}
   m_animator: {fileID: 5204805204108270805}
   m_bloodDecal: {fileID: 5455829713084367021}
   m_bloodParticle: {fileID: 4444234985023642864}
+  m_soundEffect: {fileID: 11400000, guid: 539aa56822659e319acdc28a334aaf70, type: 2}
 --- !u!1 &5455829713084367021
 GameObject:
   m_ObjectHideFlags: 0

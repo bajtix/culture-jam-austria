@@ -26,6 +26,7 @@ public class GameController : MonoBehaviour {
     [BoxGroup("Events")] public UnityEvent onPlayerDied;
     [BoxGroup("Events")] public UnityEvent onGameLost;
     [BoxGroup("Events")] public UnityEvent onGameWon;
+    [BoxGroup("Events")] public UnityEvent onHuntStarted;
 
 
     public StageSettings CurrentStage => m_stages[m_currentStageIndex];
@@ -93,6 +94,7 @@ public class GameController : MonoBehaviour {
             }
 
             if (m_stormTime > CurrentStage.huntingStartStormTime) {
+                if (!m_monsterHunting) onHuntStarted.Invoke();
                 m_monsterHunting = true;
             }
 

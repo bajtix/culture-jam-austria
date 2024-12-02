@@ -5,6 +5,7 @@ public class GameBearTrap : Interactable {
     [SerializeField] private Animator m_animator;
     [SerializeField] private GameObject m_bloodDecal;
     [SerializeField] private ParticleSystem m_bloodParticle;
+    [SerializeField] private SoundBite m_soundEffect;
 
     private float m_trappingTime = 5f;
     private bool m_isTrapActivated = false;
@@ -49,6 +50,7 @@ public class GameBearTrap : Interactable {
         }
 
         m_bloodParticle.Play();
+        Game.SexMan.Play(m_soundEffect, transform.position, 1);
 
         Game.Player.Cutscene.Swear();
     }

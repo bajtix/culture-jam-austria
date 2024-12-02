@@ -11,7 +11,10 @@ public class Door : Interactable {
     [SerializeField] private Collider m_collider;
 
     [SerializeField] private PlayerVoiceline m_lockedVoiceline;
-    private bool m_isOpen;
+
+    [SerializeField] private SoundBite m_sound;
+
+    [SerializeField] private bool m_isOpen;
     private bool m_isLocked;
 
     private float m_angle;
@@ -33,6 +36,7 @@ public class Door : Interactable {
     public void SetOpen(bool v) {
         if (m_isOpen == v) return;
         m_isOpen = v;
+        Game.SexMan.Play(m_sound, transform.position, 1);
     }
 
     private void Update() {
