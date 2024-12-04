@@ -62,11 +62,17 @@ public class UIManager : MonoBehaviour {
 
 
     public void Dead() {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         m_deathPanel.SetActive(true);
     }
 
     public void Win() {
-        LMotion.Create(0, 1f, 0.4f).WithOnComplete(() => m_winPanel.SetActive(true)).RunWithoutBinding();
+        LMotion.Create(0, 1f, 0.4f).WithOnComplete(() => {
+            m_winPanel.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }).RunWithoutBinding();
         LMotion.Create(0, 1f, 4f).WithDelay(0.4f).WithOnComplete(() => LoadStage(0)).Bind((x) => m_fader.alpha = x);
     }
 }

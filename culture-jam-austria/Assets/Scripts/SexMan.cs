@@ -6,7 +6,7 @@ using UnityEngine;
 /// </summary>
 public class SexMan : MonoBehaviour {
     public void Play(SoundBite bite, Vector3 location, float threed) {
-        var src = new GameObject().AddComponent<AudioSource>();
+        var src = new GameObject(bite.name).AddComponent<AudioSource>();
         src.spatialBlend = threed;
         src.volume = bite.GetVolume();
         src.pitch = bite.GetPitch();
@@ -18,6 +18,6 @@ public class SexMan : MonoBehaviour {
         src.transform.position = location;
 
         src.Play();
-        Destroy(src, clip.length);
+        Destroy(src.gameObject, clip.length);
     }
 }

@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_belt: {fileID: 1470453909887731329}
   m_resultingItem: {fileID: 8022817934541767546}
-  m_timeItTakes: 8
+  m_timeItTakes: 5
   m_camera: {fileID: 5718137590423744279}
 --- !u!65 &3890941025374811607
 BoxCollider:
