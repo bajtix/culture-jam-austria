@@ -1,9 +1,8 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Tweens;
 using UnityEngine.SceneManagement;
+using LitMotion;
 
 public class UIManager : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI m_interactionTooltip;
@@ -11,6 +10,7 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private GameObject m_progressPanel;
     [SerializeField] private GameObject m_deathPanel;
     [SerializeField] private GameObject m_winPanel;
+
     [SerializeField] private Image m_progressGraphic;
     [SerializeField] private UIPlayerStatus m_uiPlayerStatus;
     [SerializeField] private UIDebugPane m_uiDebugPane;
@@ -27,13 +27,7 @@ public class UIManager : MonoBehaviour {
         HideInteractionTooltip();
         HideProgress();
         m_fader.gameObject.SetActive(true);
-        var tween = new GraphicAlphaTween() {
-            from = 1,
-            to = 0,
-            duration = 2
-        };
-        m_fader.gameObject.AddTween(tween);
-        m_winPanel.SetActive(false);
+        LMotion.Create(1f, 0f, 0.4f).Bind((x) => m_fader.alpha = x);
     }
 
     public void SetInteractionTooltip(string s) {
@@ -55,11 +49,16 @@ public class UIManager : MonoBehaviour {
         m_progressPanel.SetActive(false);
     }
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.P)) {
-            SceneManager.LoadScene(0);
-        }
+    public void LoadStage(int n) {
+        SceneManager.LoadScene(n);
     }
+
+    public void LoadStageAnim(int n) {
+        LMotion.Create(0f, 1f, 0.4f)
+        .WithOnComplete(() => LoadStage(n))
+        .Bind((x) => m_fader.alpha = x);
+    }
+
 
 
     public void Dead() {
@@ -67,13 +66,7 @@ public class UIManager : MonoBehaviour {
     }
 
     public void Win() {
-        m_winPanel.SetActive(true);
-        var tween = new GraphicAlphaTween() {
-            from = 0,
-            to = 1,
-            duration = 2,
-            delay = 3
-        };
-        m_fader.gameObject.AddTween(tween);
+        LMotion.Create(0, 1f, 0.4f).WithOnComplete(() => m_winPanel.SetActive(true)).RunWithoutBinding();
+        LMotion.Create(0, 1f, 4f).WithDelay(0.4f).WithOnComplete(() => LoadStage(0)).Bind((x) => m_fader.alpha = x);
     }
 }

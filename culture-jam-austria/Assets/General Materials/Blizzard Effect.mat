@@ -50,11 +50,11 @@ Material:
     - _Pixelate: 256
     - _Pixelate_Red: 40
     - _Pixelation: 190
-    - _Skip: 0
+    - _Skip: 1
     - _Vignette: 1
-    - _White_Noise_Intensity: 0.025723344
-    - _White_Noise_Speed: 100
-    - _Wiggle_Noise_Intensity: 0.000023828465
+    - _White_Noise_Intensity: 0.24877171
+    - _White_Noise_Speed: 2
+    - _Wiggle_Noise_Intensity: 0.004958231
     - _Wiggle_Noise_Scale: 100
     - _Wiggle_Noise_Speed: 1
     m_Colors:
