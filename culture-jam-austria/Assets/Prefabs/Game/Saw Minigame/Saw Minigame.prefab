@@ -148,9 +148,9 @@ MonoBehaviour:
   m_pressureDisplay: {fileID: 3491258947810324512}
   m_progressFill: {fileID: 23922127824622207}
   m_pressureSensitivity: 0.3
-  m_timeToClick: 0.55
+  m_timeToClick: 0.44
   m_optimalPressureArea: 0.17
-  m_minTime: 0.4
+  m_minTime: 0.3
   m_maxTime: 0.7
   m_requiredSawing: 12
   m_saw: {fileID: 114395034512378913}

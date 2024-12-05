@@ -37,6 +37,7 @@ public class GameController : MonoBehaviour {
     public bool IsMonsterHunting => m_monsterHunting;
 
     public float StormDeadlyPercent => Mathf.Clamp01(m_stormTime / CurrentStage.deadlyStormTime);
+    public float StormHuntingProgressPercent => Mathf.Clamp01((m_stormTime - CurrentStage.huntingStartStormTime) / (CurrentStage.deadlyStormTime - CurrentStage.huntingStartStormTime));
     public float StormHuntingPercent => Mathf.Clamp01(m_stormTime / CurrentStage.huntingStartStormTime);
     public float StormEndHuntingPercent => Mathf.Clamp01(m_stormTime / CurrentStage.huntingEndStormTime);
 

@@ -16,6 +16,10 @@ Shader "Unlit/DrawingShader"
         Pass
         {
             Name "Circle"
+            ZTest Always Cull Off ZWrite Off
+            Fog { Mode off }
+
+
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -67,6 +71,9 @@ Shader "Unlit/DrawingShader"
         Pass
         {
             Name "Line"
+            ZTest Always Cull Off ZWrite Off
+            Fog { Mode off }
+
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -138,6 +145,9 @@ Shader "Unlit/DrawingShader"
         Pass
         {
             Name "Texture"
+            ZTest Always Cull Off ZWrite Off
+            Fog { Mode off }
+
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
